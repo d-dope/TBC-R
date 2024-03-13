@@ -8,8 +8,101 @@ import image6 from './assets/6Instagram_icon.png.webp';
 import image7 from './assets/7Facebook-Logosu.png';
 import image8 from './assets/8LinkedIn_logo_initials.png';
 import image9 from './assets/9.jpg';
+import image10 from './assets/10download.jpg';
+import image11 from './assets/11download.jpg';
+import image12 from './assets/12These-are-the-top-markets-for-Thailand-tourism-in-.webp';
+import image13 from './assets/13travel-g5834cbbb2_1280-sixteen_nine.jpg';
+import image14 from './assets/14images.jpg';
+import image15 from './assets/15mice-turizmi.jpg';
+import image16 from './assets/16images.jpg';
+import image17 from './assets/17.jpg';
+
+
+
+function Article({ title, image, description }) {
+  return (
+    <div className="bg-gray rounded-lg shadow-md hover:shadow-lg ">
+      <img src={image} alt={title} className="w-full h-64 rounded-lg object-cover" />
+      <div className="p-6">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+}
+
+function ArticlesList({ articles }) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+      {articles.map((article, index) => (
+        <Article key={index} title={article.title} image={article.image} description={article.description} />
+      ))}
+    </div>
+  );
+}
 
 function App() {
+  const articles = [
+    {
+      title: "Top 10 Must-Visit Beaches Around the World",
+      image: image3,
+      description: "Discover the most stunning beaches from different corners of the globe."
+    },
+    {
+      title: "Luxurious Hotels for Your Next Getaway",
+      image: image2,
+      description: "Explore the finest hotels offering unparalleled luxury and comfort."
+    },
+    {
+      title: 'Top 10 Tourist Destinations in 2024',
+      image: image5,
+      description: "Discover the most stunning beaches from different corners of the globe."
+    },
+    {image: image15,
+      title: 'Luxury Hotels: A Guide to the Best Accommodations',
+      description: "Explore the finest hotels offering unparalleled luxury and comfort."
+    },
+    {image: image10,
+      title: 'Hidden Gems: Unexplored Places to Visit',
+      description: "Explore the finest hotels offering unparalleled luxury and comfort."
+    },
+    {
+      title: "Top 10 Must-Visit Beaches Around the World",
+      image: image4,
+      description: "Discover the most stunning beaches from different corners of the globe."
+    },
+    {
+      title: "Luxurious Hotels for Your Next Getaway",
+      image: image13,
+      description: "Explore the finest hotels offering unparalleled luxury and comfort."
+    },
+    {
+      title: "Luxurious Hotels for Your Next Getaway",
+      image: image12,
+      description: "Explore the finest hotels offering unparalleled luxury and comfort."
+    },
+    {image: image14,
+      title: 'Top 10 Tourist Destinations in 2024',
+      description: "Discover the most stunning beaches from different corners of the globe."
+    },
+    {
+      image: image15,
+      title: 'Luxury Hotels: A Guide to the Best Accommodations',
+      description: "Discover the most stunning beaches from different corners of the globe."
+    },
+    {
+      title: "Luxurious Hotels for Your Next Getaway",
+      image: image16,
+      description: "Explore the finest hotels offering unparalleled luxury and comfort."
+    },
+    {
+      image: image17,
+      title: 'Top 10 Tourist Destinations in 2024',
+      description: "Discover the most stunning beaches from different corners of the globe."
+  },
+    
+ 
+  ];
   return (
     <div className="App bg-gray-200 min-h-screen">
       <header className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white py-4 px-8">
@@ -34,7 +127,8 @@ function App() {
           <h2 className="text-2xl font-bold">Popular Destinations</h2>
         </section>
 
-       
+
+         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
           <div className="bg-white rounded-lg shadow-md hover:shadow-lg">
             <img src={image1} alt="Image 1" className="w-full h-64 rounded-lg object-cover" />
@@ -123,6 +217,14 @@ function App() {
     </div>
   </div>
 </div>
+
+ 
+    <section id="articles" className="mb-8">
+      <h2 className="text-2xl font-bold">Featured Articles</h2>
+    </section>
+
+    <ArticlesList articles={articles} />
+
 
         
       </main>
