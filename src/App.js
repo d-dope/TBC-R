@@ -21,7 +21,7 @@
 
   function ArticlesList({ articles }) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12 p-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
         {articles.map((article, index) => (
           <Article key={index} title={article.title} image={article.image} description={article.description} />
         ))}
@@ -127,7 +127,7 @@
           </section>
         <main className="container mx-auto mt-8 px-4">
           <section id="home" className="mb-8">
-            <h2 className="text-3xl font-bold px-5">Products</h2>
+            <h2 className="text-2xl font-bold">Products</h2>
           </section>
 
 
@@ -233,7 +233,7 @@
           
         </main>
 
-        <footer className="bg-gradient-to-r from-sky-500 to-indigo-500 py-4 flex items-center mt-6">
+        <footer className="bg-gradient-to-r from-sky-500 to-indigo-500 py-4 flex items-center mt-2">
   <div className="container mx-auto">
   <ul className="flex mb-8 justify-center gap-20 mt-0">
         <li className="mr-4"><a href="#home" className="text-white hover:text-gray-300">Home</a></li>
