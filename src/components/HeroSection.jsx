@@ -3,6 +3,7 @@ import image2 from '../assets/2_1.jpg';
 import image3 from '../assets/3image.jpg';
 import image4 from '../assets/4THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg';
 import image5 from '../assets/5miro_hero_building_exterior_2000x1125.avif';
+import ArticlesList from './ArticleList';
 function HeroSection() {
     
 
@@ -16,7 +17,7 @@ function HeroSection() {
          
 
                     
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md hover:shadow-lg">
               <img src={image1} alt="Image 1" className="w-full h-64 rounded-lg object-cover" />
               <div className="p-6">
@@ -103,9 +104,9 @@ function HeroSection() {
         </button>
       </div>
     </div>
-  </div> 
+  </div>  */}
 
-
+<ArticlesList/>
         </main>
         </>
     )

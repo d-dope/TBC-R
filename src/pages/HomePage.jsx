@@ -11,7 +11,7 @@ function HomePage() {
         <div className="App bg-white-200 min-h-screen overflow-hidden">
             
              <Header/>
-            <Search/>
+            {/* <Search/> */}
             <HeroSection/>
             <Footer/> 
        

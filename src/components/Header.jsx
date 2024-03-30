@@ -8,7 +8,7 @@ function Header() {
         <>
             <header className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white py-4 px-8">
                 <div className="headerDiv flex justify-between items-center">
-                    <h1 className="text-2xl font-bold cursor-pointer">2rism</h1>
+                <h1> <Link to={"/"}  className="text-2xl font-bold cursor-pointer">2rism</Link></h1>
                     <nav className="">
                         <ul className="flex gap-10">
                             <li className="mr-4">
