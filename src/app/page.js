@@ -1,17 +1,12 @@
 'use client'
-import Link from "next/link";
-import Header from "./components/Header";
-import Search from "./components/Search";
-import HeroSection from "./components/HeroSection";
 import Footer from "./components/Footer";
+import HeroSection from "./components/HeroSection";
 
 export default function Home() {
   return (
     <main>            
-   
-          {/* <Search/> */}
           <HeroSection/>
-
+          <Footer/>
     </main>
   );
 }

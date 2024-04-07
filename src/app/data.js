@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import image2 from '../../public/assets/1-image.jpg';
 import image3 from '../../public/assets/3image.jpg';
 import image4 from '../../public/assets/4THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg';

@@ -1,7 +1,6 @@
-
-
 import ArticlesList from "../components/ArticleList";
-import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 export default function Blogs() {
     return (
         <>
@@ -11,6 +10,7 @@ export default function Blogs() {
             <div className="">
             <ArticlesList />
             </div>
+            <Footer/>
         </>
     )
 }
