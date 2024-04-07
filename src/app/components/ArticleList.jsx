@@ -1,9 +1,11 @@
+'use client'
+
 import React, { useState } from 'react';
 import Article from './Article';
-import { articles } from '../data';
+import { articles } from '../data.js';
 import SortButton from './Sort';
 
-function ArticlesList() {
+export default function ArticlesList() {
   const [sortedArticles, setSortedArticles] = useState(articles);
   const [isSorted, setIsSorted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -33,7 +35,7 @@ function ArticlesList() {
       article.title.toLowerCase().includes(query.toLowerCase())
     );
     setSortedArticles(filteredArticles);
-  }, 150); 
+  }); 
 
   return (
     <div>
@@ -43,7 +45,7 @@ function ArticlesList() {
         placeholder="Search articles..."
         onChange={(e) => handleSearch(e.target.value)}
         value={searchQuery}
-        className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+        className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12 p-10">
         {sortedArticles.map((article, index) => (
@@ -61,4 +63,4 @@ function ArticlesList() {
   );
 }
 
-export default ArticlesList;
+
