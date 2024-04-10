@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Article({ title, id, price, description, image }) {
   return (
-    <Link href={`/blogs/${id}`} className="bg-gray rounded-lg shadow-md hover:shadow-lg">
+    <Link href={`/${id}`} className="bg-gray rounded-lg shadow-md hover:shadow-lg">
       <div className="relative h-64">
         <img src={image} alt={title} className="rounded-lg w-full h-full object-cover" />
       </div>

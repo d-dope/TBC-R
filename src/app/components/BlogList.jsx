@@ -1,56 +1,41 @@
 'use client'  
 
 import React, { useEffect, useState } from 'react';
-import Article from './Article';
-import SortButton from './Sort';
+import Blog from './Blog';
 
-
-
-export default function ArticlesList() {
-  const [sortedArticles, setSortedArticles] = useState([]);
-  const [isSorted, setIsSorted] = useState(false);
+export default function BlogList() {
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
 
   useEffect(() => {
-    async function fetchData(){
-      const test = await fetch('https://dummyjson.com/products')
-      const res = await test.json()
-      setData(res.products)
+    async function fetchData() {
+      const response = await fetch('https://dummyjson.com/posts');
+      const jsonData = await response.json();
+      setOriginalData(jsonData.posts);
+      setData(jsonData.posts);
     }
-    fetchData()
-  },[])
-console.log(data, sortedArticles)
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return function(...args) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(this, args), delay);
-    };
+    fetchData();
+  }, []);
+console.log(data)
+const debounce = (func, delay) => {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
+};
 
-  const handleSort = () => {
-    if (!isSorted) {
-      const sorted = [...sortedArticles].sort((a, b) => a.price - b.price);
-      setSortedArticles(sorted);
-      setIsSorted(true);
-    } else {
-      setSortedArticles(data);
-      setIsSorted(false);
-    }
-  };
-
-  const handleSearch = debounce((query) => {
-    setSearchQuery(query);
-    const filteredArticles = data.filter(article =>
-      article.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setSortedArticles(filteredArticles);
-  }); 
+const handleSearch = debounce((query) => {
+  const filteredArticles = originalData.filter((article) =>
+    article.title.toLowerCase().includes(query.toLowerCase())
+  );
+  setSearchQuery(query);
+  setData(filteredArticles);
+});
 
   return (
     <div>
-      <SortButton handleClick={handleSort} />
       <input
         type="text"
         placeholder="Search articles..."
@@ -60,14 +45,10 @@ console.log(data, sortedArticles)
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12 p-10">
         {data.map((article, index) => (
-          <Article
+          <Blog
             key={index}
             title={article.title}
             id={article.id} 
-            image={article.thumbnail}
-            description={article.description}
-            // publicDate={article.publicDate}
-            price={article.price}
           />
         ))}
       </div>

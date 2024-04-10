@@ -1,4 +1,5 @@
 import ArticlesList from "../components/ArticleList";
+import BlogList from "../components/BlogList";
 import Footer from "../components/Footer";
 
 export default function Blogs() {
@@ -8,7 +9,7 @@ export default function Blogs() {
             <h2 className="text-3xl font-bold">Blogs</h2>
              </section>
             <div className="">
-            <ArticlesList />
+            <BlogList/>
             </div>
             <Footer/>
         </>
