@@ -12,7 +12,7 @@ export default function HeroSection() {
           </section>
         <main className="container mx-auto mt-8 px-4">
 
-<ArticlesList/>
+            <ArticlesList/>
         </main>
         </>
     )
