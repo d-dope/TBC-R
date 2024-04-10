@@ -1,18 +1,33 @@
-'use client'
+'use client'  
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Article from './Article';
-import { articles } from '../data.js';
 import SortButton from './Sort';
 
 export default function ArticlesList() {
-  const [sortedArticles, setSortedArticles] = useState(articles);
+  const [sortedArticles, setSortedArticles] = useState([]);
   const [isSorted, setIsSorted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const test = await fetch('https://dummyjson.com/products');
+      const res = await test.json();
+      setData(res.products);
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (!isSorted) {
+      setSortedArticles(data);
+    }
+  }, [data, isSorted]);
 
   const debounce = (func, delay) => {
     let timeoutId;
-    return function(...args) {
+    return function (...args) {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => func.apply(this, args), delay);
     };
@@ -20,22 +35,22 @@ export default function ArticlesList() {
 
   const handleSort = () => {
     if (!isSorted) {
-      const sorted = [...sortedArticles].sort((a, b) => a.price - b.price);
+      const sorted = [...data].sort((a, b) => a.price - b.price);
       setSortedArticles(sorted);
       setIsSorted(true);
     } else {
-      setSortedArticles(articles);
+      setSortedArticles(data);
       setIsSorted(false);
     }
   };
 
   const handleSearch = debounce((query) => {
     setSearchQuery(query);
-    const filteredArticles = articles.filter(article =>
+    const filteredArticles = data.filter((article) =>
       article.title.toLowerCase().includes(query.toLowerCase())
     );
     setSortedArticles(filteredArticles);
-  }); 
+  });
 
   return (
     <div>
@@ -52,9 +67,10 @@ export default function ArticlesList() {
           <Article
             key={index}
             title={article.title}
-            image={article.image}
+            id={article.id}
+            image={article.thumbnail}
             description={article.description}
-            publicDate={article.publicDate}
+            // publicDate={article.publicDate}
             price={article.price}
           />
         ))}
@@ -62,5 +78,3 @@ export default function ArticlesList() {
     </div>
   );
 }
-
-
