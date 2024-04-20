@@ -1,18 +1,18 @@
-'use client'  
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import Article from './Article';
-import SortButton from './Sort';
+import React, { useEffect, useState } from "react";
+import Article from "./Article";
+import SortButton from "./Sort";
 
 export default function ArticlesList() {
   const [sortedArticles, setSortedArticles] = useState([]);
   const [isSorted, setIsSorted] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const test = await fetch('https://dummyjson.com/products');
+      const test = await fetch("https://dummyjson.com/products");
       const res = await test.json();
       setData(res.products);
     }

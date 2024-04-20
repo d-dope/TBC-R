@@ -1,38 +1,38 @@
-'use client'  
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import Blog from './Blog';
+import React, { useEffect, useState } from "react";
+import Blog from "./Blog";
 
 export default function BlogList() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://dummyjson.com/posts');
+      const response = await fetch("https://dummyjson.com/posts");
       const jsonData = await response.json();
       setOriginalData(jsonData.posts);
       setData(jsonData.posts);
     }
     fetchData();
   }, []);
-console.log(data)
-const debounce = (func, delay) => {
-  let timeoutId;
-  return function (...args) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  console.log(data);
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(this, args), delay);
+    };
   };
-};
 
-const handleSearch = debounce((query) => {
-  const filteredArticles = originalData.filter((article) =>
-    article.title.toLowerCase().includes(query.toLowerCase())
-  );
-  setSearchQuery(query);
-  setData(filteredArticles);
-});
+  const handleSearch = debounce((query) => {
+    const filteredArticles = originalData.filter((article) =>
+      article.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchQuery(query);
+    setData(filteredArticles);
+  });
 
   return (
     <div>
@@ -45,15 +45,9 @@ const handleSearch = debounce((query) => {
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12 p-10">
         {data.map((article, index) => (
-          <Blog
-            key={index}
-            title={article.title}
-            id={article.id} 
-          />
+          <Blog key={index} title={article.title} id={article.id} />
         ))}
       </div>
     </div>
   );
 }
-
-
