@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Footer from "@/app/components/Footer";
+import Header from "@/app/components/Header";
 
 const DashboardLayout = ({ children }) => {
   return (
