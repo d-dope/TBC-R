@@ -17,7 +17,7 @@ export default function BlogList() {
     }
     fetchData();
   }, []);
-  console.log(data);
+
   const debounce = (func, delay) => {
     let timeoutId;
     return function (...args) {
