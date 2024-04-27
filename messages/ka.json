@@ -1,5 +1,8 @@
 {
-  "Index": {
-    "title": "გმ!"
+  "Navigation": {
+    "home": "მთავარი",
+    "Blogs": "ბლოგები",
+    "Contact": "კონტაქტი",
+    "Profile": "პროფილი"
   }
 }
