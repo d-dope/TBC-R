@@ -16,14 +16,14 @@ export function middleware(request) {
     !pathname.startsWith("/en/login") &&
     !pathname.startsWith("/login")
   ) {
-    console.log(pathname);
+
 
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
   // Redirect to home if authenticated and accessing login page
   if (pathname !== "/" && cookieStore && pathname === "/en/login") {
-    console.log("/");
+
 
     return NextResponse.redirect(new URL(`/${localeValue}`, request.nextUrl));
   }

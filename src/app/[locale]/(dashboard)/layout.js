@@ -4,9 +4,9 @@ import Header from "@/app/components/Header";
 const DashboardLayout = ({ children }) => {
   return (
     <>
-      <Header />
+    <Header/>
       <main>{children}</main>
-      <Footer />
+      <Footer/>
     </>
   );
 };

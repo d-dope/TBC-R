@@ -2,6 +2,8 @@ import Link from "next/link";
 import Navigation from "./Navigation";
 import LogOut from "./LogOut";
 import ThemeSwitch from "./ThemeSwitch";
+import { useTranslations } from "next-intl";
+import LocalSwitcher from "./LocalSwitcher";
 
 const Header = () => {
   return (
@@ -17,6 +19,7 @@ const Header = () => {
         <div className="flex gap-8 items-center">
           <Navigation layout="flex-row" />
           <ThemeSwitch/>
+          <LocalSwitcher/>
           <LogOut />
         </div>
       </div>
