@@ -4,5 +4,32 @@
     "Blogs": "Blogs",
     "Contact": "Contact",
     "Profile": "Profile"
+  },
+
+  "Title": {
+    "title": "Discover The Most Engaging Places"
+  },
+
+  "Sorting": {
+    "Sort by Price": "Sort by Price"
+  },
+
+  "Blogs": {
+    "Blogs": "Blogs" 
+  } ,
+
+  "Contact": {
+    "Contact Us":"Contact Us",
+    "Our Contact Information:": "Our Contact Information:",
+    "Address: Georgia, Tbilisi": "Address: Georgia, Tbilisi",
+    "Email: example@example.com": "Email: example@example.com",
+    "Phone:": "Phone: +995 555 444 222",
+    "Contact Form:": "Contact Form:",
+    "Name:": "Name",
+    "Email:": "Email:",
+    "Message:": "Message:",
+    "Submit": "Submit"
+    
   }
+
 }

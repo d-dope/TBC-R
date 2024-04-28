@@ -4,5 +4,32 @@
     "Blogs": "ბლოგები",
     "Contact": "კონტაქტი",
     "Profile": "პროფილი"
+  },
+  "Title": {
+    "title": "აღმოაჩინე საოცარი ადგილები",
+    "titleBlogs": "ბლოგები"    
+  },
+
+  "Sorting": {
+    "Sort by Price": "ფასის მიხედვით გაფილტვრა"
+  },
+  
+  "Blogs": {
+    "Blogs": "ბლოგები" 
+  } ,
+
+  "Contact": {
+    "Contact Us":"დაგვეკონტაქტეთ",
+    "Our Contact Information:": "საკონტაქტო ინფორმაცია",
+    "Address: Georgia, Tbilisi": "მისამართი: თბილისი, საქართველო",
+    "Email: example@example.com": "ელ.ფოსტა: example@example.com",
+    "Phone:": "ტელეფონის ნომერი: +995 555 444 222",
+    "Contact Form:": "საკონტაქტო ფორმა:",
+    "Name:": "სახელი",
+    "Email:": "ელ.ფოსტა:",
+    "Message:": "შეტყობინება:",
+    "Submit": "გაგზავნა"
+    
+
   }
 }
