@@ -14,17 +14,18 @@ export function middleware(request) {
   if (
     !cookieStore?.value &&
     !pathname.startsWith("/en/login") &&
+    !pathname.startsWith("/ka/login") &&
     !pathname.startsWith("/login")
   ) {
-
-
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
   // Redirect to home if authenticated and accessing login page
-  if (pathname !== "/" && cookieStore && pathname === "/en/login") {
-
-
+  if (
+    pathname !== "/" &&
+    cookieStore &&
+    (pathname === "/en/login" || pathname === "/ka/login")
+  ) {
     return NextResponse.redirect(new URL(`/${localeValue}`, request.nextUrl));
   }
   const defaultLocale = request.headers.get("ka") || "en";
