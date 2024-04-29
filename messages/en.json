@@ -15,21 +15,21 @@
   },
 
   "Blogs": {
-    "Blogs": "Blogs" 
-  } ,
+    "Blogs": "Blogs"
+  },
 
   "Contact": {
-    "Contact Us":"Contact Us",
+    "Contact Us": "Contact Us",
     "Our Contact Information:": "Our Contact Information:",
     "Address: Georgia, Tbilisi": "Address: Georgia, Tbilisi",
     "Email: example@example.com": "Email: example@example.com",
-    "Phone:": "Phone: +995 555 444 222",
+    "Phone:": "Phone:",
     "Contact Form:": "Contact Form:",
     "Name:": "Name",
+    "LastName:": "Last Name",
+    "Send:": "Send Message",
     "Email:": "Email:",
     "Message:": "Message:",
     "Submit": "Submit"
-    
   }
-
 }
