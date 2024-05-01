@@ -28,29 +28,41 @@
 // };
 
 // export default Header;
-'use client'
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import LogOut from './LogOut'
+"use client";
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import LogOut from "./LogOut";
+import LocalSwitcher from "./LocalSwitcher";
+import ThemeSwitch from "./ThemeSwitch";
 
 const navigation = [
-  { name: 'Product', href: '/' },
-  { name: 'Blogs', href: '/blogs' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Profile', href: '/profile' },
-]
+  { name: "About", href: "/about" },
+  { name: "Product", href: "/" },
+  { name: "Blogs", href: "/blogs" },
+  { name: "Contact", href: "/contact" },
+  { name: "Profile", href: "/profile" },
+
+
+];
 
 export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="bg-white">
-      <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav
+        className="flex items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+            <img
+              className="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              alt=""
+            />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -65,18 +77,30 @@ export default function Example() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
               {item.name}
             </a>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-x-5">
+             <ThemeSwitch />
+            <LocalSwitcher />
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-          <LogOut/> 
+         
+            <LogOut />
           </a>
         </div>
       </nav>
-      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+      <Dialog
+        as="div"
+        className="lg:hidden"
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+      >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
@@ -110,16 +134,15 @@ export default function Example() {
                   </a>
                 ))}
               </div>
-              <div className="py-6">
-            <LogOut/>
+              <div className="flex flex-col w-1/2 py-6">
+                <ThemeSwitch />
+                <LocalSwitcher />
+                <LogOut />
               </div>
             </div>
           </div>
         </Dialog.Panel>
       </Dialog>
     </header>
-  )
+  );
 }
-
-
-
