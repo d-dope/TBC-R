@@ -16,11 +16,11 @@ export default function LocalSwitcher() {
     });
   };
   return (
-<label className='border-2 rounded' style={{ display: 'inline-block', position: 'relative' }}>
+<label className='' style={{ display: 'inline-block', position: 'relative' }}>
   <p className='sr-only'>change language</p>
   <select
     defaultValue={localActive}
-    className='bg-indigo-500 py-2 appearance-none border-none pl-4 pr-8 rounded'
+    className='ml-auto rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
     onChange={onSelectChange}
     disabled={isPending}
     style={{ paddingRight: '1.5rem', cursor: isPending ? 'not-allowed' : 'pointer' }}
