@@ -28,6 +28,9 @@
 // };
 
 // export default Header;
+
+
+
 "use client";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
@@ -35,20 +38,23 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LogOut from "./LogOut";
 import LocalSwitcher from "./LocalSwitcher";
 import ThemeSwitch from "./ThemeSwitch";
-
-const navigation = [
-  { name: "About", href: "/about" },
-  { name: "Product", href: "/" },
-  { name: "Blogs", href: "/blogs" },
-  { name: "Contact", href: "/contact" },
-  { name: "Profile", href: "/profile" },
+import { useTranslations } from "next-intl";
 
 
-];
 
-export default function Example() {
+export default function Header() {
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const t = useTranslations('Navigation');
+  const navigation = [
+    { name:  t('home'), href: "/" },
+    { name: t('About'),  href: "/about" },
+    { name: t('Blogs'), href: "/blogs" },
+    { name: t('Contact'),  href: "/contact" },
+    { name: t('Profile'),  href: "/profile" },
+  
+  
+  ];
   return (
     <header className="bg-white">
       <nav
