@@ -1,9 +1,6 @@
+import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { useTranslations } from "next-intl";
-import {
-  BuildingOffice2Icon,
-  EnvelopeIcon,
-  PhoneIcon,
-} from "@heroicons/react/24/outline";
+import React from "react";
 
 export default function ContactPage() {
   const t = useTranslations("Contact");
@@ -220,3 +217,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+

@@ -2,10 +2,9 @@ import { NextResponse } from "next/server";
 import { AUTH_COOKIE_KEY } from "./app/constants";
 import { cookies } from "next/headers";
 import createIntlMiddleware from "next-intl/middleware";
-// Middleware for internationalization
 
-// Middleware for authentication
-export function middleware(request) {
+// Middleware for internationalization and authentication
+export function middleware(request: any): NextResponse {
   const cookieStore = cookies().get(AUTH_COOKIE_KEY);
   const { pathname } = request.nextUrl;
   const localeValue = request.cookies.get("NEXT_LOCALE")?.value;
@@ -28,15 +27,17 @@ export function middleware(request) {
   ) {
     return NextResponse.redirect(new URL(`/${localeValue}`, request.nextUrl));
   }
+  
   const defaultLocale = request.headers.get("ka") || "en";
-  // Step 2: Create and call the next-intl middleware (example)
-
+  
+  // Configure internationalization middleware with localePrefix: 'never'
   const handleI18nRouting = createIntlMiddleware({
     locales: ["en", "ka"],
     defaultLocale,
+    localePrefix: 'never' // Add this line
   });
+  
   const response = handleI18nRouting(request);
-
   response.headers.set("ka", defaultLocale);
 
   return response;
@@ -45,8 +46,9 @@ export function middleware(request) {
 // Configuration for both middlewares
 export const config = {
   // Internationalization matcher
-  matcher: ["/", "/(ka|en)/:path*"],
-
-  // Authentication matcher
-  matcher: ["/((?!api|_next/static|_next/image|images|favicon.ico).*)"],
+  matcher: [
+    "/",
+    "/(ka|en)/:path*",
+    "/((?!api|_next/static|_next/image|images|favicon.ico).*)"
+  ],
 };

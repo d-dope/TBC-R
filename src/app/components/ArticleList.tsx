@@ -1,14 +1,21 @@
-"use client";
-
+"use client"
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
 import SortButton from "./Sort";
 
+interface ArticleType {
+  id: number;
+  title: string;
+  thumbnail: string;
+  description: string;
+  price: number;
+}
+
 export default function ArticlesList() {
-  const [sortedArticles, setSortedArticles] = useState([]);
-  const [isSorted, setIsSorted] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [data, setData] = useState([]);
+  const [sortedArticles, setSortedArticles] = useState<ArticleType[]>([]);
+  const [isSorted, setIsSorted] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [data, setData] = useState<ArticleType[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,13 +32,17 @@ export default function ArticlesList() {
     }
   }, [data, isSorted]);
 
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return function (...args) {
+  const debounce = <T extends unknown[]>(
+    func: (...args: T) => void,
+    delay: number
+  ) => {
+    let timeoutId: NodeJS.Timeout;
+    return function (...args: T) {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(this, args), delay);
+      timeoutId = setTimeout(() => func.apply(null, args), delay);
     };
   };
+  
 
   const handleSort = () => {
     if (!isSorted) {
@@ -44,13 +55,13 @@ export default function ArticlesList() {
     }
   };
 
-  const handleSearch = debounce((query) => {
+  const handleSearch = debounce((query: string) => {
     setSearchQuery(query);
     const filteredArticles = data.filter((article) =>
       article.title.toLowerCase().includes(query.toLowerCase())
     );
     setSortedArticles(filteredArticles);
-  });
+  },10 );
 
   return (
     <div>
@@ -70,7 +81,6 @@ export default function ArticlesList() {
             id={article.id}
             image={article.thumbnail}
             description={article.description}
-            // publicDate={article.publicDate}
             price={article.price}
           />
         ))}

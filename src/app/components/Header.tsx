@@ -35,26 +35,22 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import LogOut from "./LogOut";
 import LocalSwitcher from "./LocalSwitcher";
 import ThemeSwitch from "./ThemeSwitch";
 import { useTranslations } from "next-intl";
-
-
+import LogOut from "./LogOut";
 
 export default function Header() {
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = useTranslations('Navigation');
   const navigation = [
-    { name:  t('home'), href: "/" },
-    { name: t('About'),  href: "/about" },
+    { name: t('home'), href: "/" },
+    { name: t('About'), href: "/about" },
     { name: t('Blogs'), href: "/blogs" },
-    { name: t('Contact'),  href: "/contact" },
-    { name: t('Profile'),  href: "/profile" },
-  
-  
+    { name: t('Contact'), href: "/contact" },
+    { name: t('Profile'), href: "/profile" },
   ];
+
   return (
     <header className="bg-white">
       <nav
@@ -93,12 +89,11 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-x-5">
-             <ThemeSwitch />
-            <LocalSwitcher />
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-         
+          <ThemeSwitch />
+          <LocalSwitcher />
+    
             <LogOut />
-          </a>
+
         </div>
       </nav>
       <Dialog

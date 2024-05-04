@@ -1,5 +1,5 @@
-import BlogList from "@/app/components/BlogList";
 import { useTranslations } from "next-intl";
+import BlogList from "../../../components/BlogList";
 
 export default function Blogs() {
   const t = useTranslations('Blogs')
