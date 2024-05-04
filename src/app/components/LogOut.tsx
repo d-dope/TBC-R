@@ -1,8 +1,9 @@
 "use client";
 
+import React from 'react';
 import { handleLogout } from "../scripts/logout";
-const LogOut = () => {
-  function handlClick() {}
+
+const LogOut: React.FC = () => {
   return (
     <button
       onClick={() => handleLogout().then(() => window.location.reload())}
@@ -12,4 +13,5 @@ const LogOut = () => {
     </button>
   );
 };
+
 export default LogOut;

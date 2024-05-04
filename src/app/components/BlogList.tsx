@@ -3,10 +3,16 @@
 import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 
+interface BlogType {
+  id: number;
+  title: string;
+  
+}
+
 export default function BlogList() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [data, setData] = useState([]);
-  const [originalData, setOriginalData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [data, setData] = useState<BlogType[]>([]);
+  const [originalData, setOriginalData] = useState<BlogType[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,22 +23,25 @@ export default function BlogList() {
     }
     fetchData();
   }, []);
-
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return function (...args) {
+  
+  const debounce = <T extends unknown[]>(
+    func: (...args: T) => void,
+    delay: number
+  ) => {
+    let timeoutId: NodeJS.Timeout;
+    return function (...args: T) {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(this, args), delay);
+      timeoutId = setTimeout(() => func.apply(null, args), delay);
     };
   };
 
-  const handleSearch = debounce((query) => {
+  const handleSearch = debounce((query: string) => {
     const filteredArticles = originalData.filter((article) =>
       article.title.toLowerCase().includes(query.toLowerCase())
     );
     setSearchQuery(query);
     setData(filteredArticles);
-  });
+  },10 );
 
   return (
     <div>

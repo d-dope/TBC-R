@@ -1,17 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { handleLogin } from "../scripts/login";
 
-const LoginForm = () => {
-  const [loginData, setLoginData] = useState({
+interface LoginData {
+  username: string;
+  password: string;
+}
+
+const LoginForm: React.FC = () => {
+  const [loginData, setLoginData] = useState<LoginData>({
     username: "",
     password: "",
   });
 
   const { username, password } = loginData;
 
-  function handleChange(event) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setLoginData((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
@@ -94,7 +99,6 @@ const LoginForm = () => {
           <div>
             <button
               type="submit"
-              //   onClick={() => handleLogin(username, password)}
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Sign in

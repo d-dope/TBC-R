@@ -1,8 +1,14 @@
-// Article.js
-
 import Link from "next/link";
 
-export default function Article({ title, id, price, description, image }) {
+interface ArticleProps {
+  title: string;
+  id: number;
+  price: number;
+  description: string;
+  image: string;
+}
+
+const Article: React.FC<ArticleProps> = ({ title, id, price, description, image }) => {
   return (
     <Link
       href={`/${id}`}
@@ -29,3 +35,7 @@ export default function Article({ title, id, price, description, image }) {
     </Link>
   );
 }
+
+export default Article;
+
+

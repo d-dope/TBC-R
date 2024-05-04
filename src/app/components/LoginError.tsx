@@ -1,6 +1,8 @@
-import { XCircleIcon } from '@heroicons/react/20/solid'
 
-const LoginError = () => {
+import { XCircleIcon } from '@heroicons/react/20/solid'
+import React from 'react';
+
+const LoginError: React.FC = () => {
     return (
         <div className="rounded-md bg-red-50 p-4">
         <div className="flex">

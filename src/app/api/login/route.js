@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "@/app/constants";
+import { AUTH_COOKIE_KEY } from "../../constants";
 export async function POST(request) {
   const { username, password } = await request.json();
   const response = await fetch("https://dummyjson.com/auth/login", {
