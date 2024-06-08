@@ -7,7 +7,7 @@
 
 // const Header = () => {
 //   return (
-//     <header className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white py-4 px-8">
+//     <header className="bg-gradient-to-r from-sky-500 to-primaryColor text-white py-4 px-8">
 //       <div className="headerDiv flex justify-between items-center">
 //         <h1>
 //           {" "}
@@ -29,8 +29,6 @@
 
 // export default Header;
 
-
-
 "use client";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
@@ -42,13 +40,14 @@ import LogOut from "./LogOut";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const t = useTranslations('Navigation');
+  const t = useTranslations("Navigation");
   const navigation = [
-    { name: t('home'), href: "/" },
-    { name: t('About'), href: "/about" },
-    { name: t('Blogs'), href: "/blogs" },
-    { name: t('Contact'), href: "/contact" },
-    { name: t('Profile'), href: "/profile" },
+    { name: t("home"), href: "/" },
+    { name: t("About"), href: "/about" },
+    { name: t("Blogs"), href: "/blogs" },
+    { name: t("Contact"), href: "/contact" },
+    { name: t("Profile"), href: "/profile" },
+    { name: t("Admin"), href: "/admin" },
   ];
 
   return (
@@ -61,8 +60,8 @@ export default function Header() {
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              className="h-8 w-auto fill-primaryColor"
+              src="https://tailwindui.com/img/logos/mark.svg?&shade=600"
               alt=""
             />
           </a>
@@ -91,9 +90,8 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-x-5">
           <ThemeSwitch />
           <LocalSwitcher />
-    
-            <LogOut />
 
+          <LogOut />
         </div>
       </nav>
       <Dialog
