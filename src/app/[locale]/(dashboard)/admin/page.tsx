@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-async-client-component */
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Button } from 'flowbite-react';
 import { User, getUsers } from '../../../../../api';
 
 export default function UsersPage() {
@@ -55,7 +56,7 @@ export default function UsersPage() {
   };
 
   // Fetch the initial list of users on component mount
-  useState(() => {
+  useEffect(() => {
     fetchUsers();
   }, []);
 
