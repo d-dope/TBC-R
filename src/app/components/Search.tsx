@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Search: React.FC = () => {
   return (
     <>
-      <div className="flex items-center justify-center mx-8 mt-4 md:h-32 rounded-3xl bg-indigo-500">
+      <div className="flex items-center justify-center mx-8 mt-4 md:h-32 rounded-3xl bg-primaryColor">
         <div className="flex flex-col md:flex-row">
           <input
             type="text"
@@ -17,6 +17,6 @@ const Search: React.FC = () => {
       </div>
     </>
   );
-}
+};
 
 export default Search;

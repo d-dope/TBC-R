@@ -17,7 +17,6 @@ const Article: React.FC<ArticleProps> = ({ title, id, price, description, image 
       <div className="relative h-64">
         <img
           src={image}
-          alt={title}
           className="rounded-lg w-full h-full object-cover"
         />
       </div>
