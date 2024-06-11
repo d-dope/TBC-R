@@ -1,34 +1,3 @@
-// import Link from "next/link";
-// import Navigation from "./Navigation";
-// import LogOut from "./LogOut";
-// import ThemeSwitch from "./ThemeSwitch";
-// import { useTranslations } from "next-intl";
-// import LocalSwitcher from "./LocalSwitcher";
-
-// const Header = () => {
-//   return (
-//     <header className="bg-gradient-to-r from-sky-500 to-primaryColor text-white py-4 px-8">
-//       <div className="headerDiv flex justify-between items-center">
-//         <h1>
-//           {" "}
-//           <Link href="/" className="text-2xl font-bold cursor-pointer">
-//             2rism
-//           </Link>
-//         </h1>
-
-//         <div className="flex gap-8 items-center">
-//           <Navigation layout="flex-row" />
-//           <ThemeSwitch />
-//           <LocalSwitcher />
-//           <LogOut />
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
 "use client";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
@@ -37,6 +6,7 @@ import LocalSwitcher from "./LocalSwitcher";
 import ThemeSwitch from "./ThemeSwitch";
 import { useTranslations } from "next-intl";
 import LogOut from "./LogOut";
+import Auth from "./LogOut";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -91,7 +61,7 @@ export default function Header() {
           <ThemeSwitch />
           <LocalSwitcher />
 
-          <LogOut />
+          <Auth />
         </div>
       </nav>
       <Dialog
@@ -136,7 +106,7 @@ export default function Header() {
               <div className="flex flex-col w-1/2 py-6">
                 <ThemeSwitch />
                 <LocalSwitcher />
-                <LogOut />
+                <Auth />
               </div>
             </div>
           </div>

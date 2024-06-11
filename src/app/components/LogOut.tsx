@@ -1,17 +1,32 @@
 "use client";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Link from "next/link";
 
-import React from "react";
-import { handleLogout } from "../scripts/logout";
+export default function Auth() {
+  const { user, error, isLoading } = useUser();
 
-const LogOut: React.FC = () => {
-  return (
-    <button
-      onClick={() => handleLogout().then(() => window.location.reload())}
-      className="ml-auto rounded-md bg-primaryColor px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-    >
-      Log Out
-    </button>
-  );
-};
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
 
-export default LogOut;
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      window.location.href = "/api/auth/logout";
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
+  if (user) {
+    return (
+      <div>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  }
+
+  return <Link href="/api/auth/login">Login</Link>;
+}

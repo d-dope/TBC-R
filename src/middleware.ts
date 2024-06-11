@@ -9,24 +9,24 @@ export function middleware(request: any): NextResponse {
   const { pathname } = request.nextUrl;
   const localeValue = request.cookies.get("NEXT_LOCALE")?.value;
 
-  // Redirect to login if not authenticated and accessing protected routes
-  if (
-    !cookieStore?.value &&
-    !pathname.startsWith("/en/login") &&
-    !pathname.startsWith("/ka/login") &&
-    !pathname.startsWith("/login")
-  ) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  // // Redirect to login if not authenticated and accessing protected routes
+  // if (
+  //   !cookieStore?.value &&
+  //   !pathname.startsWith("/en/login") &&
+  //   !pathname.startsWith("/ka/login") &&
+  //   !pathname.startsWith("/login")
+  // ) {
+  //   return NextResponse.redirect(new URL("/login", request.url));
+  // }
 
-  // Redirect to home if authenticated and accessing login page
-  if (
-    pathname !== "/" &&
-    cookieStore &&
-    (pathname === "/en/login" || pathname === "/ka/login")
-  ) {
-    return NextResponse.redirect(new URL(`/${localeValue}`, request.nextUrl));
-  }
+  // // Redirect to home if authenticated and accessing login page
+  // if (
+  //   pathname !== "/" &&
+  //   cookieStore &&
+  //   (pathname === "/en/login" || pathname === "/ka/login")
+  // ) {
+  //   return NextResponse.redirect(new URL(`/${localeValue}`, request.nextUrl));
+  // }
   
   const defaultLocale = request.headers.get("ka") || "en";
   
