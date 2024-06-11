@@ -6,7 +6,7 @@ import { getProducts } from "../../../../../api";
 
 export default async function Products() {
   const products = await getProducts();
-  console.log(products);
+  console.log(products, "prprprpr");
 
   return (
     <main>

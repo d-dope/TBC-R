@@ -1,15 +1,16 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 
 const AddProductForm = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    price: '',
-    sale: '',
-    category: '',
+    title: "",
+    description: "",
+    price: "",
+    sale: "",
+    category: "",
+    picture_url: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,12 +18,12 @@ const AddProductForm = () => {
   };
 
   const validateForm = () => {
-    const { title, description, price, sale, category } = formData;
-    if (!title || !description || !price || !sale || !category) {
-      setError('All fields are required.');
+    const { title, description, price, sale, category, picture_url } = formData;
+    if (!title || !description || !price || !sale || !category || !picture_url) {
+      setError("All fields are required.");
       return false;
     }
-    setError('');
+    setError("");
     return true;
   };
 
@@ -33,26 +34,27 @@ const AddProductForm = () => {
     }
 
     try {
-      const response = await fetch('/api/add-product', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/add-product", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       setFormData({
-        title: '',
-        description: '',
-        price: '',
-        sale: '',
-        category: '',
-      })
+        title: "",
+        description: "",
+        price: "",
+        sale: "",
+        category: "",
+        picture_url: "",
+      });
       if (response.ok) {
         const data = await response.json();
-        console.log('Product added successfully:', data);
+        console.log("Product added successfully:", data);
       } else {
-        console.error('Error:', response.statusText);
+        console.error("Error:", response.statusText);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -67,6 +69,16 @@ const AddProductForm = () => {
             type="text"
             name="title"
             value={formData.title}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700">Image Url</label>
+          <input
+            type="text"
+            name="picture_url"
+            value={formData.picture_url}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded"
           />

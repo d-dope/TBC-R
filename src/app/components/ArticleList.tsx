@@ -9,7 +9,7 @@ interface ArticleType {
   description: string;
   price: number;
   title: string;
-  thumbnail: string;
+  picture_url: string;
 }
 
 interface ArticlesListProps {
@@ -73,7 +73,7 @@ export default function ArticlesList({ products }: ArticlesListProps) {
             key={index}
             title={article.title}
             id={article.id}
-            image={article.thumbnail}
+            image={article.picture_url}
             description={article.description}
             price={article.price}
           />

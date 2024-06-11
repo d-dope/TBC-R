@@ -32,3 +32,14 @@ export async function addProduct(formData: any) {
     throw new Error("Submission failed");
   }
 }
+
+export async function deleteSingleProduct(id: number) {
+  const response = await fetch(BASE_URL + "/api/delete-product/", {
+    method: "DELETE",
+    body: JSON.stringify({ id }),
+  });
+  revalidatePath("/products");
+
+  const data = await response.json();
+  return data.response;
+}
