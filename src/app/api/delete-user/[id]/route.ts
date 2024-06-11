@@ -14,7 +14,7 @@ export async function DELETE(request: NextRequest) {
     `;
 
     return NextResponse.json({ deletedUser }, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
