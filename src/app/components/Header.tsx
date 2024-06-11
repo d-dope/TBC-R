@@ -5,15 +5,14 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LocalSwitcher from "./LocalSwitcher";
 import ThemeSwitch from "./ThemeSwitch";
 import { useTranslations } from "next-intl";
-import LogOut from "./LogOut";
-import Auth from "./LogOut";
+import Auth from "./Auth";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = useTranslations("Navigation");
   const navigation = [
     { name: t("home"), href: "/" },
-    { name: t("About"), href: "/about" },
+    { name: t("Products"), href: "/products" },
     { name: t("Blogs"), href: "/blogs" },
     { name: t("Contact"), href: "/contact" },
     { name: t("Profile"), href: "/profile" },

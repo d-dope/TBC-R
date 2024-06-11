@@ -1,36 +1,31 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
 import SortButton from "./Sort";
 
 interface ArticleType {
   id: number;
-  title: string;
-  thumbnail: string;
+  name: string;
   description: string;
   price: number;
+  title: string;
+  thumbnail: string;
 }
 
-export default function ArticlesList() {
-  const [sortedArticles, setSortedArticles] = useState<ArticleType[]>([]);
+interface ArticlesListProps {
+  products: ArticleType[];
+}
+
+export default function ArticlesList({ products }: ArticlesListProps) {
+  const [sortedArticles, setSortedArticles] = useState<ArticleType[]>(products);
   const [isSorted, setIsSorted] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [data, setData] = useState<ArticleType[]>([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const test = await fetch("https://dummyjson.com/products");
-      const res = await test.json();
-      setData(res.products);
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
     if (!isSorted) {
-      setSortedArticles(data);
+      setSortedArticles(products);
     }
-  }, [data, isSorted]);
+  }, [products, isSorted]);
 
   const debounce = <T extends unknown[]>(
     func: (...args: T) => void,
@@ -42,26 +37,25 @@ export default function ArticlesList() {
       timeoutId = setTimeout(() => func.apply(null, args), delay);
     };
   };
-  
 
   const handleSort = () => {
     if (!isSorted) {
-      const sorted = [...data].sort((a, b) => a.price - b.price);
+      const sorted = [...products].sort((a, b) => a.price - b.price);
       setSortedArticles(sorted);
       setIsSorted(true);
     } else {
-      setSortedArticles(data);
+      setSortedArticles(products);
       setIsSorted(false);
     }
   };
 
   const handleSearch = debounce((query: string) => {
     setSearchQuery(query);
-    const filteredArticles = data.filter((article) =>
+    const filteredArticles = products.filter((article) =>
       article.title.toLowerCase().includes(query.toLowerCase())
     );
     setSortedArticles(filteredArticles);
-  },10 );
+  }, 10);
 
   return (
     <div>

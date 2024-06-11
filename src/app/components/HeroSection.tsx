@@ -1,8 +1,17 @@
-import ArticlesList from './ArticleList';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
+import ArticlesList from "./ArticleList";
 
-export default function HeroSection() {
-  const t = useTranslations('Title');
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  title: string;
+  thumbnail: string;
+}
+
+export default function HeroSection({ products }: { products: Product[] }) {
+  const t = useTranslations("Title");
 
   return (
     <>
@@ -10,7 +19,7 @@ export default function HeroSection() {
         <h2 className="text-4xl font-bold">{t("title")}</h2>
       </section>
       <main className="container mx-auto mt-8 px-4">
-        <ArticlesList />
+        <ArticlesList products={products} />
       </main>
     </>
   );

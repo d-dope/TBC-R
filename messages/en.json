@@ -1,12 +1,11 @@
 {
   "Navigation": {
     "home": "Home",
-    "About": "About",
+    "Products": "Products",
     "Blogs": "Blogs",
     "Contact": "Contact",
     "Profile": "Profile",
     "Admin": "Admin"
-
   },
 
   "Title": {

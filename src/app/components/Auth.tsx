@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Auth() {
   const { user, error, isLoading } = useUser();
-
+  console.log(user);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
@@ -23,10 +23,22 @@ export default function Auth() {
   if (user) {
     return (
       <div>
-        <button onClick={handleLogout}>Logout</button>
+        <button
+          onClick={handleLogout}
+          className="text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+        >
+          Logout
+        </button>
       </div>
     );
   }
 
-  return <Link href="/api/auth/login">Login</Link>;
+  return (
+    <Link
+      href="/api/auth/login"
+      className="text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+    >
+      Login
+    </Link>
+  );
 }
