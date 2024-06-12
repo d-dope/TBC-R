@@ -35,15 +35,7 @@ export default function LocalSwitcher() {
         <option value="en">English</option>
         <option value="ka">ქართული</option>
       </select>
-      <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-        <svg
-          className="h-4 w-4 fill-current"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path d="M10 12a1 1 0 01-.7-.29l-4-4a1 1 0 111.41-1.42L10 10.59l3.29-3.3a1 1 0 111.42 1.42l-4 4A1 1 0 0110 12z" />
-        </svg>
-      </span>
+      <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"></span>
     </label>
   );
 }
