@@ -43,3 +43,32 @@ export async function deleteSingleProduct(id: number) {
   const data = await response.json();
   return data.response;
 }
+
+export async function sendContactMessage(formData: any) {
+  try {
+    const res = await fetch(BASE_URL + "/api/contacts/send-contacts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    if (data) {
+      revalidatePath("/contact");
+    }
+  } catch (error) {
+    console.error("Error submitting message:", error);
+  }
+}
+
+export async function getContact() {
+  const response = await fetch(BASE_URL + "/api/contacts/get-contacts", {
+    cache: "no-store",
+  });
+  const data = await response.json();
+
+  const contact = data.contacts.rows;
+
+  return contact;
+}
