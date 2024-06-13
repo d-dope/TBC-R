@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import AvatarUploadPage from "../[locale]/(dashboard)/upload/page";
 
 const AddProductForm = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,10 @@ const AddProductForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleImageUpload = (url) => {
+    setFormData({ ...formData, picture_url: url });
   };
 
   const validateForm = () => {
@@ -62,6 +67,7 @@ const AddProductForm = () => {
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Add New Product</h2>
       {error && <p className="text-red-500">{error}</p>}
+      <AvatarUploadPage onImageUpload={handleImageUpload} />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-gray-700">Title</label>
@@ -73,7 +79,7 @@ const AddProductForm = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded"
           />
         </div>
-        <div>
+        {/* <div>
           <label className="block text-gray-700">Image Url</label>
           <input
             type="text"
@@ -81,8 +87,9 @@ const AddProductForm = () => {
             value={formData.picture_url}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded"
+            readOnly
           />
-        </div>
+        </div> */}
         <div>
           <label className="block text-gray-700">Description</label>
           <textarea
