@@ -18,7 +18,7 @@ export default function Header() {
     { name: t("Blogs"), href: "/blogs" },
     { name: t("Contact"), href: "/contact" },
     { name: t("Profile"), href: "/profile" },
-    { name: t("Admin"), href: "/admin" },
+    { name: t("Admin"), href: "/admin/add" },
   ];
 
   return (

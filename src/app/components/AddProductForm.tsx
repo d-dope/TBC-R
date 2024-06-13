@@ -1,9 +1,20 @@
 "use client";
-import { useState } from "react";
+
+import { useState, ChangeEvent, FormEvent } from "react";
 import AvatarUploadPage from "../[locale]/(dashboard)/upload/page";
+import Notification from "./Notification"; // Import the Notification component
+
+interface FormData {
+  title: string;
+  description: string;
+  price: string;
+  sale: string;
+  category: string;
+  picture_url: string;
+}
 
 const AddProductForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     title: "",
     description: "",
     price: "",
@@ -11,18 +22,19 @@ const AddProductForm = () => {
     category: "",
     picture_url: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<boolean>(false); // State to handle success notification
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageUpload = (url) => {
+  const handleImageUpload = (url: string) => {
     setFormData({ ...formData, picture_url: url });
   };
 
-  const validateForm = () => {
+  const validateForm = (): boolean => {
     const { title, description, price, sale, category, picture_url } = formData;
     if (!title || !description || !price || !sale || !category || !picture_url) {
       setError("All fields are required.");
@@ -32,7 +44,7 @@ const AddProductForm = () => {
     return true;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) {
       return;
@@ -44,29 +56,34 @@ const AddProductForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      setFormData({
-        title: "",
-        description: "",
-        price: "",
-        sale: "",
-        category: "",
-        picture_url: "",
-      });
+
       if (response.ok) {
         const data = await response.json();
         console.log("Product added successfully:", data);
+        setFormData({
+          title: "",
+          description: "",
+          price: "",
+          sale: "",
+          category: "",
+          picture_url: "",
+        });
+        setSuccess(true); // Set success state to true
       } else {
         console.error("Error:", response.statusText);
+        setError("Error adding product.");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      setError("Error submitting form.");
     }
   };
 
   return (
     <div className="max-w-md mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Add New Product</h2>
+      <h2 className="text-2xl font-bold mb-4">Add New Event</h2>
       {error && <p className="text-red-500">{error}</p>}
+      {success && <Notification />} {/* Show success notification */}
       <AvatarUploadPage onImageUpload={handleImageUpload} />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -79,17 +96,6 @@ const AddProductForm = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded"
           />
         </div>
-        {/* <div>
-          <label className="block text-gray-700">Image Url</label>
-          <input
-            type="text"
-            name="picture_url"
-            value={formData.picture_url}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
-            readOnly
-          />
-        </div> */}
         <div>
           <label className="block text-gray-700">Description</label>
           <textarea
