@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { sendContactMessage } from "../../../actions";
+import Notification from "./Notification";
 
 export default function ContactForm() {
   const t = useTranslations("Contact");
@@ -15,7 +16,9 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -54,6 +57,7 @@ export default function ContactForm() {
             </label>
             <div className="mt-2.5">
               <input
+                required
                 type="text"
                 name="name"
                 id="name"
@@ -73,6 +77,7 @@ export default function ContactForm() {
             </label>
             <div className="mt-2.5">
               <input
+                required
                 type="text"
                 name="lastname"
                 id="lastname"
@@ -92,6 +97,7 @@ export default function ContactForm() {
             </label>
             <div className="mt-2.5">
               <input
+                required
                 type="email"
                 name="email"
                 id="email"
@@ -111,6 +117,7 @@ export default function ContactForm() {
             </label>
             <div className="mt-2.5">
               <input
+                required
                 type="tel"
                 name="phone"
                 id="phone"
@@ -130,6 +137,7 @@ export default function ContactForm() {
             </label>
             <div className="mt-2.5">
               <textarea
+                required
                 name="message"
                 id="message"
                 rows={4}
@@ -149,7 +157,7 @@ export default function ContactForm() {
           </button>
         </div>
         {status === "loading" && <p>Sending...</p>}
-        {status === "success" && <p>Message sent successfully!</p>}
+        {status === "success" && <Notification />}
         {status === "error" && <p>Error sending message. Please try again.</p>}
       </div>
     </form>
