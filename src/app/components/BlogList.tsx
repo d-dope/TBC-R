@@ -1,29 +1,23 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Blog from "./Blog";
 
 interface BlogType {
   id: number;
   title: string;
-  
+  description: string; // Add this if you have a description
+  picture_url: string; // Add this if you have a picture URL
 }
 
-export default function BlogList() {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [data, setData] = useState<BlogType[]>([]);
-  const [originalData, setOriginalData] = useState<BlogType[]>([]);
+interface BlogListProps {
+  blogs: BlogType[];
+}
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("https://dummyjson.com/posts");
-      const jsonData = await response.json();
-      setOriginalData(jsonData.posts);
-      setData(jsonData.posts);
-    }
-    fetchData();
-  }, []);
-  
+export default function BlogList({ blogs }: BlogListProps) {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredBlogs, setFilteredBlogs] = useState<BlogType[]>(blogs);
+
   const debounce = <T extends unknown[]>(
     func: (...args: T) => void,
     delay: number
@@ -36,13 +30,13 @@ export default function BlogList() {
   };
 
   const handleSearch = debounce((query: string) => {
-    const filteredArticles = originalData.filter((article) =>
-      article.title.toLowerCase().includes(query.toLowerCase())
+    const filteredArticles = blogs.filter((blog) =>
+      blog.title.toLowerCase().includes(query.toLowerCase())
     );
     setSearchQuery(query);
-    setData(filteredArticles);
-  },10 );
-
+    setFilteredBlogs(filteredArticles);
+  }, 300);
+  // console.log(filteredBlogs);
   return (
     <div>
       <input
@@ -53,8 +47,14 @@ export default function BlogList() {
         className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12 p-10">
-        {data.map((article, index) => (
-          <Blog key={index} title={article.title} id={article.id} />
+        {filteredBlogs?.map((blog) => (
+          <Blog
+            key={blog.id}
+            title={blog.title}
+            id={blog.id}
+            description={blog.description} // Add this if you have a description
+            pictureUrl={blog.picture_url} // Add this if you have a picture URL
+          />
         ))}
       </div>
     </div>

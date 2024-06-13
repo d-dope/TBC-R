@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export default function Auth() {
   const { user, error, isLoading } = useUser();
-  console.log(user);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
@@ -19,7 +18,7 @@ export default function Auth() {
       console.error("Logout failed:", error);
     }
   };
-
+  console.log(user)
   if (user) {
     return (
       <div>

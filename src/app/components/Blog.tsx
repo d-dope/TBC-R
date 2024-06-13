@@ -1,19 +1,20 @@
-import Link from 'next/link';
+import React from "react";
 
-interface ArticleProps {
-  title: string;
+interface BlogProps {
   id: number;
-  body?: string;
-  key: number;
+  title: string;
+  description?: string;  // Add this if you have a description
+  pictureUrl?: string;  // Add this if you have a picture URL
 }
 
-export default function Article({ title, id, body }: ArticleProps) {
+const Blog: React.FC<BlogProps> = ({ id, title, description, pictureUrl }) => {
   return (
-    <Link href={`/blogs/${id}`} className="bg-gray rounded-lg shadow-md hover:shadow-lg">
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p>{body}</p>
-      </div>
-    </Link>
+    <div className="blog-card">
+      {pictureUrl && <img src={pictureUrl} alt={title} />}
+      <h3>{title}</h3>
+      {description && <p>{description}</p>}
+    </div>
   );
-}
+};
+
+export default Blog;

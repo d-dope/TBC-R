@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
   AcademicCapIcon,
   CheckCircleIcon,
@@ -12,7 +10,8 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/20/solid";
 import Header from "../components/Header";
-import { Footer } from "flowbite-react";
+import Footer from "../components/Footer";
+
 
 const navigation = [
   { name: "Product", href: "#" },

@@ -44,3 +44,18 @@ export async function getProducts() {
     throw error;
   }
 }
+
+export async function getBlogs() {
+  try {
+    const response = await fetch(BASE_URL + "/api/blogs/get-blogs");
+    if (!response.ok) {
+      throw new Error(`HTTP status ${response.status}`);
+    }
+    const data = await response.json();
+    const { products } = data;
+    return products?.rows || [];
+  } catch (error) {
+    console.error("Failed to fetch blogs:", error);
+    throw error;
+  }
+}
