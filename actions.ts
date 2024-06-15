@@ -72,3 +72,48 @@ export async function getContact() {
 
   return contact;
 }
+
+export const addToCartAction = async (product_id: string, auth_id: string) => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/cart/add-to-cart`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        product_id,
+        auth_id: auth_id,
+        quantity: 1,
+      }),
+    });
+    revalidatePath("/");
+
+    if (!response.ok) {
+      throw new Error("Failed to add item to cart");
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error adding item to cart:", error);
+  }
+};
+
+export async function addBlog(formData: any) {
+  try {
+    const response = await fetch(BASE_URL + "/api/add-blog", {
+      method: "POST",
+      cache: "no-store",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    revalidatePath("/");
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    throw new Error("Submission failed");
+  }
+}

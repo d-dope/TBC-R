@@ -4,11 +4,11 @@ import type { PutBlobResult } from "@vercel/blob";
 import Image from "next/image";
 import { useState, useRef } from "react";
 
-export default function AvatarUploadPage({ onImageUpload }) {
+export default function AvatarUploadPage({ onImageUpload }: any) {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
-  const handleUpload = async (event) => {
+  const handleUpload = async (event: any) => {
     event.preventDefault();
 
     if (!inputFileRef.current?.files) {
@@ -25,7 +25,7 @@ export default function AvatarUploadPage({ onImageUpload }) {
     const newBlob = (await response.json()) as PutBlobResult;
 
     setBlob(newBlob);
-    onImageUpload(newBlob.url);  // Call the callback with the image URL
+    onImageUpload(newBlob.url); // Call the callback with the image URL
   };
 
   return (

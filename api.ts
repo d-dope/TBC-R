@@ -30,7 +30,7 @@ export async function deleteUser(id: number) {
 
 export async function getProducts() {
   try {
-    const response = await fetch(BASE_URL + "/api/get-product");
+    const response = await fetch("http://localhost:3000/api/get-product");
     if (!response.ok) {
       throw new Error(`HTTP status ${response.status}`);
     }
@@ -41,6 +41,21 @@ export async function getProducts() {
     return products?.rows || [];
   } catch (error) {
     console.error("Failed to fetch products:", error);
+    throw error;
+  }
+}
+
+export async function getBlogs() {
+  try {
+    const response = await fetch(BASE_URL + "/api/blogs/get-blogs");
+    if (!response.ok) {
+      throw new Error(`HTTP status ${response.status}`);
+    }
+    const data = await response.json();
+    const { products } = data;
+    return products?.rows || [];
+  } catch (error) {
+    console.error("Failed to fetch blogs:", error);
     throw error;
   }
 }
