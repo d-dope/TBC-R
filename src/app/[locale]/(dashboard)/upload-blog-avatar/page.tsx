@@ -4,11 +4,8 @@ import type { PutBlobResult } from "@vercel/blob";
 import Image from "next/image";
 import { useState, useRef } from "react";
 
-interface BlogImageUploadPageProps {
-  onImageUpload: (url: string) => void;
-}
 
-export default function BlogImageUploadPage({ onImageUpload }: BlogImageUploadPageProps) {
+export default function BlogImageUploadPage({ onImageUpload }: any) {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [uploadError, setUploadError] = useState<string | null>(null);
@@ -53,7 +50,9 @@ export default function BlogImageUploadPage({ onImageUpload }: BlogImageUploadPa
         <button type="submit">Upload</button>
       </form>
       {uploadError && <p className="text-red-500">{uploadError}</p>}
-      {blob && <Image src={blob.url} width={200} height={200} alt="Blog Picture" />}
+      {blob && (
+        <Image src={blob.url} width={200} height={200} alt="Blog Picture" />
+      )}
     </>
   );
 }
