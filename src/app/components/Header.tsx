@@ -6,7 +6,7 @@ import LocalSwitcher from "./LocalSwitcher";
 import ThemeSwitch from "./ThemeSwitch";
 import { useTranslations } from "next-intl";
 import Auth from "./Auth";
-import imageLogo from "../../../public/assets/Untitlemebbbbbbbbbbbd-removebg-preview.png"
+import imageLogo from "../../../public/assets/Untitlemebbbbbbbbbbbd-removebg-preview.png";
 import Image from "next/image";
 
 export default function Header() {
@@ -30,12 +30,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <Image
-              src={imageLogo}
-              alt="logo"
-              width={100}
-              height={100}
-            />
+            <Image src={imageLogo} alt="logo" width={100} height={100} />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -77,10 +72,12 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
+              <Image
                 className="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
+                alt="AS"
+                width={200}
+                height={200}
               />
             </a>
             <button

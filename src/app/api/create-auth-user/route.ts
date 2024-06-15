@@ -15,13 +15,11 @@ export async function GET(_: NextRequest) {
       if (!user.rows.length)
         await sql`INSERT INTO authusers (id, email, img) VALUES (${sub}, ${email}, ${picture});`;
 
-      // console.log(user, "user");
-      // const userId = user.rows[0].id;
+
 
       const users =
         await sql`SELECT serial_id FROM authusers ORDER BY serial_id DESC LIMIT 1;`;
       const userId = users.rows[0].serial_id;
-      // console.log(userId, "aidiii");
       const cartEntry =
         await sql`SELECT * FROM carts WHERE user_id = ${userId};`;
 

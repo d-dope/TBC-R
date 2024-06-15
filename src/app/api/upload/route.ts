@@ -6,12 +6,17 @@ export async function POST(request: Request): Promise<NextResponse> {
   const filename = searchParams.get("filename");
 
   if (!filename || !request.body) {
-    return NextResponse.json(new Error("No filename provided"), {status: 400});
+    return NextResponse.json({ message: "No filename or body provided" }, { status: 400 });
   }
 
-  const blob = await put(filename, request.body, {
-    access: "public",
-  });
+  try {
+    const blob = await put(filename, request.body, {
+      access: "public",
+    });
 
-  return NextResponse.json(blob);
+    return NextResponse.json(blob);
+  } catch (error) {
+    console.error("Error uploading blob:", error);
+    return NextResponse.json({ message: "Error uploading blob" }, { status: 500 });
+  }
 }

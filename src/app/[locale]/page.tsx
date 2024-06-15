@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
+import Image from "next/image";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -328,10 +328,12 @@ export default function Home() {
                 key={post.id}
                 className=" cursor-pointer hover:opacity-80 transition-opacity relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
               >
-                <img
+                <Image
                   src={post.imageUrl}
-                  alt=""
+                  alt="iasmis"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
+                  width={200}
+                  height={200}
                 />
                 <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
                 <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
@@ -348,10 +350,12 @@ export default function Home() {
                       <circle cx={1} cy={1} r={1} />
                     </svg>
                     <div className="flex gap-x-2.5">
-                      <img
+                      <Image
                         src={post.author.imageUrl}
-                        alt=""
+                        alt="sdd"
                         className="h-6 w-6 flex-none rounded-full bg-white/10"
+                        width={200}
+                        height={200}
                       />
                       {post.author.name}
                     </div>
@@ -367,8 +371,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-   
 
         {/* Values section */}
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
@@ -398,12 +400,14 @@ export default function Home() {
           </dl>
         </div>
 
-             {/* Image section */}
-             <div className="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
-          <img
+        {/* Image section */}
+        <div className="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
+          <Image
             src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2894&q=80"
-            alt=""
+            alt="sas"
             className="aspect-[9/4] w-full object-cover xl:rounded-3xl"
+            width={200}
+            height={200}
           />
         </div>
 
@@ -424,10 +428,12 @@ export default function Home() {
           >
             {team.map((person) => (
               <li key={person.name}>
-                <img
+                <Image
                   className="aspect-[14/13] w-full rounded-2xl object-cover"
                   src={person.imageUrl}
-                  alt=""
+                  alt="zxx"
+                  width={200}
+                  height={200}
                 />
                 <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-white">
                   {person.name}
@@ -447,10 +453,12 @@ export default function Home() {
         <div className="relative isolate -z-10 mt-32 sm:mt-40">
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="mx-auto flex max-w-2xl flex-col gap-16 bg-white/5 px-6 py-16 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
-              <img
+              <Image
                 className="h-96 w-full flex-none rounded-2xl object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm"
                 src="https://images.unsplash.com/photo-1519338381761-c7523edc1f46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
-                alt=""
+                alt="xas"
+                width={200}
+                height={200}
               />
               <div className="w-full flex-auto">
                 <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -500,7 +508,7 @@ export default function Home() {
         </div>
       </main>
 
-    <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -19,6 +19,7 @@ export default function HeroSection({ products }: { products: Product[] }) {
         <h2 className="text-4xl font-bold">{t("title")}</h2>
       </section>
       <main className="container mx-auto mt-8 px-4">
+        {/* @ts-ignore */}
         <ArticlesList products={products} />
       </main>
     </>

@@ -18,7 +18,6 @@ export default function Auth() {
       console.error("Logout failed:", error);
     }
   };
-  console.log(user)
   if (user) {
     return (
       <div>

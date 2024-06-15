@@ -6,8 +6,8 @@ import Blog from "./Blog";
 interface BlogType {
   id: number;
   title: string;
-  description: string; // Add this if you have a description
-  picture_url: string; // Add this if you have a picture URL
+  description: string;
+  picture_url: string;
 }
 
 interface BlogListProps {
@@ -36,26 +36,38 @@ export default function BlogList({ blogs }: BlogListProps) {
     setSearchQuery(query);
     setFilteredBlogs(filteredArticles);
   }, 300);
-  // console.log(filteredBlogs);
+
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search articles..."
-        onChange={(e) => handleSearch(e.target.value)}
-        value={searchQuery}
-        className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
-      />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12 p-10">
-        {filteredBlogs?.map((blog) => (
-          <Blog
-            key={blog.id}
-            title={blog.title}
-            id={blog.id}
-            description={blog.description} // Add this if you have a description
-            pictureUrl={blog.picture_url} // Add this if you have a picture URL
+    <div className=" py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            From the blog
+          </h2>
+          <p className="mt-2 text-lg leading-8 text-gray-600">
+            Learn how to grow your business with our expert advice.
+          </p>
+        </div>
+        <div className="my-4 mx-auto max-w-2xl">
+          <input
+            type="text"
+            placeholder="Search articles..."
+            onChange={(e) => handleSearch(e.target.value)}
+            value={searchQuery}
+            className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
           />
-        ))}
+        </div>
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          {filteredBlogs.map((blog) => (
+            <Blog
+              key={blog.id}
+              id={blog.id}
+              title={blog.title}
+              description={blog.description}
+              pictureUrl={blog.picture_url}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ export async function deleteUser(id: number) {
 
 export async function getProducts() {
   try {
-    const response = await fetch(BASE_URL + "/api/get-product");
+    const response = await fetch("http://localhost:3000/api/get-product");
     if (!response.ok) {
       throw new Error(`HTTP status ${response.status}`);
     }
