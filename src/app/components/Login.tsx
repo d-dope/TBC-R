@@ -12,7 +12,7 @@ export default function Login() {
   if (user) {
     return (
       <div>
-        <Link href="/api/auth/logout">Logout</Link>
+        <Link href="/api/auth/logout">Log Out</Link>
       </div>
     );
   }

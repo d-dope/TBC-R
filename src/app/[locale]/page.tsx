@@ -227,7 +227,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gray-900">
+    <div className="bg-primaryColor">
       <Header />
       <main className="relative isolate">
         {/* Background */}
