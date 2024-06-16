@@ -6,7 +6,8 @@ export interface User {
   email: string;
 }
 
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL =
+  "https://tbc-af5227e19-davits-projects-364f7dcd.vercel.app";
 
 export async function getUsers() {
   const response = await fetch(BASE_URL + "/api/get-users");
@@ -30,7 +31,7 @@ export async function deleteUser(id: number) {
 
 export async function getProducts() {
   try {
-    const response = await fetch("http://localhost:3000/api/get-product");
+    const response = await fetch(BASE_URL + "/api/get-product");
     if (!response.ok) {
       throw new Error(`HTTP status ${response.status}`);
     }
