@@ -20,7 +20,7 @@ interface iProducts {
 
 const CheckoutLayout: FC<iProducts> = ({ products }) => {
   return (
-    <section className="w-full min-h-screen flex justify-center items-center flex-col bg-[#ddd] dark:bg-mainDarkBG2">
+    <section className="w-full min-h-screen flex justify-center items-center flex-col bg-[#ff2d2d] dark:bg-mainDarkBG2">
       {products.map((product: Product, index: number) => (
         <div key={index} className="m-2">
           <h1>

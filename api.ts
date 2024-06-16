@@ -72,3 +72,11 @@ export async function getProductById(id: string) {
 }
 
 
+// api.js
+export async function fetchUserData() {
+  const response = await fetch('/api/user'); // Replace with your API endpoint
+  if (!response.ok) {
+    throw new Error('Failed to fetch user data');
+  }
+  return response.json();
+}
