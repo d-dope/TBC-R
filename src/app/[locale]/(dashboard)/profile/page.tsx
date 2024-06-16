@@ -1,7 +1,18 @@
+import Image from "next/image";
+
 export default function ProfilePage() {
   return (
     <div className="sm:flex sm:p-6 sm:mx-auto sm:max-w-7xl sm:justify-between ">
-      <div className="bg-primaryColor xl:flex sm:w-96 sm:h-96 sm:rounded-full sm:mt-28 hidden"></div>
+      <div className="bg-primaryColor xl:flex sm:w-96 sm:h-96 sm:rounded-full sm:mt-28 hidden">
+        <Image
+          src={
+            "https://lh3.googleusercontent.com/a/ACg8ocL_5Mlg9dkhU7U26YONTqs463sYBIEP99yW7e_3zeMCWNZrX_Wc=s96-c"
+          }
+          alt=""
+          height={200}
+          width={200}
+        />
+      </div>
       <form className="">
         <div className="space-y-12 p-3">
           <div className="border-b border-white/10 pb-12">

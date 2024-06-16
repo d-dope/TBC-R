@@ -73,10 +73,30 @@ export async function getContact() {
   return contact;
 }
 
-export const addToCartAction = async (product_id: string, auth_id: string) => {
+export async function addBlog(formData: any) {
+  try {
+    const response = await fetch(BASE_URL + "/api/add-blog", {
+      method: "POST",
+      cache: "no-store",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    revalidatePath("/");
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    throw new Error("Submission failed");
+  }
+}
+
+export const addToCartAction = async (product_id: number, auth_id: string) => {
   try {
     const response = await fetch(`${BASE_URL}/api/cart/add-to-cart`, {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -98,22 +118,49 @@ export const addToCartAction = async (product_id: string, auth_id: string) => {
   }
 };
 
-export async function addBlog(formData: any) {
+export async function getUserCartAction(id: string) {
+  const response = await fetch(BASE_URL + `/api/cart/get-cart/${id}`, {
+    cache: "no-store",
+  });
+
+  revalidatePath("/");
+  const carts = await response.json();
+
+  const cart = carts.carts.rows;
+
+  return cart;
+}
+
+export const handleQuantityChange = async (
+  product_id: string,
+  auth_id: string,
+  action: "increment" | "decrement"
+) => {
   try {
-    const response = await fetch(BASE_URL + "/api/add-blog", {
+    const response = await fetch(BASE_URL + "/api/cart/quantity-change", {
       method: "POST",
       cache: "no-store",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ product_id, auth_id, action }),
     });
+
     revalidatePath("/");
+    const result = await response.json();
+
     if (response.ok) {
-      return await response.json();
     } else {
-      throw new Error(`Error: ${response.statusText}`);
+      console.error("Error updating quantity:", result.message);
     }
   } catch (error) {
-    console.error("Error submitting form:", error);
-    throw new Error("Submission failed");
+    console.error("Error updating quantity:", error);
   }
+};
+
+export async function resetCart(id: string) {
+  await fetch(`${BASE_URL}/api/cart/reset-cart/${id}`, {
+    method: "DELETE",
+  });
+  revalidatePath("/cart");
 }

@@ -6,7 +6,7 @@ export interface User {
   email: string;
 }
 
-export const BASE_URL = "https://tbc-r.vercel.app";
+export const BASE_URL = "http://localhost:3000";
 
 export async function getUsers() {
   const response = await fetch(BASE_URL + "/api/get-users");
@@ -72,3 +72,11 @@ export async function getProductById(id: string) {
 }
 
 
+// api.js
+export async function fetchUserData() {
+  const response = await fetch('/api/user'); // Replace with your API endpoint
+  if (!response.ok) {
+    throw new Error('Failed to fetch user data');
+  }
+  return response.json();
+}
