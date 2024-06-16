@@ -73,10 +73,30 @@ export async function getContact() {
   return contact;
 }
 
-export const addToCartAction = async (product_id: string, auth_id: string) => {
+export async function addBlog(formData: any) {
+  try {
+    const response = await fetch(BASE_URL + "/api/add-blog", {
+      method: "POST",
+      cache: "no-store",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    revalidatePath("/");
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    throw new Error("Submission failed");
+  }
+}
+
+export const addToCartAction = async (product_id: number, auth_id: string) => {
   try {
     const response = await fetch(`${BASE_URL}/api/cart/add-to-cart`, {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -98,22 +118,53 @@ export const addToCartAction = async (product_id: string, auth_id: string) => {
   }
 };
 
-export async function addBlog(formData: any) {
-  try {
-    const response = await fetch(BASE_URL + "/api/add-blog", {
-      method: "POST",
-      cache: "no-store",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-    revalidatePath("/");
-    if (response.ok) {
-      return await response.json();
-    } else {
-      throw new Error(`Error: ${response.statusText}`);
-    }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    throw new Error("Submission failed");
+export async function getUserCartAction(id: string) {
+  const response = await fetch(BASE_URL + `/api/cart/get-cart/${id}`, {
+    cache: "no-store",
+  });
+
+  revalidatePath("/");
+  const carts = await response.json();
+
+  const cart = carts.carts.rows;
+
+  return cart;
+}
+
+export async function resetCart(id: string) {
+  const response = await fetch(`/api/cart/reset-cart/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Failed to reset cart:", errorData); // Debug log
+    throw new Error("Failed to reset cart");
   }
+
+  console.log("Cart reset API call successful"); // Debug log
+  return response.json();
+}
+
+export async function handleQuantityChange(
+  productId: string,
+  authId: string,
+  action: "increment" | "decrement"
+) {
+  const response = await fetch(`/api/cart/update-quantity`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ productId, authId, action }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Failed to update quantity:", errorData); // Debug log
+    throw new Error("Failed to update quantity");
+  }
+
+  console.log("Quantity update API call successful"); // Debug log
+  return response.json();
 }
