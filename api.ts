@@ -7,7 +7,7 @@ export interface User {
 }
 
 export const BASE_URL =
-  "https://tbc-af5227e19-davits-projects-364f7dcd.vercel.app";
+  "https://tbc-r.vercel.app";
 
 export async function getUsers() {
   const response = await fetch(BASE_URL + "/api/get-users");
