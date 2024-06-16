@@ -62,10 +62,13 @@ export async function getBlogs() {
 
 
 // api.js
-
-export async function getProductById(id) {
-  const response = await fetch(`/api/get-product`);
+export async function getProductById(id: string) {
+  const response = await fetch(`/api/get-product?id=${id}`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch product');
+  }
   const data = await response.json();
   return data;
 }
+
 

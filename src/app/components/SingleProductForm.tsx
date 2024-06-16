@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
 
 interface Product {
   id: number;
@@ -11,31 +10,11 @@ interface Product {
   // Add other fields if necessary
 }
 
-export default function SingleProductForm() {
-  const [product, setProduct] = useState<Product | null>(null);
+interface SingleProductFormProps {
+  product: Product;
+}
 
-  useEffect(() => {
-    // Fetch product data from API or set a static product object for testing
-    const fetchProduct = async () => {
-      // Example product data
-      const productData: Product = {
-        id: 1,
-        title: "Sample Product",
-        description: "This is a sample product description.",
-        price: "29.99",
-        picture_url:
-          "https://cdn.pixabay.com/photo/2020/05/22/17/53/mockup-5206355_960_720.jpg",
-        sale: 0,
-      };
-      setProduct(productData);
-    };
-    fetchProduct();
-  }, []);
-
-  if (!product) {
-    return <div>Loading...</div>;
-  }
-
+export default function SingleProductForm({ product }: SingleProductFormProps) {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

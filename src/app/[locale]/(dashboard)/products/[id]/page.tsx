@@ -17,7 +17,7 @@ interface Product {
 
 const ProductDetail = () => {
   const params = useParams();
-  const { id } = params;
+  const { id } = params as { id: string }; // Type assertion for id
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
