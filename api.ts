@@ -6,8 +6,7 @@ export interface User {
   email: string;
 }
 
-export const BASE_URL =
-  "https://tbc-r.vercel.app";
+export const BASE_URL = "https://tbc-r.vercel.app";
 
 export async function getUsers() {
   const response = await fetch(BASE_URL + "/api/get-users");
@@ -60,3 +59,13 @@ export async function getBlogs() {
     throw error;
   }
 }
+
+
+// api.js
+
+export async function getProductById(id) {
+  const response = await fetch(`/api/get-product`);
+  const data = await response.json();
+  return data;
+}
+

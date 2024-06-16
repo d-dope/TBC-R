@@ -67,7 +67,7 @@ export default function ArticlesList({ products }: ArticlesListProps) {
         value={searchQuery}
         className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12 p-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-12 p-10">
         {sortedArticles.map((article, index) => (
           <Article
             key={index}
