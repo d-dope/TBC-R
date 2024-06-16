@@ -2,40 +2,29 @@
 
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useTransition } from "react";
+import { useState, useEffect } from "react";
 
-export default function LocalSwitcher() {
-  const [isPending, startTransition] = useTransition();
+export default function LocaleSwitcher() {
   const router = useRouter();
-  const localActive = useLocale();
+  const locale = useLocale();
+  const [currentLocale, setCurrentLocale] = useState(locale);
 
-  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const nextLocale = e.target.value;
-    startTransition(() => {
-      router.replace(`/${nextLocale}`);
-    });
+  useEffect(() => {
+    setCurrentLocale(locale);
+  }, [locale]);
+
+  const toggleLocale = () => {
+    const nextLocale = currentLocale === "en" ? "ka" : "en";
+    setCurrentLocale(nextLocale);
+    router.replace(`/${nextLocale}`);
   };
 
   return (
-    <label
-      className=""
-      style={{ display: "inline-block", position: "relative" }}
+    <button
+      onClick={toggleLocale}
+      className="px-2 py-1 rounded-full bg-gray-100 text-gray-900 text-sm font-medium"
     >
-      <p className="sr-only">change language</p>
-      <select
-        defaultValue={localActive}
-        className="ml-auto rounded-md bg-primaryColor px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-80 "
-        onChange={onSelectChange}
-        disabled={isPending}
-        style={{
-          paddingRight: "1.5rem",
-          cursor: isPending ? "not-allowed" : "pointer",
-        }}
-      >
-        <option value="en">English</option>
-        <option value="ka">ქართული</option>
-      </select>
-      <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"></span>
-    </label>
+      {currentLocale === "en" ? "Geo" : "Eng"}
+    </button>
   );
 }

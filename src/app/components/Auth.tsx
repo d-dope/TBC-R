@@ -23,9 +23,9 @@ export default function Auth() {
       <div>
         <button
           onClick={handleLogout}
-          className="text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+          className=" leading-7 hover:bg-gray-50 text-sm text-gray-700"
         >
-          Logout
+          Log Out
         </button>
       </div>
     );
@@ -34,7 +34,7 @@ export default function Auth() {
   return (
     <Link
       href="/api/auth/login"
-      className="text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+      className="text-sm leading-7 text-gray-700 hover:bg-gray-50"
     >
       Login
     </Link>
