@@ -1,9 +1,9 @@
 "use client"; // Mark this as a Client Component
 
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import { getProductById } from '../../../../../../api';
-import SingleProductForm from '../../../../components/SingleProductForm';
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { getProductById } from "../../../../../../api";
+import SingleProductForm from "../../../../components/SingleProductForm";
 
 interface Product {
   id: number;
@@ -28,18 +28,20 @@ const ProductDetail = () => {
         try {
           console.log(`Fetching product with ID: ${id}`); // Debug log
           const data = await getProductById(id);
-          console.log('Product data:', data); // Debug log
+          console.log("Product data:", data); // Debug log
 
-          const product = data.products.rows.find((item: Product) => item.id === parseInt(id));
+          const product = data.products.rows.find(
+            (item: Product) => item.id === parseInt(id)
+          );
           if (product) {
             setProduct(product);
           } else {
-            setError('Product not found');
+            setError("Product not found");
           }
           setLoading(false);
         } catch (err) {
-          console.error('Error fetching product:', err); // Debug log
-          setError('Failed to fetch product');
+          console.error("Error fetching product:", err); // Debug log
+          setError("Failed to fetch product");
           setLoading(false);
         }
       };
