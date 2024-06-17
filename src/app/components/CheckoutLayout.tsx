@@ -17,7 +17,7 @@ interface Product {
   title: string;
   picture_url: string;
   id: string;
-  price: number;
+  price: number; // Initially price might be a string
 }
 
 interface iProducts {
@@ -28,11 +28,13 @@ const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   console.log(products);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const fetchedProducts = await Promise.all(
           initialProducts.map(async (product) => {
+            // Fetch product details including auth_id and product_id
             const productDetail = await getProductDetail(
               Number(product.product_id)
             );
@@ -40,6 +42,8 @@ const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
               ...productDetail,
               auth_id: product.auth_id,
               quantity: product.quantity,
+              // Ensure price is a number
+              price: Number(productDetail.price),
             };
           })
         );
@@ -57,68 +61,82 @@ const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
     return <div>Loading...</div>;
   }
 
-  const totalQuantity = products.reduce((acc, product) => acc + product.quantity, 0);
-  const totalPrice = products.reduce((acc, product) => acc + product.quantity * product.price, 0);
+  const totalQuantity = products.reduce(
+    (acc, product) => acc + product.quantity,
+    0
+  );
+  const totalPrice = products.reduce(
+    (acc, product) => acc + product.quantity * product.price,
+    0
+  );
 
   return (
-    <section className="w-full min-h-screen flex justify-center items-center bg-gray-100 dark:bg-gray-800 p-8">
-      <div className="w-full max-w-4xl bg-white dark:bg-gray-700 rounded-lg shadow-md p-8">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">
-          Shopping cart
-        </h1>
-        <div className="space-y-4">
+    <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-100 p-8 text-gray-800">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-3xl font-bold mb-4">Shopping cart</h1>
+        <p className="text-sm text-pink-600">{totalQuantity} items</p>
+        <div className="mt-4">
           {products.map((product, index) => (
-            <div key={index} className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-600">
-              <div className="flex items-center">
-                <Image src={product.picture_url} width={60} height={60} alt={product.title} className="rounded-lg" />
-                <div className="ml-4">
-                  <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                    {product.title}
-                  </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    ${product.price.toFixed(2)}
-                  </p>
+            <div
+              key={index}
+              className="flex items-center justify-between bg-white rounded-lg shadow-md p-4 mb-4"
+            >
+              <Image
+                src={product.picture_url}
+                width={64}
+                height={64}
+                alt={product.title}
+                className="rounded-lg"
+              />
+              <div className="flex-1 ml-4">
+                <h2 className="text-lg font-semibold">{product.title}</h2>
+                <div className="flex items-center mt-2">
+                  <span className="text-gray-600 mr-2">
+                    Qty: {product.quantity}
+                  </span>
+                  <button
+                    className="p-2 mx-2 bg-red-600 text-white rounded hover:bg-red-700"
+                    onClick={() =>
+                      handleQuantityChange(
+                        product.id,
+                        product.auth_id,
+                        "decrement"
+                      )
+                    }
+                  >
+                    -
+                  </button>
+                  <button
+                    className="p-2 mx-2 bg-green-600 text-white rounded hover:bg-green-700"
+                    onClick={() =>
+                      handleQuantityChange(
+                        product.id,
+                        product.auth_id,
+                        "increment"
+                      )
+                    }
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-              <div className="flex items-center">
-                <button
-                  className="p-2 bg-red-600 text-white rounded hover:bg-red-700"
-                  onClick={() => handleQuantityChange(product.id, product.auth_id, "decrement")}
-                >
-                  -
-                </button>
-                <span className="mx-4 text-gray-800 dark:text-gray-200">
-                  {product.quantity}
-                </span>
-                <button
-                  className="p-2 bg-green-600 text-white rounded hover:bg-green-700"
-                  onClick={() => handleQuantityChange(product.id, product.auth_id, "increment")}
-                >
-                  +
-                </button>
-              </div>
-              <p className="text-gray-800 dark:text-gray-200">
-                ${(product.price * product.quantity).toFixed(2)}
+              <p className="text-lg font-semibold">
+                {Number(product.price).toFixed(2)}
               </p>
             </div>
           ))}
         </div>
-        <div className="mt-6 flex justify-between items-center">
-          <div>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-              Total Price: ${totalPrice.toFixed(2)}
-            </h2>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-              Total Quantity: {totalQuantity}
-            </h2>
-          </div>
-          <button
-            className="mt-8 py-2 px-6 bg-blue-600 text-white rounded hover:bg-blue-700"
-            onClick={() => resetCart(products[0]?.auth_id)}
-          >
-            RESET
-          </button>
+        <div className="mt-4">
+          <h2 className="text-xl font-semibold">
+            Total Price: ${totalPrice.toFixed(2)}
+          </h2>
         </div>
+        <button
+          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          onClick={() => resetCart(products[0]?.auth_id)}
+        >
+          RESET
+        </button>
       </div>
     </section>
   );
