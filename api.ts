@@ -79,3 +79,12 @@ export async function fetchUserData() {
   }
   return response.json();
 }
+
+// api.ts
+export async function getBlogById(id: string) {
+  const response = await fetch(`/api/blogs/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch blog");
+  }
+  return response.json();
+}

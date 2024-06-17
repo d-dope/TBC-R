@@ -1,52 +1,58 @@
-"use client";
+"use client"; // Mark this as a Client Component
 
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { getBlogById } from "../../../../../../api";
+import SingleBlogView from "../../../../components/SingleBlogView";
 
-
-interface Post {
-  userId: number;
+interface Blog {
   id: number;
   title: string;
-  body: string;
+  description: string;
+  picture_url: string;
+  // Add other fields if necessary
 }
 
-interface PageProps {
-  params: {
-    id: number;
-  };
-}
-
-const Page: React.FC<PageProps> = ({ params: { id } }) => {
-  const [data, setData] = useState<Post>({
-    userId: 0,
-    id: 0,
-    title: '',
-    body: '',
-  });
+const BlogDetail = () => {
+  const params = useParams();
+  const { id } = params as { id: string }; // Type assertion for id
+  const [blog, setBlog] = useState<Blog | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://dummyjson.com/posts/${id}`);
-        const postData: Post = await response.json();
-        setData(postData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-    fetchData();
+    if (id) {
+      const fetchBlog = async () => {
+        try {
+          const data = await getBlogById(id);
+          if (data) {
+            setBlog(data);
+          } else {
+            setError("Blog not found");
+          }
+          setLoading(false);
+        } catch (err) {
+          setError("Failed to fetch blog");
+          setLoading(false);
+        }
+      };
+      fetchBlog();
+    }
   }, [id]);
 
-  return (
-    <div className="flex justify-center mt-10">
-      <div className="rounded-lg bg-white shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface">
-        <div className="py-6">
-          <h5 className="mb-2 text-xl font-medium leading-tight">{data.title}</h5>
-          <p className="mb-4 text-base">{data.body}</p>
-        </div>
-      </div>
-    </div>
-  );
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!blog) {
+    return <div>Blog not found</div>;
+  }
+
+  return <SingleBlogView blog={blog} />;
 };
 
-export default Page;
+export default BlogDetail;
