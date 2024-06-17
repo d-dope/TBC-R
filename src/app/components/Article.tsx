@@ -10,6 +10,7 @@ interface ArticleProps {
   price: number;
   description: string;
   image: string;
+  date: string;
 }
 
 const Article: React.FC<ArticleProps> = ({
@@ -18,13 +19,13 @@ const Article: React.FC<ArticleProps> = ({
   price,
   description,
   image,
+  date,
 }) => {
   console.log(image);
 
   const handleDelete = async () => {
     await deleteSingleProduct(id);
   };
-
   return (
     <div className="bg-gray rounded-lg shadow-md hover:shadow-lg">
       <Link href={`/products/${id}`}>
@@ -46,7 +47,7 @@ const Article: React.FC<ArticleProps> = ({
         </Link>
         <p>{description}</p>
         <div className="flex gap-x-3">
-          <p>Public Date: </p>
+          <p>Event Date: {date}</p>
         </div>
         <p className="font-bold text-emerald-600">${price}</p>
         <button

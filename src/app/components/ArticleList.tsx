@@ -10,6 +10,7 @@ interface ArticleType {
   price: number;
   title: string;
   picture_url: string;
+  date:string
 }
 
 interface ArticlesListProps {
@@ -76,6 +77,7 @@ export default function ArticlesList({ products }: ArticlesListProps) {
             image={article.picture_url}
             description={article.description}
             price={article.price}
+            date={article.date}
           />
         ))}
       </div>

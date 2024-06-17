@@ -19,7 +19,6 @@ const AddToCartBtn = ({ id }: addToCartBtnProps) => {
       setAuthId(user.sub);
     }
   }, [user]);
-
   return (
     <button onClick={() => addToCartAction(Number(id), authId)}>
       Add to cart

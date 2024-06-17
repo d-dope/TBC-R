@@ -8,7 +8,7 @@ interface FormData {
   title: string;
   description: string;
   price: string;
-  sale: string;
+  date: string; // Changed from sale to date
   category: string;
   picture_url: string;
 }
@@ -18,7 +18,7 @@ const AddProductForm = () => {
     title: "",
     description: "",
     price: "",
-    sale: "",
+    date: "", // Changed from sale to date
     category: "",
     picture_url: "",
   });
@@ -35,8 +35,8 @@ const AddProductForm = () => {
   };
 
   const validateForm = (): boolean => {
-    const { title, description, price, sale, category, picture_url } = formData;
-    if (!title || !description || !price || !sale || !category || !picture_url) {
+    const { title, description, price, date, category, picture_url } = formData;
+    if (!title || !description || !price || !date || !category || !picture_url) {
       setError("All fields are required.");
       return false;
     }
@@ -64,7 +64,7 @@ const AddProductForm = () => {
           title: "",
           description: "",
           price: "",
-          sale: "",
+          date: "", // Changed from sale to date
           category: "",
           picture_url: "",
         });
@@ -116,11 +116,11 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700">Sale</label>
+          <label className="block text-gray-700">Date</label> {/* Changed from Sale to Date */}
           <input
-            type="text"
-            name="sale"
-            value={formData.sale}
+            type="date"
+            name="date" // Changed from sale to date
+            value={formData.date} // Changed from formData.sale to formData.date
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded"
           />

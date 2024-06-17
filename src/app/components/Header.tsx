@@ -10,12 +10,14 @@ import imageLogo from "../../../public/assets/Untitlemebbbbbbbbbbbd-removebg-pre
 import Image from "next/image";
 import { TicketIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
-
+import { useUser } from "@auth0/nextjs-auth0/client";
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
+  const { user } = useUser();
+  const isAdmin = Array.isArray(user?.role) && user.role.includes("Admin");
   const t = useTranslations("Navigation");
   const navigation = [
     { name: t("home"), href: "/" },
@@ -23,7 +25,7 @@ export default function Header() {
     { name: t("Blogs"), href: "/blogs" },
     { name: t("Contact"), href: "/contact" },
     { name: t("Profile"), href: "/profile" },
-    { name: t("Admin"), href: "/admin/add" },
+    ...(isAdmin ? [{ name: t("Admin"), href: "/admin/add" }] : [])
   ];
 
   return (
