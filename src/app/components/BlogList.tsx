@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Blog from "./Blog";
+import Link from "next/link";
 
 interface BlogType {
   id: number;
@@ -35,10 +36,10 @@ export default function BlogList({ blogs }: BlogListProps) {
     );
     setSearchQuery(query);
     setFilteredBlogs(filteredArticles);
-  }, 300);
+  }, 1);
 
   return (
-    <div className=" py-24 sm:py-32">
+    <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -59,13 +60,14 @@ export default function BlogList({ blogs }: BlogListProps) {
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {filteredBlogs.map((blog) => (
-            <Blog
-              key={blog.id}
-              id={blog.id}
-              title={blog.title}
-              description={blog.description}
-              pictureUrl={blog.picture_url}
-            />
+            <Link key={blog.id} href={`/blogs/${blog.id}`}>
+              <Blog
+                id={blog.id}
+                title={blog.title}
+                description={blog.description}
+                pictureUrl={blog.picture_url}
+              />{" "}
+            </Link>
           ))}
         </div>
       </div>
