@@ -1,5 +1,6 @@
 import Image from "next/image";
-
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 interface Product {
   id: number;
   title: string;
@@ -20,14 +21,16 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
-            <div className="h-[460px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
-              <Image
-                className="w-full h-full object-cover"
-                height={460}
-                width={460}
-                src={product.picture_url}
-                alt="Product Image"
-              />
+            <div className="sm:h-[300px] h-[200px] rounded-lg  dark:bg-gray-700 mb-4">
+              <Zoom>
+                <Image
+                  className="w-full h-full object-cover"
+                  height={460}
+                  width={460}
+                  src={product.picture_url}
+                  alt="Product Image"
+                />
+              </Zoom>
             </div>
             <div className="flex -mx-2 mb-4">
               <div className="w-1/2 px-2">

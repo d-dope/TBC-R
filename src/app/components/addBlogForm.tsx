@@ -3,6 +3,8 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import Notification from "./Notification";
 import BlogImageUploadPage from "../[locale]/(dashboard)/upload-blog-avatar/page";
+import { BASE_URL } from "../../../api";
+
 
 interface FormData {
   title: string;
@@ -39,7 +41,7 @@ const AddBlogForm = () => {
     setError("");
     return true;
   };
-
+  console.log(formData);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) {
@@ -47,7 +49,7 @@ const AddBlogForm = () => {
     }
 
     try {
-      const response = await fetch("/api/add-blog", {
+      const response = await fetch(BASE_URL + "/api/add-blog", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

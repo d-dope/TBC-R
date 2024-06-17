@@ -164,3 +164,10 @@ export async function resetCart(id: string) {
   });
   revalidatePath("/cart");
 }
+
+export async function getProductDetail(id: number) {
+  const response = await fetch(`${BASE_URL}/api/get-product/${id}`);
+  const data = await response.json();
+  const product = data.singleProd?.rows ? data.singleProd.rows[0] : null;
+  return product;
+}

@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-async-client-component */
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Button } from 'flowbite-react';
-import { User, getUsers } from '../../../../../api';
+import { useState, useEffect } from "react";
+import { Button } from "flowbite-react";
+import { User, getUsers } from "../../../../../api";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
+  const { user } = useUser();
+  const isAdmin = Array.isArray(user?.role) && user.role.includes("Admin");
 
   const fetchUsers = async () => {
     const fetchedUsers = await getUsers();
@@ -17,14 +20,14 @@ export default function UsersPage() {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const name = formData.get('name')?.toString() || '';
-    const email = formData.get('email')?.toString() || '';
+    const name = formData.get("name")?.toString() || "";
+    const email = formData.get("email")?.toString() || "";
 
     try {
-      const response = await fetch('/api/create-user', {
-        method: 'POST',
+      const response = await fetch("/api/create-user", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email }),
       });
@@ -32,26 +35,26 @@ export default function UsersPage() {
       if (response.ok) {
         await fetchUsers(); // Fetch the updated list of users
       } else {
-        console.error('Failed to create user');
+        console.error("Failed to create user");
       }
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.error("Error creating user:", error);
     }
   };
 
   const handleDeleteUser = async (userId: number) => {
     try {
       const response = await fetch(`/api/delete-user/${userId}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
 
       if (response.ok) {
         await fetchUsers(); // Fetch the updated list of users after successful deletion
       } else {
-        console.error('Failed to delete user');
+        console.error("Failed to delete user");
       }
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error("Error deleting user:", error);
     }
   };
 
@@ -59,10 +62,15 @@ export default function UsersPage() {
   useEffect(() => {
     fetchUsers();
   }, []);
-
+  if (!isAdmin) {
+    return <h1>You Are Not Admin Retard!</h1>;
+  }
   return (
     <div className="px-5">
-      <form onSubmit={handleCreateUser} className="flex flex-col gap-4 w-[300px] text-black">
+      <form
+        onSubmit={handleCreateUser}
+        className="flex flex-col gap-4 w-[300px] text-black"
+      >
         <input type="text" name="name" placeholder="Name" />
         <input type="text" name="email" placeholder="Email" />
         <button type="submit" className="bg-red-300 text-white">
@@ -76,7 +84,10 @@ export default function UsersPage() {
             <h1>{user.name}</h1>
             <p>{user.email}</p>
           </div>
-          <button onClick={() => handleDeleteUser(user.id)} className="bg-red-300 text-white">
+          <button
+            onClick={() => handleDeleteUser(user.id)}
+            className="bg-red-300 text-white"
+          >
             Delete
           </button>
         </div>
