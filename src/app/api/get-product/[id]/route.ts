@@ -1,12 +1,17 @@
 import { sql } from "@vercel/postgres";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const revalidate = 0;
-export async function GET() {
+
+export async function GET(request: NextRequest) {
+  const id = request.nextUrl.pathname.replace("/api/get-product/", "");
+
   try {
-    const products =
-      await sql`SELECT id, title, price, description, category, picture_url FROM products ORDER BY id ASC;`;
-    return NextResponse.json({ products }, { status: 200 });
+    if (!id) throw new Error("ID is required");
+    const singleProd = await sql`SELECT * FROM products WHERE id = ${Number(
+      id
+    )}`;
+    return NextResponse.json({ singleProd }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
