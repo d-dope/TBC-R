@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
-import SortButton from "./Sort";
 
 interface ArticleType {
   id: number;
@@ -10,23 +9,33 @@ interface ArticleType {
   price: number;
   title: string;
   picture_url: string;
-  date:string
+  date: string;
 }
 
 interface ArticlesListProps {
   products: ArticleType[];
 }
 
-export default function ArticlesList({ products }: ArticlesListProps) {
+const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
   const [sortedArticles, setSortedArticles] = useState<ArticleType[]>(products);
-  const [isSorted, setIsSorted] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortOption, setSortOption] = useState<string>("");
 
   useEffect(() => {
-    if (!isSorted) {
-      setSortedArticles(products);
+    let sorted = [...products];
+
+    if (sortOption === "price-asc") {
+      sorted = sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOption === "price-desc") {
+      sorted = sorted.sort((a, b) => b.price - a.price);
+    } else if (sortOption === "date-asc") {
+      sorted = sorted.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    } else if (sortOption === "date-desc") {
+      sorted = sorted.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
-  }, [products, isSorted]);
+
+    setSortedArticles(sorted);
+  }, [products, sortOption]);
 
   const debounce = <T extends unknown[]>(
     func: (...args: T) => void,
@@ -39,17 +48,6 @@ export default function ArticlesList({ products }: ArticlesListProps) {
     };
   };
 
-  const handleSort = () => {
-    if (!isSorted) {
-      const sorted = [...products].sort((a, b) => a.price - b.price);
-      setSortedArticles(sorted);
-      setIsSorted(true);
-    } else {
-      setSortedArticles(products);
-      setIsSorted(false);
-    }
-  };
-
   const handleSearch = debounce((query: string) => {
     setSearchQuery(query);
     const filteredArticles = products.filter((article) =>
@@ -58,17 +56,33 @@ export default function ArticlesList({ products }: ArticlesListProps) {
     setSortedArticles(filteredArticles);
   }, 10);
 
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortOption(event.target.value);
+  };
+
   return (
-    <div>
-      <SortButton handleClick={handleSort} />
-      <input
-        type="text"
-        placeholder="Search articles..."
-        onChange={(e) => handleSearch(e.target.value)}
-        value={searchQuery}
-        className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
-      />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-12 p-10">
+    <div className="container mx-auto px-4 py-6">
+      <div className="flex flex-col md:flex-row justify-between mb-4">
+        <input
+          type="text"
+          placeholder="Search articles..."
+          onChange={(e) => handleSearch(e.target.value)}
+          value={searchQuery}
+          className="w-full md:w-1/2 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black mb-4 md:mb-0 md:mr-4"
+        />
+        <select
+          onChange={handleSortChange}
+          value={sortOption}
+          className="w-full md:w-1/4 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
+        >
+          <option value="">Sort by</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="date-asc">Date: Sooner First</option>
+          <option value="date-desc">Date: Furthest First</option>
+        </select>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {sortedArticles.map((article, index) => (
           <Article
             key={index}
@@ -83,4 +97,6 @@ export default function ArticlesList({ products }: ArticlesListProps) {
       </div>
     </div>
   );
-}
+};
+
+export default ArticlesList;

@@ -1,6 +1,5 @@
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center w-56 h-56 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
       <div
         role="status"
         className=" text-xs font-medium text-blue-800 text-center p-0.5 leading-none rounded-full px-2  absolute -translate-y-1/2 -translate-x-1/2 top-2/4 left-1/2"
@@ -23,7 +22,6 @@ const Loading = () => {
         </svg>
         <span className="sr-only">Loading...</span>
       </div>
-    </div>
   );
 };
 
