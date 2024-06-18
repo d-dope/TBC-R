@@ -3,8 +3,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 
 export default function Auth() {
-  const { user, error, isLoading } = useUser();
-  if (isLoading) return <div>Loading...</div>;
+  const { user, error } = useUser();
   if (error) return <div>{error.message}</div>;
 
   const handleLogout = async () => {

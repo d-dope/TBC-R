@@ -57,9 +57,7 @@ const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
     fetchProducts();
   }, [initialProducts]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
 
   const totalQuantity = products.reduce(
     (acc, product) => acc + product.quantity,
