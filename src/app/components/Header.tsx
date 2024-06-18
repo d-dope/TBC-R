@@ -11,6 +11,7 @@ import Image from "next/image";
 import { TicketIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -25,7 +26,7 @@ export default function Header() {
     { name: t("Blogs"), href: "/blogs" },
     { name: t("Contact"), href: "/contact" },
     { name: t("Profile"), href: "/profile" },
-    ...(isAdmin ? [{ name: t("Admin"), href: "/admin/add" }] : [])
+    ...(isAdmin ? [{ name: t("Admin"), href: "/admin/add" }] : []),
   ];
 
   return (
@@ -83,7 +84,7 @@ export default function Header() {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={user?.picture || ''}
                         alt=""
                         height={100}
                         width={100}
@@ -173,7 +174,7 @@ export default function Header() {
                 <div className="flex-shrink-0">
                   <Image
                     className="h-10 w-10 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src={user?.picture || ''}
                     alt=""
                     height={100}
                     width={100}
