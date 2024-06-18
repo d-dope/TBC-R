@@ -11,6 +11,7 @@ interface FormData {
   date: string; // Changed from sale to date
   category: string;
   picture_url: string;
+  place: string;
 }
 
 const AddProductForm = () => {
@@ -21,6 +22,7 @@ const AddProductForm = () => {
     date: "", // Changed from sale to date
     category: "",
     picture_url: "",
+    place: "",
   });
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false); // State to handle success notification
@@ -76,6 +78,7 @@ const AddProductForm = () => {
           date: "", // Changed from sale to date
           category: "",
           picture_url: "",
+          place: "",
         });
         setSuccess(true); // Set success state to true
       } else {
@@ -131,6 +134,17 @@ const AddProductForm = () => {
             type="date"
             name="date" // Changed from sale to date
             value={formData.date} // Changed from formData.sale to formData.date
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700">Place</label>{" "}
+          {/* Changed from Sale to Date */}
+          <input
+            type="text"
+            name="place" // Changed from sale to date
+            value={formData.place} // Changed from formData.sale to formData.date
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded"
           />

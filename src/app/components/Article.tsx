@@ -13,6 +13,7 @@ interface ArticleProps {
   image: string;
   date: string;
   category: string;
+  place: string;
 }
 
 const Article: React.FC<ArticleProps> = ({
@@ -23,10 +24,12 @@ const Article: React.FC<ArticleProps> = ({
   image,
   date,
   category,
+  place,
 }) => {
   const { user } = useUser();
   const isAdmin = Array.isArray(user?.role) && user.role.includes("Admin");
 
+  // Format the event date
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
@@ -57,15 +60,18 @@ const Article: React.FC<ArticleProps> = ({
           <div className="absolute top-2 left-2 bg-white text-center p-1 rounded">
             <p className="text-xs font-semibold">{formattedDate}</p>
           </div>
+          <div className="absolute top-2 right-2 bg-white text-center p-1 rounded">
+            <p className="text-xs font-semibold text-green-600">${price}</p>
+          </div>
         </div>
       </Link>
       <div className="p-4">
         <Link href={`/products/${id}`}>
           <h3 className="text-lg font-semibold mb-1">{title}</h3>
         </Link>
-        <p className="text-gray-500 mb-2">{description}</p>
-        <p className="text-gray-700 mb-2">{formattedDay}, {formattedTime}</p>
-        <p className="text-green-600 font-bold mb-2">${price}</p>
+        <p className="text-gray-700 mb-2">{formattedDay}</p>
+        <p className="text-gray-700 mb-2">{place}</p>
+
         <div className="flex items-center justify-between">
           {isAdmin && <DeleteCartBtn id={id} />}
           <AddToCartBtn id={id} />

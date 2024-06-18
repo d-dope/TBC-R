@@ -12,6 +12,7 @@ interface ArticleType {
   picture_url: string;
   date: string;
   category: string;
+  place:string;
 }
 
 interface ArticlesListProps {
@@ -131,6 +132,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
               price={article.price}
               date={article.date}
               category={article.category}
+              place={article.place}
             />
           ))}
         </div>
