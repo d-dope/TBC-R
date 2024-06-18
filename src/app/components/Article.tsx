@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { deleteSingleProduct } from "../../../actions";
 import AddToCartBtn from "./AddToCartBtn";
+import DeleteCartBtn from "./DeleteCartBtn";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface ArticleProps {
   title: string;
@@ -21,11 +23,9 @@ const Article: React.FC<ArticleProps> = ({
   image,
   date,
 }) => {
-  console.log(image);
+  const { user } = useUser();
+  const isAdmin = Array.isArray(user?.role) && user.role.includes("Admin");
 
-  const handleDelete = async () => {
-    await deleteSingleProduct(id);
-  };
   return (
     <div className="bg-gray rounded-lg shadow-md hover:shadow-lg">
       <Link href={`/products/${id}`}>
@@ -50,12 +50,7 @@ const Article: React.FC<ArticleProps> = ({
           <p>Event Date: {date}</p>
         </div>
         <p className="font-bold text-emerald-600">${price}</p>
-        <button
-          onClick={() => handleDelete()}
-          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Remove
-        </button>
+        {isAdmin && <DeleteCartBtn id={id} />}
         <AddToCartBtn id={id} />
       </div>
     </div>
