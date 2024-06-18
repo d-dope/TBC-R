@@ -84,8 +84,8 @@ export default function Header() {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={user?.picture || ''}
-                        alt=""
+                        src={user?.picture || ""}
+                        alt="image"
                         height={100}
                         width={100}
                       />
@@ -174,7 +174,7 @@ export default function Header() {
                 <div className="flex-shrink-0">
                   <Image
                     className="h-10 w-10 rounded-full"
-                    src={user?.picture || ''}
+                    src={user?.picture || ""}
                     alt=""
                     height={100}
                     width={100}

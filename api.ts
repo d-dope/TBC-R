@@ -6,8 +6,8 @@ export interface User {
   email: string;
 }
 
-export const BASE_URL = "https://tbc-r.vercel.app";
-// export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://tbc-r.vercel.app";
+export const BASE_URL = "http://localhost:3000";
 
 export async function getUsers() {
   const response = await fetch(BASE_URL + "/api/get-users");

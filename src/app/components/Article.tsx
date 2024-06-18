@@ -1,10 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { deleteSingleProduct } from "../../../actions";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import AddToCartBtn from "./AddToCartBtn";
 import DeleteCartBtn from "./DeleteCartBtn";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface ArticleProps {
   title: string;
@@ -13,6 +12,7 @@ interface ArticleProps {
   description: string;
   image: string;
   date: string;
+  category: string;
 }
 
 const Article: React.FC<ArticleProps> = ({
@@ -22,36 +22,54 @@ const Article: React.FC<ArticleProps> = ({
   description,
   image,
   date,
+  category,
 }) => {
   const { user } = useUser();
   const isAdmin = Array.isArray(user?.role) && user.role.includes("Admin");
 
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+  });
+
+  const formattedDay = new Date(date).toLocaleDateString("en-US", {
+    weekday: "long",
+  });
+
+  const formattedTime = new Date(date).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
-    <div className="bg-gray rounded-lg shadow-md hover:shadow-lg">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
       <Link href={`/products/${id}`}>
-        <div className="relative h-64">
+        <div className="relative h-64 overflow-hidden rounded-t-lg">
           {image && (
             <Image
               src={image}
               width={400}
               height={400}
               alt="img"
-              className="rounded-lg w-full h-full object-cover"
+              className="w-full h-full object-cover"
             />
           )}
+          <div className="absolute top-2 left-2 bg-white text-center p-1 rounded">
+            <p className="text-xs font-semibold">{formattedDate}</p>
+          </div>
         </div>
       </Link>
-      <div className="p-6">
+      <div className="p-4">
         <Link href={`/products/${id}`}>
-          <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <h3 className="text-lg font-semibold mb-1">{title}</h3>
         </Link>
-        <p>{description}</p>
-        <div className="flex gap-x-3">
-          <p>Event Date: {date}</p>
+        <p className="text-gray-500 mb-2">{description}</p>
+        <p className="text-gray-700 mb-2">{formattedDay}, {formattedTime}</p>
+        <p className="text-green-600 font-bold mb-2">${price}</p>
+        <div className="flex items-center justify-between">
+          {isAdmin && <DeleteCartBtn id={id} />}
+          <AddToCartBtn id={id} />
         </div>
-        <p className="font-bold text-emerald-600">${price}</p>
-        {isAdmin && <DeleteCartBtn id={id} />}
-        <AddToCartBtn id={id} />
       </div>
     </div>
   );

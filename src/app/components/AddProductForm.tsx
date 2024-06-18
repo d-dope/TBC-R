@@ -25,7 +25,9 @@ const AddProductForm = () => {
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false); // State to handle success notification
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -36,7 +38,14 @@ const AddProductForm = () => {
 
   const validateForm = (): boolean => {
     const { title, description, price, date, category, picture_url } = formData;
-    if (!title || !description || !price || !date || !category || !picture_url) {
+    if (
+      !title ||
+      !description ||
+      !price ||
+      !date ||
+      !category ||
+      !picture_url
+    ) {
       setError("All fields are required.");
       return false;
     }
@@ -116,7 +125,8 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700">Date</label> {/* Changed from Sale to Date */}
+          <label className="block text-gray-700">Date</label>{" "}
+          {/* Changed from Sale to Date */}
           <input
             type="date"
             name="date" // Changed from sale to date
@@ -127,13 +137,23 @@ const AddProductForm = () => {
         </div>
         <div>
           <label className="block text-gray-700">Category</label>
-          <input
-            type="text"
+          <select
             name="category"
             value={formData.category}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded"
-          />
+          >
+            <option value="">Select a category</option>
+            <option value="Concert">CONCERT</option>
+            <option value="Festival">FESTIVAL</option>
+            <option value="Theatre">THEATRE</option>
+            <option value="Art">ART</option>
+            <option value="Technology">TECHNOLOGY</option>
+            <option value="Sports">SPORT</option>
+            <option value="Other">OTHER</option>
+
+            {/* Add more categories as needed */}
+          </select>
         </div>
         <button
           type="submit"
