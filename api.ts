@@ -6,8 +6,8 @@ export interface User {
   email: string;
 }
 
-export const BASE_URL = "https://tbc-r.vercel.app";
-// export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://tbc-r.vercel.app";
+export const BASE_URL = "http://localhost:3000";
 
 export async function getUsers() {
   const response = await fetch(BASE_URL + "/api/get-users");
@@ -48,10 +48,13 @@ export async function getProducts() {
 
 export async function getBlogs() {
   try {
-    const response = await fetch(BASE_URL + "/api/blogs/get-blogs");
+    const response = await fetch(BASE_URL + "/api/blogs/get-blogs", {
+      cache: 'no-store'
+    });
     if (!response.ok) {
       throw new Error(`HTTP status ${response.status}`);
     }
+    revalidatePath("/");
     const data = await response.json();
     const { products } = data;
     return products?.rows || [];

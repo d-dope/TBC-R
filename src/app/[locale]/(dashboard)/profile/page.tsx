@@ -1,17 +1,12 @@
+import { getSession } from "@auth0/nextjs-auth0";
 import Image from "next/image";
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  const session = await getSession();
   return (
     <div className="sm:flex sm:p-6 sm:mx-auto sm:max-w-7xl sm:justify-between ">
       <div className="bg-primaryColor xl:flex sm:w-96 sm:h-96 sm:rounded-full sm:mt-28 hidden">
-        <Image
-          src={
-            "https://lh3.googleusercontent.com/a/ACg8ocL_5Mlg9dkhU7U26YONTqs463sYBIEP99yW7e_3zeMCWNZrX_Wc=s96-c"
-          }
-          alt=""
-          height={200}
-          width={200}
-        />
+        <Image src={session?.user.picture} alt="" height={200} width={200} />
       </div>
       <form className="">
         <div className="space-y-12 p-3">
@@ -34,6 +29,7 @@ export default function ProfilePage() {
                 <div className="mt-2">
                   <input
                     type="text"
+                    value={session?.user.nickname}
                     name="first-name"
                     id="first-name"
                     autoComplete="given-name"
