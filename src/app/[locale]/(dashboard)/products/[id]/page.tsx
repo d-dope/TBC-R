@@ -12,7 +12,6 @@ interface Product {
   price: string;
   picture_url: string;
   sale: number;
-  // Add other fields if necessary
 }
 
 const ProductDetail = () => {
@@ -48,8 +47,6 @@ const ProductDetail = () => {
       fetchProduct();
     }
   }, [id]);
-
-
 
   if (error) {
     return <div>{error}</div>;
