@@ -2,7 +2,20 @@ import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import DeleteBlogBtn from "./DeleteBlogBtn";
-
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  FacebookMessengerShareButton,
+  TwitterShareButton,
+  ViberShareButton,
+} from "react-share";
+import {
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  TwitterIcon,
+  ViberIcon,
+} from "react-share";
 interface Blog {
   id: number;
   title: string;
@@ -16,6 +29,8 @@ interface SingleBlogViewProps {
 }
 
 export default function SingleBlogView({ blog }: SingleBlogViewProps) {
+  const shareUrl = `https://tbc-r.vercel.app/blogs/${blog.id}`;
+  const title = blog.title;
   return (
     <div className="bg-gray-100 dark:bg-gray-800 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,6 +62,57 @@ export default function SingleBlogView({ blog }: SingleBlogViewProps) {
               <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
                 {blog.description}
               </p>
+              <div className="flex items-center mt-2 gap-x-3">
+                <FacebookShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${blog.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+
+                <EmailShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${blog.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
+
+                <TwitterShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${blog.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+
+                <FacebookMessengerShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${blog.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <FacebookMessengerIcon size={32} round />
+                </FacebookMessengerShareButton>
+
+                <ViberShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${blog.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <ViberIcon size={32} round />
+                </ViberShareButton>
+              </div>
               <DeleteBlogBtn id={blog.id} />
             </div>
           </div>
