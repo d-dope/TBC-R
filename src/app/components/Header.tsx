@@ -1,5 +1,5 @@
 "use client";
-import { Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LocalSwitcher from "./LocalSwitcher";
@@ -12,7 +12,8 @@ import { TicketIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-function classNames(...classes: string[]) {
+// @ts-ignore
+function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -29,8 +30,31 @@ export default function Header() {
     ...(isAdmin ? [{ name: t("Admin"), href: "/admin/add" }] : []),
   ];
 
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlHeader = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) { // if scrolling down and past 100px
+        setShowHeader(false);
+      } else { // if scrolling up
+        setShowHeader(true);
+      }
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlHeader);
+      return () => {
+        window.removeEventListener("scroll", controlHeader);
+      };
+    }
+  }, [lastScrollY]);
+
   return (
-    <Disclosure as="nav" className="bg-white">
+    <Disclosure as="nav" className={classNames("bg-white fixed w-full z-10 transition-transform duration-300", showHeader ? "translate-y-0" : "-translate-y-full")}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
