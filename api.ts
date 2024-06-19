@@ -6,14 +6,13 @@ export interface User {
   email: string;
 }
 
-export const BASE_URL = "https://tbc-r.vercel.app";
+// export const BASE_URL = "https://tbc-r.vercel.app";
 // export const BASE_URL = "http://localhost:3000";
-// export const BASE_URL =
-//   process.env.NODE_ENV === "development"
-//     ? "http://localhost:3000"
-//     : "https://tbc-r.vercel.app";
+export const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://tbc-r.vercel.app";
 // export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 export async function getUsers() {
   const response = await fetch(BASE_URL + "/api/get-users");
   const { users } = await response.json();
