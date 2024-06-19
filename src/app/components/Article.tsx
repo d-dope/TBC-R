@@ -71,7 +71,6 @@ const Article: React.FC<ArticleProps> = ({
         </Link>
         <p className="text-gray-700 mb-2">{formattedDay}</p>
         <p className="text-gray-700 mb-2">{place}</p>
-
         <div className="flex items-center justify-between">
           {isAdmin && <DeleteCartBtn id={id} />}
           <AddToCartBtn id={id} />

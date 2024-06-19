@@ -11,6 +11,7 @@ import Image from "next/image";
 import { TicketIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
+// import Counter from "./Counter";
 
 // @ts-ignore
 function classNames(...classes) {
@@ -52,7 +53,7 @@ export default function Header() {
       };
     }
   }, [lastScrollY]);
-
+// console.log("user", user)
   return (
     <Disclosure as="nav" className={classNames("bg-white fixed w-full z-10 transition-transform duration-300", showHeader ? "translate-y-0" : "-translate-y-full")}>
       {({ open }) => (
@@ -94,9 +95,7 @@ export default function Header() {
                       <div className="relative">
                         <TicketIcon className="h-6 w-6" aria-hidden="true" />
                         {/* Counter */}
-                        <div className="absolute top-0 right-0 transform translate-x-3/4 -translate-y-2/3 flex items-center justify-center h-5 w-5 rounded-full bg-orange-500 text-white text-xs">
-                          2
-                        </div>
+                    {/* <Counter user={user}/> */}
                       </div>
                     </button>
                   </div>

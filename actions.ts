@@ -171,3 +171,14 @@ export async function getProductDetail(id: number) {
   const product = data.singleProd?.rows ? data.singleProd.rows[0] : null;
   return product;
 }
+
+export async function deleteSingleBlog(id: number) {
+  const response = await fetch(BASE_URL + "/api/delete-blog/", {
+    method: "DELETE",
+    body: JSON.stringify({ id }),
+  });
+  revalidatePath("/blogs");
+
+  const data = await response.json();
+  return data.response;
+}

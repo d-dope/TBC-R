@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
-import Sidebar from "./Sidebar"; // Import the Sidebar component
+import Sidebar from "./Sidebar";
 
 interface ArticleType {
   id: number;
@@ -12,7 +12,7 @@ interface ArticleType {
   picture_url: string;
   date: string;
   category: string;
-  place:string;
+  place: string;
 }
 
 interface ArticlesListProps {
@@ -29,9 +29,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
     let filtered = [...products];
 
     if (selectedCategory) {
-      filtered = filtered.filter(
-        (article) => article.category === selectedCategory
-      );
+      filtered = filtered.filter((article) => article.category === selectedCategory);
     }
 
     if (sortOption === "price-asc") {
@@ -39,22 +37,15 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
     } else if (sortOption === "price-desc") {
       filtered = filtered.sort((a, b) => b.price - a.price);
     } else if (sortOption === "date-asc") {
-      filtered = filtered.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
+      filtered = filtered.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     } else if (sortOption === "date-desc") {
-      filtered = filtered.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      );
+      filtered = filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
 
     setSortedArticles(filtered);
   }, [products, sortOption, selectedCategory]);
 
-  const debounce = <T extends unknown[]>(
-    func: (...args: T) => void,
-    delay: number
-  ) => {
+  const debounce = <T extends unknown[]>(func: (...args: T) => void, delay: number) => {
     let timeoutId: NodeJS.Timeout;
     return function (...args: T) {
       clearTimeout(timeoutId);
@@ -96,9 +87,9 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
     <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row">
       <Sidebar
         categories={categories}
-        selectedCategory={selectedCategory} // Pass selectedCategory to Sidebar
+        selectedCategory={selectedCategory}
         onSelectCategory={handleCategoryChange}
-        onClearCategory={handleClearCategory} // Pass handleClearCategory to Sidebar
+        onClearCategory={handleClearCategory}
       />
       <div className="flex-1">
         <div className="flex flex-col md:flex-row justify-between mb-4">
