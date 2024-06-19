@@ -11,6 +11,7 @@ interface FormData {
   date: string; // Changed from sale to date
   category: string;
   picture_url: string;
+  place: string;
 }
 
 const AddProductForm = () => {
@@ -21,11 +22,14 @@ const AddProductForm = () => {
     date: "", // Changed from sale to date
     category: "",
     picture_url: "",
+    place: "",
   });
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false); // State to handle success notification
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -36,7 +40,14 @@ const AddProductForm = () => {
 
   const validateForm = (): boolean => {
     const { title, description, price, date, category, picture_url } = formData;
-    if (!title || !description || !price || !date || !category || !picture_url) {
+    if (
+      !title ||
+      !description ||
+      !price ||
+      !date ||
+      !category ||
+      !picture_url
+    ) {
       setError("All fields are required.");
       return false;
     }
@@ -67,6 +78,7 @@ const AddProductForm = () => {
           date: "", // Changed from sale to date
           category: "",
           picture_url: "",
+          place: "",
         });
         setSuccess(true); // Set success state to true
       } else {
@@ -116,7 +128,8 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700">Date</label> {/* Changed from Sale to Date */}
+          <label className="block text-gray-700">Date</label>{" "}
+          {/* Changed from Sale to Date */}
           <input
             type="date"
             name="date" // Changed from sale to date
@@ -126,14 +139,35 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700">Category</label>
+          <label className="block text-gray-700">Place</label>{" "}
+          {/* Changed from Sale to Date */}
           <input
             type="text"
+            name="place" // Changed from sale to date
+            value={formData.place} // Changed from formData.sale to formData.date
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700">Category</label>
+          <select
             name="category"
             value={formData.category}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded"
-          />
+          >
+            <option value="">Select a category</option>
+            <option value="Concert">CONCERT</option>
+            <option value="Festival">FESTIVAL</option>
+            <option value="Theatre">THEATRE</option>
+            <option value="Art">ART</option>
+            <option value="Technology">TECHNOLOGY</option>
+            <option value="Sports">SPORT</option>
+            <option value="Other">OTHER</option>
+
+            {/* Add more categories as needed */}
+          </select>
         </div>
         <button
           type="submit"

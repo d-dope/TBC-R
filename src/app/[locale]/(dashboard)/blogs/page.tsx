@@ -5,7 +5,7 @@ export default async function Blogs() {
   const blogs = await getBlogs();
   return (
     <>
-      <section id="home" className="flex justify-center mt-7"></section>
+      <section id="home" className="flex justify-center"></section>
       <div className="">
         <BlogList blogs={blogs} />
       </div>

@@ -12,6 +12,7 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import PartnerCompanies from "../components/PartnerCompanies";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -227,7 +228,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-primaryColor">
+    <div className="">
       <Header />
       <main className="relative isolate">
         {/* Background */}
@@ -243,11 +244,10 @@ export default function Home() {
             }}
           />
         </div>
-
         {/* Header section */}
         <div className="px-6 pt-14 lg:px-8">
           <div className="mx-auto max-w-2xl pt-24 text-center sm:pt-40">
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">
               We love creators
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
@@ -448,7 +448,7 @@ export default function Home() {
             ))}
           </ul>
         </div>
-
+        <PartnerCompanies />
         {/* CTA section */}
         <div className="relative isolate -z-10 mt-32 sm:mt-40">
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

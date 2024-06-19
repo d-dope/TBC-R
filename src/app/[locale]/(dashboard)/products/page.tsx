@@ -8,7 +8,6 @@ export default async function Products() {
   const products = await getProducts();
   return (
     <main>
-      <CTA />
       <HeroSection products={products} />
     </main>
   );

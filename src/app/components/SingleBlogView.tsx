@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import DeleteBlogBtn from "./DeleteBlogBtn";
 
 interface Blog {
   id: number;
@@ -46,6 +47,7 @@ export default function SingleBlogView({ blog }: SingleBlogViewProps) {
               <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
                 {blog.description}
               </p>
+              <DeleteBlogBtn id={blog.id} />
             </div>
           </div>
         </div>

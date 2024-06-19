@@ -1,5 +1,5 @@
 "use client";
-import { Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LocalSwitcher from "./LocalSwitcher";
@@ -11,8 +11,10 @@ import Image from "next/image";
 import { TicketIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
+// import Counter from "./Counter";
 
-function classNames(...classes: string[]) {
+// @ts-ignore
+function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -29,8 +31,31 @@ export default function Header() {
     ...(isAdmin ? [{ name: t("Admin"), href: "/admin/add" }] : []),
   ];
 
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlHeader = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) { // if scrolling down and past 100px
+        setShowHeader(false);
+      } else { // if scrolling up
+        setShowHeader(true);
+      }
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlHeader);
+      return () => {
+        window.removeEventListener("scroll", controlHeader);
+      };
+    }
+  }, [lastScrollY]);
+// console.log("user", user)
   return (
-    <Disclosure as="nav" className="bg-white">
+    <Disclosure as="nav" className={classNames("bg-white fixed w-full z-10 transition-transform duration-300", showHeader ? "translate-y-0" : "-translate-y-full")}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -70,9 +95,7 @@ export default function Header() {
                       <div className="relative">
                         <TicketIcon className="h-6 w-6" aria-hidden="true" />
                         {/* Counter */}
-                        <div className="absolute top-0 right-0 transform translate-x-3/4 -translate-y-2/3 flex items-center justify-center h-5 w-5 rounded-full bg-orange-500 text-white text-xs">
-                          2
-                        </div>
+                    {/* <Counter user={user}/> */}
                       </div>
                     </button>
                   </div>
@@ -84,8 +107,8 @@ export default function Header() {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={user?.picture || ''}
-                        alt=""
+                        src={user?.picture || ""}
+                        alt="image"
                         height={100}
                         width={100}
                       />
@@ -174,7 +197,7 @@ export default function Header() {
                 <div className="flex-shrink-0">
                   <Image
                     className="h-10 w-10 rounded-full"
-                    src={user?.picture || ''}
+                    src={user?.picture || ""}
                     alt=""
                     height={100}
                     width={100}
