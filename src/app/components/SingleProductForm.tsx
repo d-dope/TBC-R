@@ -1,6 +1,38 @@
 import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import {
+  VKShareButton,
+  MailruShareButton,
+  OKShareButton,
+  FacebookShareButton,
+} from "react-share";
+import {
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  GabIcon,
+  HatenaIcon,
+  InstapaperIcon,
+  LineIcon,
+  LinkedinIcon,
+  LivejournalIcon,
+  MailruIcon,
+  OKIcon,
+  PinterestIcon,
+  PocketIcon,
+  RedditIcon,
+  TelegramIcon,
+  TumblrIcon,
+  TwitterIcon,
+  ViberIcon,
+  VKIcon,
+  WeiboIcon,
+  WhatsappIcon,
+  WorkplaceIcon,
+  XIcon,
+} from "react-share";
+import { BASE_URL } from "../../../api";
 interface Product {
   id: number;
   title: string;
@@ -16,11 +48,25 @@ interface SingleProductFormProps {
 }
 
 export default function SingleProductForm({ product }: SingleProductFormProps) {
+  const shareUrl = `https://tbc-r.vercel.app/products/${product.id}`;
+  const title = product.title;
   return (
     <div className="bg-gray-100 dark:bg-gray-800 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
+            <FacebookShareButton
+              // url={`${BASE_URL}/products/${product.id}`}
+              title={title}
+              url={shareUrl}
+              // @ts-ignore
+              image={`${product.picture_url}`}
+              className="Demo__some-network__share-button"
+            >
+              <OKIcon size={320} round />
+            </FacebookShareButton>
+            {/* <VKIcon size={32} round={true} /> */}
+            {/* <OKIcon size={32} round={true} /> */}
             <div className="sm:h-[300px] h-[200px] rounded-lg  dark:bg-gray-700 mb-4">
               <Zoom>
                 <Image

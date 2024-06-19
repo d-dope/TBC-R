@@ -23,6 +23,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-medium-image-zoom": "^5.2.4",
+    "react-share": "^5.1.0",
     "sharp": "^0.33.3"
   },
   "devDependencies": {
