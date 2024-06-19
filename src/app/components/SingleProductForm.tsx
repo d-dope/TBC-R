@@ -65,8 +65,7 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
             >
               <OKIcon size={320} round />
             </FacebookShareButton>
-            {/* <VKIcon size={32} round={true} /> */}
-            {/* <OKIcon size={32} round={true} /> */}
+
             <div className="sm:h-[300px] h-[200px] rounded-lg  dark:bg-gray-700 mb-4">
               <Zoom>
                 <Image
