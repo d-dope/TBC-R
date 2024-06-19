@@ -2,35 +2,18 @@ import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import {
-  VKShareButton,
-  MailruShareButton,
-  OKShareButton,
+  EmailShareButton,
   FacebookShareButton,
+  FacebookMessengerShareButton,
+  TwitterShareButton,
+  ViberShareButton,
 } from "react-share";
 import {
   EmailIcon,
   FacebookIcon,
   FacebookMessengerIcon,
-  GabIcon,
-  HatenaIcon,
-  InstapaperIcon,
-  LineIcon,
-  LinkedinIcon,
-  LivejournalIcon,
-  MailruIcon,
-  OKIcon,
-  PinterestIcon,
-  PocketIcon,
-  RedditIcon,
-  TelegramIcon,
-  TumblrIcon,
   TwitterIcon,
   ViberIcon,
-  VKIcon,
-  WeiboIcon,
-  WhatsappIcon,
-  WorkplaceIcon,
-  XIcon,
 } from "react-share";
 import { BASE_URL } from "../../../api";
 interface Product {
@@ -51,21 +34,10 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
   const shareUrl = `https://tbc-r.vercel.app/products/${product.id}`;
   const title = product.title;
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 py-8">
+    <div className="bg-gray-100 dark:bg-gray-800 py-32 ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
-            <FacebookShareButton
-              // url={`${BASE_URL}/products/${product.id}`}
-              title={title}
-              url={shareUrl}
-              // @ts-ignore
-              image={`${product.picture_url}`}
-              className="Demo__some-network__share-button"
-            >
-              <OKIcon size={320} round />
-            </FacebookShareButton>
-
             <div className="sm:h-[300px] h-[200px] rounded-lg  dark:bg-gray-700 mb-4">
               <Zoom>
                 <Image
@@ -119,33 +91,56 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
               <span className="font-bold text-gray-700 dark:text-gray-300">
                 Select Color:
               </span>
-              <div className="flex items-center mt-2">
-                <button className="w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-200 mr-2"></button>
-                <button className="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
-                <button className="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
-                <button className="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
-              </div>
-            </div>
-            <div className="mb-4">
-              <span className="font-bold text-gray-700 dark:text-gray-300">
-                Select Size:
-              </span>
-              <div className="flex items-center mt-2">
-                <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                  S
-                </button>
-                <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                  M
-                </button>
-                <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                  L
-                </button>
-                <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                  XL
-                </button>
-                <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
-                  XXL
-                </button>
+              <div className="flex items-center mt-2 gap-x-3">
+                <FacebookShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${product.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+
+                <EmailShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${product.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
+
+                <TwitterShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${product.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+
+                <FacebookMessengerShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${product.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <FacebookMessengerIcon size={32} round />
+                </FacebookMessengerShareButton>
+
+                <ViberShareButton
+                  title={title}
+                  url={shareUrl}
+                  // @ts-ignore
+                  image={`${product.picture_url}`}
+                  className="Demo__some-network__share-button"
+                >
+                  <ViberIcon size={32} round />
+                </ViberShareButton>
               </div>
             </div>
             <div>
