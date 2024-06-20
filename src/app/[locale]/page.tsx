@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import Image from "next/image";
 import PartnerCompanies from "../components/PartnerCompanies";
 import Carousel from "../components/Carousel";
+import EventCarousel from "../components/EventCarousel";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -312,6 +313,7 @@ export default function Home() {
             </dl>
           </div>
         </div>
+        <EventCarousel />
 
         {/* Blog section */}
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8 ">
