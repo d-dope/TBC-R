@@ -52,6 +52,7 @@ export default function Header() {
         window.removeEventListener("scroll", controlHeader);
       };
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
 // console.log("user", user)
   return (

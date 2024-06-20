@@ -67,7 +67,7 @@ export const POST = async (request: any) => {
       },
     },
     success_url: `${BASE_URL}/success`,
-    cancel_url: `${BASE_URL}/profile`,
+    cancel_url: `${BASE_URL}/cancel`,
   });
 
   console.log("Stripe Session:", session);
