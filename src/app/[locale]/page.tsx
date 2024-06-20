@@ -13,6 +13,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import PartnerCompanies from "../components/PartnerCompanies";
+import Carousel from "../components/Carousel";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -257,7 +258,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-
+        <Carousel />
         {/* Content section */}
         <div className="mx-auto mt-20 max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
