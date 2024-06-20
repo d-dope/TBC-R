@@ -182,3 +182,7 @@ export async function deleteSingleBlog(id: number) {
   const data = await response.json();
   return data.response;
 }
+
+
+
+
