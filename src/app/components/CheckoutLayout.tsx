@@ -1,3 +1,5 @@
+// checkoutLayout.tsx
+
 "use client";
 
 import { FC, useEffect, useState } from "react";
@@ -7,6 +9,7 @@ import {
   resetCart,
 } from "../../../actions";
 import Image from "next/image";
+import { BASE_URL } from "../../../api";
 
 export const dynamic = "force-dynamic";
 
@@ -20,11 +23,13 @@ interface Product {
   price: number; // Initially price might be a string
 }
 
-interface iProducts {
+interface CheckoutLayoutProps {
   products: Product[];
+  sessionId: string;
+  sessionEmail: string;
 }
 
-const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
+const CheckoutLayout: FC<CheckoutLayoutProps> = ({ products: initialProducts, sessionId, sessionEmail }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   console.log(products);
@@ -57,8 +62,6 @@ const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
     fetchProducts();
   }, [initialProducts]);
 
-
-
   const totalQuantity = products.reduce(
     (acc, product) => acc + product.quantity,
     0
@@ -67,6 +70,25 @@ const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
     (acc, product) => acc + product.quantity * product.price,
     0
   );
+
+  const checkout = async () => {
+    await fetch(BASE_URL +"/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ products, sessionId, sessionEmail }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.url) {
+          window.location.href = response.url;
+        }
+      })
+      .catch((error) => {
+        console.error("Error during checkout:", error);
+      });
+  };
 
   return (
     <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-100 p-8 text-gray-800">
@@ -134,6 +156,9 @@ const CheckoutLayout: FC<iProducts> = ({ products: initialProducts }) => {
           onClick={() => resetCart(products[0]?.auth_id)}
         >
           RESET
+        </button>
+        <button onClick={checkout} className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          Buy Now
         </button>
       </div>
     </section>
