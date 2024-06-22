@@ -29,7 +29,11 @@ interface CheckoutLayoutProps {
   sessionEmail: string;
 }
 
-const CheckoutLayout: FC<CheckoutLayoutProps> = ({ products: initialProducts, sessionId, sessionEmail }) => {
+const CheckoutLayout: FC<CheckoutLayoutProps> = ({
+  products: initialProducts,
+  sessionId,
+  sessionEmail,
+}) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   console.log(products);
@@ -72,7 +76,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({ products: initialProducts, se
   );
 
   const checkout = async () => {
-    await fetch(BASE_URL +"/api/checkout", {
+    await fetch(BASE_URL + "/api/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +102,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({ products: initialProducts, se
         <div className="mt-4">
           {products.map((product, index) => (
             <div
-              key={index}
+              key={`indexxxxxxxx-generate-${index}`}
               className="flex items-center justify-between bg-white rounded-lg shadow-md p-4 mb-4"
             >
               <Image
@@ -157,7 +161,10 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({ products: initialProducts, se
         >
           RESET
         </button>
-        <button onClick={checkout} className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+        <button
+          onClick={checkout}
+          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        >
           Buy Now
         </button>
       </div>

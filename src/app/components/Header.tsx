@@ -36,9 +36,11 @@ export default function Header() {
 
   const controlHeader = () => {
     if (typeof window !== "undefined") {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) { // if scrolling down and past 100px
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        // if scrolling down and past 100px
         setShowHeader(false);
-      } else { // if scrolling up
+      } else {
+        // if scrolling up
         setShowHeader(true);
       }
       setLastScrollY(window.scrollY);
@@ -52,14 +54,20 @@ export default function Header() {
         window.removeEventListener("scroll", controlHeader);
       };
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
-// console.log("user", user)
+  // console.log("user", user)
   return (
-    <Disclosure as="nav" className={classNames("bg-white fixed w-full z-10 transition-transform duration-300", showHeader ? "translate-y-0" : "-translate-y-full")}>
+    <Disclosure
+      as="nav"
+      className={classNames(
+        "bg-white fixed w-full z-10 transition-transform duration-300",
+        showHeader ? "translate-y-0" : "-translate-y-full"
+      )}
+    >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
@@ -75,7 +83,7 @@ export default function Header() {
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => (
                     <a
-                      key={item.name}
+                      key={`itemmmmmmmmmmmmmm-generate-${item.name}`}
                       href={item.href}
                       className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-900 hover:border-gray-300 hover:text-gray-700"
                     >
@@ -96,7 +104,7 @@ export default function Header() {
                       <div className="relative">
                         <TicketIcon className="h-6 w-6" aria-hidden="true" />
                         {/* Counter */}
-                    {/* <Counter user={user}/> */}
+                        {/* <Counter user={user}/> */}
                       </div>
                     </button>
                   </div>
@@ -184,7 +192,7 @@ export default function Header() {
             <div className="space-y-1 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
-                  key={item.name}
+                  key={`itemmmmmmmmmmmmmmmmm-generate-${item.name}`}
                   as="a"
                   href={item.href}
                   className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"

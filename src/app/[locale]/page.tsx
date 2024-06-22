@@ -15,6 +15,7 @@ import Image from "next/image";
 import PartnerCompanies from "../components/PartnerCompanies";
 import Carousel from "../components/Carousel";
 import EventCarousel from "../components/EventCarousel";
+import CTA from "../components/CTAsection";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -232,6 +233,7 @@ export default function Home() {
   return (
     <div className="">
       <Header />
+      <CTA />
       <main className="relative isolate">
         {/* Background */}
         <div
@@ -299,7 +301,7 @@ export default function Home() {
             <dl className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mt-28 lg:grid-cols-4">
               {stats.map((stat, statIdx) => (
                 <div
-                  key={statIdx}
+                  key={`label-generate-${statIdx}`}
                   className="flex flex-col-reverse gap-y-3 border-l border-white/20 pl-6"
                 >
                   <dt className="text-base leading-7 text-gray-300">
@@ -326,9 +328,9 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {blogPosts.map((post) => (
+            {blogPosts.map((post, index) => (
               <article
-                key={post.id}
+                key={`post-generate-${index}`}
                 className=" cursor-pointer hover:opacity-80 transition-opacity relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
               >
                 <Image
@@ -389,7 +391,10 @@ export default function Home() {
           </div>
           <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
             {values.map((value) => (
-              <div key={value.name} className="relative pl-9">
+              <div
+                key={`value-generate-${value.name}`}
+                className="relative pl-9"
+              >
                 <dt className="inline font-semibold text-white">
                   <value.icon
                     className="absolute left-1 top-1 h-5 w-5 text-primaryColor"
@@ -430,7 +435,7 @@ export default function Home() {
             className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4"
           >
             {team.map((person) => (
-              <li key={person.name}>
+              <li key={`person-generate-${person.name}`}>
                 <Image
                   className="aspect-[14/13] w-full rounded-2xl object-cover"
                   src={person.imageUrl}
@@ -452,7 +457,6 @@ export default function Home() {
           </ul>
         </div>
         <PartnerCompanies />
-        {/* CTA section */}
         <div className="relative isolate -z-10 mt-32 sm:mt-40">
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="mx-auto flex max-w-2xl flex-col gap-16 bg-white/5 px-6 py-16 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
@@ -476,7 +480,10 @@ export default function Home() {
                   className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 text-base leading-7 text-white sm:grid-cols-2"
                 >
                   {benefits.map((benefit) => (
-                    <li key={benefit} className="flex gap-x-3">
+                    <li
+                      key={`benefit-generate-${benefit}`}
+                      className="flex gap-x-3"
+                    >
                       <CheckCircleIcon
                         className="h-7 w-5 flex-none"
                         aria-hidden="true"

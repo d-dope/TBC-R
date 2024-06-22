@@ -42,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               </button>
             </li>
             {categories.map((category) => (
-              <li key={category}>
+              <li key={`cate-generate-${category}`}>
                 <button
                   onClick={() => {
                     onSelectCategory(category);
@@ -74,7 +74,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             </button>
           </li>
           {categories.map((category) => (
-            <li key={category}>
+            <li key={`category-generate-${category}`}>
               <button
                 onClick={() => onSelectCategory(category)}
                 className={`w-full text-left px-4 py-2 rounded-md focus:outline-none ${

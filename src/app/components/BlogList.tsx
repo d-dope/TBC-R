@@ -67,7 +67,7 @@ export default function BlogList({ blogs }: BlogListProps) {
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {filteredBlogs.map((blog) => (
-            <div key={blog.id}>
+            <div key={`blog-generate-${blog.id}`}>
               <Blog
                 id={blog.id}
                 title={blog.title}
