@@ -11,7 +11,6 @@ import Image from "next/image";
 import { TicketIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
-// import Counter from "./Counter";
 
 // @ts-ignore
 function classNames(...classes) {
@@ -27,7 +26,7 @@ export default function Header() {
     { name: t("Products"), href: "/products" },
     { name: t("Blogs"), href: "/blogs" },
     { name: t("Contact"), href: "/contact" },
-    { name: t("Profile"), href: "/profile" },
+    ...(user ? [{ name: t("Profile"), href: "/profile" }] : []),
     ...(isAdmin ? [{ name: t("Admin"), href: "/admin/add" }] : []),
   ];
 
@@ -56,7 +55,7 @@ export default function Header() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
-  // console.log("user", user)
+
   return (
     <Disclosure
       as="nav"
@@ -83,7 +82,7 @@ export default function Header() {
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => (
                     <a
-                      key={`itemmmmmmmmmmmmmm-generate-${item.name}`}
+                      key={`item-generate-${item.name}`}
                       href={item.href}
                       className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-900 hover:border-gray-300 hover:text-gray-700"
                     >
@@ -94,21 +93,20 @@ export default function Header() {
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <LocalSwitcher />
-                <Link href="/cart">
-                  <div className="relative">
-                    <button
-                      type="button"
-                      className="relative ml-3 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
-                    >
-                      <span className="sr-only">View cart</span>
-                      <div className="relative">
-                        <TicketIcon className="h-6 w-6" aria-hidden="true" />
-                        {/* Counter */}
-                        {/* <Counter user={user}/> */}
-                      </div>
-                    </button>
-                  </div>
-                </Link>
+                <button
+                  type="button"
+                  className="relative ml-3 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+                  onClick={() => {
+                    if (!user) {
+                      window.location.href = "/api/auth/login";
+                    } else {
+                      window.location.href = "/cart";
+                    }
+                  }}
+                >
+                  <span className="sr-only">View cart</span>
+                  <TicketIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primaryColor">
@@ -117,7 +115,7 @@ export default function Header() {
                       <Image
                         className="h-8 w-8 rounded-full"
                         src={user?.picture || ""}
-                        alt="image"
+                        alt="User profile picture"
                         height={100}
                         width={100}
                       />
@@ -132,7 +130,7 @@ export default function Header() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -157,19 +155,21 @@ export default function Header() {
                           </a>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
+                      {isAdmin && (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/admin/add"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Add Product
+                            </a>
+                          )}
+                        </Menu.Item>
+                      )}
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -192,7 +192,7 @@ export default function Header() {
             <div className="space-y-1 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
-                  key={`itemmmmmmmmmmmmmmmmm-generate-${item.name}`}
+                  key={`item-generate-${item.name}`}
                   as="a"
                   href={item.href}
                   className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
@@ -207,28 +207,33 @@ export default function Header() {
                   <Image
                     className="h-10 w-10 rounded-full"
                     src={user?.picture || ""}
-                    alt=""
+                    alt="User profile picture"
                     height={100}
                     width={100}
                   />
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">
-                    Tom Cook
+                    {user?.nickname || "User"}
                   </div>
                   <div className="text-sm font-medium text-gray-500">
-                    tom@example.com
+                    {user?.email}
                   </div>
                 </div>
-                <Link href="/cart">
-                  <button
-                    type="button"
-                    className="relative ml-28 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
-                  >
-                    <span className="sr-only">View cart</span>
-                    <TicketIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-                </Link>
+                <button
+                  type="button"
+                  className="relative ml-8 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+                  onClick={() => {
+                    if (!user) {
+                      window.location.href = "/api/auth/login";
+                    } else {
+                      window.location.href = "/cart";
+                    }
+                  }}
+                >
+                  <span className="sr-only">View cart</span>
+                  <TicketIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
               </div>
               <div className="mt-3 space-y-1">
                 <Disclosure.Button
@@ -244,13 +249,15 @@ export default function Header() {
                 >
                   <ThemeSwitch />
                 </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                >
-                  Sign out
-                </Disclosure.Button>
+                {isAdmin && (
+                  <Disclosure.Button
+                    as="a"
+                    href="/admin/add"
+                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                  >
+                    Add Product
+                  </Disclosure.Button>
+                )}
               </div>
             </div>
           </Disclosure.Panel>

@@ -22,7 +22,7 @@ export default function Auth() {
       <div>
         <button
           onClick={handleLogout}
-          className=" leading-7 hover:bg-gray-50 text-sm text-gray-700"
+          className=" leading-7 text-sm text-gray-700"
         >
           Log Out
         </button>
