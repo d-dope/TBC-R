@@ -9,7 +9,6 @@ import Auth from "./Auth";
 import imageLogo from "../../../public/assets/Untitlemebbbbbbbbbbbd-removebg-preview.png";
 import Image from "next/image";
 import { TicketIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 // @ts-ignore
@@ -21,6 +20,7 @@ export default function Header() {
   const { user } = useUser();
   const isAdmin = Array.isArray(user?.role) && user.role.includes("Admin");
   const t = useTranslations("Navigation");
+
   const navigation = [
     { name: t("home"), href: "/" },
     { name: t("Products"), href: "/products" },
@@ -32,6 +32,7 @@ export default function Header() {
 
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [currentPath, setCurrentPath] = useState("");
 
   const controlHeader = () => {
     if (typeof window !== "undefined") {
@@ -48,6 +49,7 @@ export default function Header() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
       window.addEventListener("scroll", controlHeader);
       return () => {
         window.removeEventListener("scroll", controlHeader);
@@ -84,7 +86,12 @@ export default function Header() {
                     <a
                       key={`item-generate-${item.name}`}
                       href={item.href}
-                      className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-900 hover:border-gray-300 hover:text-gray-700"
+                      className={classNames(
+                        "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
+                        currentPath === item.href
+                          ? "border-primaryColor text-gray-900"
+                          : "border-transparent text-gray-900 hover:border-gray-300 hover:text-gray-700"
+                      )}
                     >
                       {item.name}
                     </a>
@@ -109,16 +116,33 @@ export default function Header() {
                 </button>
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primaryColor">
+                    <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <Image
-                        className="h-8 w-8 rounded-full"
-                        src={user?.picture || ""}
-                        alt="User profile picture"
-                        height={100}
-                        width={100}
-                      />
+                      {user ? (
+                        <Image
+                          className="h-8 w-8 rounded-full"
+                          src={user.picture || ""}
+                          alt="User profile picture"
+                          height={100}
+                          width={100}
+                        />
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="0.9"
+                          stroke="black"
+                          className="h-10 w-10 opacity-40 rounded-full focus:outline-none hover:opacity-65"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                          />
+                        </svg>
+                      )}
                     </Menu.Button>
                   </div>
                   <Transition
@@ -136,7 +160,7 @@ export default function Header() {
                           <a
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "block px-9 py-2 text-sm text-gray-700"
                             )}
                           >
                             <Auth />
@@ -148,7 +172,7 @@ export default function Header() {
                           <a
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 cursor-pointer py-2 text-sm text-gray-700"
+                              "block px-14 cursor-pointer py-2 text-sm text-gray-700"
                             )}
                           >
                             <ThemeSwitch />
@@ -195,7 +219,12 @@ export default function Header() {
                   key={`item-generate-${item.name}`}
                   as="a"
                   href={item.href}
-                  className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                  className={classNames(
+                    "block border-l-4 py-2 pl-3 pr-4 text-base font-medium",
+                    currentPath === item.href
+                      ? "border-primaryColor text-gray-900 bg-gray-50"
+                      : "border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                  )}
                 >
                   {item.name}
                 </Disclosure.Button>
