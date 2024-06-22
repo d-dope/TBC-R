@@ -29,7 +29,9 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
     let filtered = [...products];
 
     if (selectedCategory) {
-      filtered = filtered.filter((article) => article.category === selectedCategory);
+      filtered = filtered.filter(
+        (article) => article.category === selectedCategory
+      );
     }
 
     if (sortOption === "price-asc") {
@@ -37,15 +39,22 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
     } else if (sortOption === "price-desc") {
       filtered = filtered.sort((a, b) => b.price - a.price);
     } else if (sortOption === "date-asc") {
-      filtered = filtered.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      filtered = filtered.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
     } else if (sortOption === "date-desc") {
-      filtered = filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      filtered = filtered.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
     }
 
     setSortedArticles(filtered);
   }, [products, sortOption, selectedCategory]);
 
-  const debounce = <T extends unknown[]>(func: (...args: T) => void, delay: number) => {
+  const debounce = <T extends unknown[]>(
+    func: (...args: T) => void,
+    delay: number
+  ) => {
     let timeoutId: NodeJS.Timeout;
     return function (...args: T) {
       clearTimeout(timeoutId);
@@ -115,7 +124,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {sortedArticles.map((article, index) => (
             <Article
-              key={index}
+              key={`index-generate-${index}`}
               title={article.title}
               id={article.id}
               image={article.picture_url}

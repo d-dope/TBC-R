@@ -79,7 +79,10 @@ export default function UsersPage() {
       </form>
 
       {users.map((user: User) => (
-        <div className="flex justify-between border-b" key={user.id}>
+        <div
+          className="flex justify-between border-b"
+          key={`userssss-generate-${user.id}`}
+        >
           <div className="flex gap-4 border-b">
             <h1>{user.name}</h1>
             <p>{user.email}</p>

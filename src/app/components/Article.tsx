@@ -44,6 +44,15 @@ const Article: React.FC<ArticleProps> = ({
     minute: "2-digit",
   });
 
+  const handleAddToCart = () => {
+    if (!user) {
+      window.location.href = "/api/auth/login";
+    } else {
+      // Add the item to the cart
+      // You can call the add to cart logic here
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
       <Link href={`/products/${id}`}>
@@ -73,7 +82,12 @@ const Article: React.FC<ArticleProps> = ({
         <p className="text-gray-700 mb-2">{place}</p>
         <div className="flex items-center justify-between">
           {isAdmin && <DeleteCartBtn id={id} />}
-          <AddToCartBtn id={id} />
+          <button
+            onClick={handleAddToCart}
+            className="bg-blue-500 text-white px-3 py-1 rounded"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

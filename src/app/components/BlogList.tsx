@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Blog from "./Blog";
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface BlogType {
   id: number;
@@ -18,6 +19,8 @@ interface BlogListProps {
 export default function BlogList({ blogs }: BlogListProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredBlogs, setFilteredBlogs] = useState<BlogType[]>(blogs);
+  const { user } = useUser();
+  const isAdmin = Array.isArray(user?.role) && user.role.includes("Admin");
 
   const debounce = <T extends unknown[]>(
     func: (...args: T) => void,
@@ -58,16 +61,18 @@ export default function BlogList({ blogs }: BlogListProps) {
             className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
           />
         </div>
-        <div>
-          <Link href="/admin/add-blog">
-            <button className="p-3 bg-primaryColor rounded text-white">
-              Add Blog
-            </button>
-          </Link>
-        </div>
+        {isAdmin && (
+          <div>
+            <Link href="/admin/add-blog">
+              <button className="p-3 bg-primaryColor rounded text-white">
+                Add Blog
+              </button>
+            </Link>
+          </div>
+        )}
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {filteredBlogs.map((blog) => (
-            <div key={blog.id}>
+            <div key={`blog-generate-${blog.id}`}>
               <Blog
                 id={blog.id}
                 title={blog.title}
