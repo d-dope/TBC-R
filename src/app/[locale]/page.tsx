@@ -31,39 +31,39 @@ const stats = [
 ];
 const values = [
   {
-    name: "Be world-class.",
+    name: "Flexible Find",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.",
+      "Search events by date, category, or location to find exactly what interests you.",
     icon: RocketLaunchIcon,
   },
   {
-    name: "Take responsibility.",
+    name: "RSVP securely",
     description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
+      "Securely RSVP to events with just a few clicks, or purchase tickets hassle-free.",
     icon: HandRaisedIcon,
   },
   {
-    name: "Be supportive.",
+    name: "Details",
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus voluptas blanditiis et.",
+      "Get comprehensive event information at a glance, including ticket prices, venue details, and more.",
     icon: UserGroupIcon,
   },
   {
-    name: "Always learning.",
+    name: "New Connections",
     description:
-      "Iure sed ab. Aperiam optio placeat dolor facere. Officiis pariatur eveniet atque et dolor.",
+      "Connect with other attendees, share experiences, and build a community around your favorite events.",
     icon: AcademicCapIcon,
   },
   {
-    name: "Share everything you know.",
+    name: "Mobile-friendly Features.",
     description:
-      "Laudantium tempora sint ut consectetur ratione. Ut illum ut rem numquam fuga delectus.",
+      "Access our platform on the go with our mobile app for iOS and Android.",
     icon: SparklesIcon,
   },
   {
-    name: "Enjoy downtime.",
+    name: "Stay Informed",
     description:
-      "Culpa dolorem voluptatem velit autem rerum qui et corrupti. Quibusdam quo placeat.",
+      "Receive personalized event recommendations and updates so you're always in the know.",
     icon: SunIcon,
   },
 ];
@@ -234,7 +234,7 @@ export default function Home() {
     <div className="">
       <Header />
       <CTA />
-      <main className="relative isolate">
+      <main className="">
         {/* Background */}
         <div
           className="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
@@ -248,56 +248,25 @@ export default function Home() {
             }}
           />
         </div>
+
         {/* Header section */}
-        <div className="px-6 pt-14 lg:px-8">
-          <div className="mx-auto max-w-2xl pt-24 text-center sm:pt-40">
-            <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">
+        <div className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row  mt-10 container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl pt-4 text-center">
+            <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl font-sans">
               We love creators
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-300 font-sans">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
               lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
               fugiat aliqua.
             </p>
           </div>
+          <Carousel />
         </div>
-        <Carousel />
+
         {/* Content section */}
-        <div className="mx-auto mt-20 max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 lg:max-w-none lg:grid-cols-2">
-              <div>
-                <p>
-                  Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget
-                  risus enim. Mattis mauris semper sed amet vitae sed turpis id.
-                  Id dolor praesent donec est. Odio penatibus risus viverra
-                  tellus varius sit neque erat velit. Faucibus commodo massa
-                  rhoncus, volutpat. Dignissim sed eget risus enim. Mattis
-                  mauris semper sed amet vitae sed turpis id.
-                </p>
-                <p className="mt-8">
-                  Et vitae blandit facilisi magna lacus commodo. Vitae sapien
-                  duis odio id et. Id blandit molestie auctor fermentum
-                  dignissim. Lacus diam tincidunt ac cursus in vel. Mauris
-                  varius vulputate et ultrices hac adipiscing egestas.
-                </p>
-              </div>
-              <div>
-                <p>
-                  Erat pellentesque dictumst ligula porttitor risus eget et
-                  eget. Ultricies tellus felis id dignissim eget. Est augue
-                  maecenas risus nulla ultrices congue nunc tortor. Enim et
-                  nesciunt doloremque nesciunt voluptate.
-                </p>
-                <p className="mt-8">
-                  Et vitae blandit facilisi magna lacus commodo. Vitae sapien
-                  duis odio id et. Id blandit molestie auctor fermentum
-                  dignissim. Lacus diam tincidunt ac cursus in vel. Mauris
-                  varius vulputate et ultrices hac adipiscing egestas. Iaculis
-                  convallis ac tempor et ut. Ac lorem vel integer orci.
-                </p>
-              </div>
-            </div>
+        <div className="mt-20  container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl lg:mx-0 lg:max-w-none">
             <dl className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mt-28 lg:grid-cols-4">
               {stats.map((stat, statIdx) => (
                 <div
@@ -316,6 +285,37 @@ export default function Home() {
           </div>
         </div>
         <EventCarousel />
+
+        {/* Values section */}
+        <div className="mt-32 sm:mt-40 container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto  lg:mx-0">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Our values
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+              impedit perferendis suscipit eaque, iste dolor cupiditate
+              blanditiis.
+            </p>
+          </div>
+          <dl className="mx-auto mt-16 grid  grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2  lg:gap-x-16">
+            {values.map((value) => (
+              <div
+                key={`value-generate-${value.name}`}
+                className="relative pl-9"
+              >
+                <dt className="inline font-semibold text-white">
+                  <value.icon
+                    className="absolute left-1 top-1 h-5 w-5 text-primaryColor"
+                    aria-hidden="true"
+                  />
+                  {value.name}
+                </dt>{" "}
+                <dd className="inline">{value.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
         {/* Blog section */}
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8 ">
@@ -375,37 +375,6 @@ export default function Home() {
               </article>
             ))}
           </div>
-        </div>
-
-        {/* Values section */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Our values
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate
-              blanditiis.
-            </p>
-          </div>
-          <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
-            {values.map((value) => (
-              <div
-                key={`value-generate-${value.name}`}
-                className="relative pl-9"
-              >
-                <dt className="inline font-semibold text-white">
-                  <value.icon
-                    className="absolute left-1 top-1 h-5 w-5 text-primaryColor"
-                    aria-hidden="true"
-                  />
-                  {value.name}
-                </dt>{" "}
-                <dd className="inline">{value.description}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         {/* Image section */}
