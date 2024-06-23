@@ -2,11 +2,11 @@ const Loading = () => {
   return (
     <div
       role="status"
-      className=" text-xs font-medium text-blue-800 text-center p-0.5 leading-none rounded-full px-2  absolute -translate-y-1/2 -translate-x-1/2 top-2/4 left-1/2"
+      className=" text-xs font-medium text-primaryColor text-center p-0.5 leading-none rounded-full px-2  absolute -translate-y-1/2 -translate-x-1/2 top-2/4 left-1/2"
     >
       <svg
         aria-hidden="true"
-        className="w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+        className="w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-primaryColor"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

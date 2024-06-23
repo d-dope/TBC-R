@@ -44,7 +44,7 @@ export default function EventCarousel({ products }: any) {
           <Link href={`/products/${product.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
               <Image
-                className="object-contain h-44 w-full transition-transform duration-300 group-hover:scale-105"
+                className="object-cover h-44 w-full transition-transform duration-300 group-hover:scale-105"
                 src={product.picture_url}
                 alt="prodImg"
                 height={300}
