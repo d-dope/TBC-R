@@ -68,7 +68,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
       article.title.toLowerCase().includes(query.toLowerCase())
     );
     setSortedArticles(filteredArticles);
-  }, 10);
+  }, 300);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(event.target.value);
@@ -93,26 +93,28 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row">
+    <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 bg-gray-50">
       <Sidebar
         categories={categories}
         selectedCategory={selectedCategory}
         onSelectCategory={handleCategoryChange}
         onClearCategory={handleClearCategory}
+        // @ts-ignore
+        className="md:w-1/4 bg-white shadow-md rounded-lg p-4"
       />
       <div className="flex-1">
-        <div className="flex flex-col md:flex-row justify-between mb-4">
+        <div className="flex flex-col md:flex-row justify-between mb-4 space-y-4 md:space-y-0 gap-x-5">
           <input
             type="text"
             placeholder="Search articles..."
             onChange={(e) => handleSearch(e.target.value)}
             value={searchQuery}
-            className="w-full md:w-1/2 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black mb-4 md:mb-0 md:mr-4"
+            className="w-full md:w-2/3 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
           />
           <select
             onChange={handleSortChange}
             value={sortOption}
-            className="w-full md:w-1/4 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
+            className="w-full md:w-1/3 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
           >
             <option value="">Sort by</option>
             <option value="price-asc">Price: Low to High</option>
@@ -121,10 +123,10 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
             <option value="date-desc">Date: Furthest First</option>
           </select>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {sortedArticles.map((article, index) => (
             <Article
-              key={`index-generate-${index}`}
+              key={`article-${article.id}`}
               title={article.title}
               id={article.id}
               image={article.picture_url}
@@ -133,6 +135,8 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
               date={article.date}
               category={article.category}
               place={article.place}
+              // @ts-ignore
+              className="bg-white shadow-md rounded-lg overflow-hidden"
             />
           ))}
         </div>

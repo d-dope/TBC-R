@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import AddToCartBtn from "./AddToCartBtn";
 import DeleteCartBtn from "./DeleteCartBtn";
-
+import { MapPinIcon } from "@heroicons/react/20/solid";
 interface ArticleProps {
   title: string;
   id: number;
@@ -54,37 +54,51 @@ const Article: React.FC<ArticleProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
       <Link href={`/products/${id}`}>
-        <div className="relative h-64 overflow-hidden rounded-t-lg">
+        <div className="relative h-64 overflow-hidden">
           {image && (
             <Image
               src={image}
               width={400}
               height={400}
-              alt="img"
-              className="w-full h-full object-cover"
+              alt={title}
+              className="w-full h-full object-cover transition-transform duration-200 hover:scale-105"
             />
           )}
-          <div className="absolute top-2 left-2 bg-white text-center p-1 rounded">
-            <p className="text-xs font-semibold">{formattedDate}</p>
+          <div className="absolute top-2 left-2 bg-white bg-opacity-75 text-center px-2 py-1 rounded">
+            <p className="text-xs font-semibold text-gray-800">
+              {formattedDate}
+            </p>
           </div>
-          <div className="absolute top-2 right-2 bg-white text-center p-1 rounded">
-            <p className="text-xs font-semibold text-green-600">${price}</p>
+          <div className="absolute top-2 right-2 bg-white bg-opacity-75 text-center px-2 py-1 rounded">
+            <p className="text-xs font-semibold text-green-600">{price}₾</p>
           </div>
         </div>
       </Link>
       <div className="p-4">
         <Link href={`/products/${id}`}>
-          <h3 className="text-lg font-semibold mb-1">{title}</h3>
+          <h3 className="text-lg font-semibold mb-1 hover:text-blue-500 transition-colors duration-200">
+            {title}
+          </h3>
         </Link>
-        <p className="text-gray-700 mb-2">{formattedDay}</p>
-        <p className="text-gray-700 mb-2">{place}</p>
+        <p className="text-gray-500 text-sm mb-1">{formattedDay}</p>
+        <div className="flex gap-x-2">
+          {" "}
+          <MapPinIcon className="w-4 h-4" />
+          <p className="text-gray-500 text-sm mb-4">{place}</p>
+        </div>
         <div className="flex items-center justify-between">
-          {isAdmin && <DeleteCartBtn id={id} />}
+          {isAdmin && (
+            <DeleteCartBtn
+              id={id}
+              // @ts-ignore
+              className="text-red-500 hover:text-red-700 transition-colors duration-200"
+            />
+          )}
           <button
             onClick={handleAddToCart}
-            className="bg-blue-500 text-white px-3 py-1 rounded"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow-md transition-colors duration-200"
           >
             Add to Cart
           </button>

@@ -57,7 +57,7 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
               </div>
               <div className="w-1/2 px-2">
                 <button className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">
-                  Add to Wishlist
+                  Remove
                 </button>
               </div>
             </div>
@@ -66,6 +66,9 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
               {product.title}
             </h2>
+            <span className="font-bold text-gray-700 dark:text-gray-300">
+              Event Description:
+            </span>
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
               {product.description}
             </p>
@@ -75,17 +78,10 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
                   Price:
                 </span>
                 <span className="text-gray-600 dark:text-gray-300">
-                  ${product.price}
+                  {product.price}₾
                 </span>
               </div>
-              <div>
-                <span className="font-bold text-gray-700 dark:text-gray-300">
-                  Availability:
-                </span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  In Stock
-                </span>
-              </div>
+              <div></div>
             </div>
             <div className="mb-4">
               <span className="font-bold text-gray-700 dark:text-gray-300">
@@ -143,14 +139,7 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
                 </ViberShareButton>
               </div>
             </div>
-            <div>
-              <span className="font-bold text-gray-700 dark:text-gray-300">
-                Product Description:
-              </span>
-              <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-                {product.description}
-              </p>
-            </div>
+            <div></div>
           </div>
         </div>
       </div>
