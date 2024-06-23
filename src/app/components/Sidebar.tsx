@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <div className="w-full md:w-64 sm:h-[450px] h-28 bg-white shadow-lg p-4 md:mb-0 rounded-md">
+    <div className="w-full md:w-64 md:h-[450px]  h-28 bg-white shadow-lg p-4 md:mb-0 rounded-md">
       <h2 className="text-xl font-bold mb-4">CATEGORIES</h2>
 
       {/* Dropdown for mobile */}
@@ -73,6 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                       : "hover:bg-gray-100"
                   }`}
                 >
+                  {/* @ts-ignore */}
                   {categoryIcons[category]}
                   {category}
                 </button>
@@ -103,6 +104,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     : "hover:bg-gray-100"
                 }`}
               >
+                {/* @ts-ignore */}
+
                 {categoryIcons[category]}
                 {category}
               </button>

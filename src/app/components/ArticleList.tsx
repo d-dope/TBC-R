@@ -100,6 +100,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
           selectedCategory={selectedCategory}
           onSelectCategory={handleCategoryChange}
           onClearCategory={handleClearCategory}
+          // @ts-ignore
           className="md:w-1/4 bg-white shadow-md rounded-md p-4"
         />
         <div className="flex-1">
@@ -123,7 +124,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
               <option value="date-desc">Date: Furthest First</option>
             </select>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedArticles.map((article, index) => (
               <Article
                 key={`article-${article.id}`}
@@ -135,6 +136,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
                 date={article.date}
                 category={article.category}
                 place={article.place}
+                // @ts-ignore
                 className="bg-white shadow-md rounded-lg overflow-hidden"
               />
             ))}

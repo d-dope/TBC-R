@@ -1,6 +1,7 @@
 "use client";
 
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { MapPinIcon } from "@heroicons/react/20/solid";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -58,9 +59,12 @@ export default function EventCarousel({ products }: any) {
               </div>
             </div>
             <div className="mt-2">
-              <h2 className="text-lg font-semibold">{product.title}</h2>
-              <p className="text-gray-600 ">{product.place}</p>
-              <p className="text-gray-600 mb-5">{product.date}</p>
+              <h2 className="text-md font-semibold">{product.title}</h2>
+              <div className="flex gap-x-2">
+                {" "}
+                <MapPinIcon className="w-4 h-4 fill-gray-500" />
+                <p className="text-gray-500 text-sm mb-4">{product.place}</p>
+              </div>
             </div>
           </Link>
         </SwiperSlide>
