@@ -37,7 +37,7 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
     <div className="bg-gray-100 dark:bg-gray-800 py-32 ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row -mx-4">
-          <div className="md:flex-1 px-4">
+          <div className="md:flex-1 px-4 flex flex-col justify-between">
             <div className="sm:h-[300px] h-[200px] rounded-lg  dark:bg-gray-700 mb-4">
               <Zoom>
                 <Image
@@ -62,7 +62,7 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
               </div>
             </div>
           </div>
-          <div className="md:flex-1 px-4">
+          <div className="md:flex-1 px-4 flex flex-col justify-between">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
               {product.title}
             </h2>
