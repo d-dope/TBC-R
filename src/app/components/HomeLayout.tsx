@@ -266,7 +266,7 @@ export default function HomeLayout({ products, blogs }: any) {
           className=" container mx-auto px-4 mt-20  sm:px-6 lg:px-8 "
         >
           <div className="flex justify-between mb-3">
-            <h1 className="font-bold font-sans text-lg">Latest Events</h1>
+            <h1 className="font-bold font-sans text-lg">LATEST EVENTS</h1>
             <Link href="/products">
               {" "}
               <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer hover:text-primaryColor">
@@ -283,7 +283,7 @@ export default function HomeLayout({ products, blogs }: any) {
           className=" container mx-auto px-4  mt-24 sm:px-6 lg:px-8 "
         >
           <div className="flex justify-between mb-3">
-            <h1 className="font-bold font-sans text-lg">Latest Blogs</h1>
+            <h1 className="font-bold font-sans text-lg">LATEST BLOGS</h1>
             <Link href="/blogs">
               {" "}
               <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer  hover:text-primaryColor">
