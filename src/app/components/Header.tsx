@@ -23,7 +23,7 @@ export default function Header() {
 
   const navigation = [
     { name: t("home"), href: "/" },
-    { name: t("Products"), href: "/products" },
+    { name: t("Events"), href: "/products" },
     { name: t("Blogs"), href: "/blogs" },
     { name: t("Contact"), href: "/contact" },
     ...(user ? [{ name: t("Profile"), href: "/profile" }] : []),

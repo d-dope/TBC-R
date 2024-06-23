@@ -263,7 +263,7 @@ export default function HomeLayout({ products, blogs }: any) {
 
         <div
           id="latest-events"
-          className=" container mx-auto px-4 mt-10  sm:px-6 lg:px-8 "
+          className=" container mx-auto px-4 mt-20  sm:px-6 lg:px-8 "
         >
           <div className="flex justify-between mb-3">
             <h1 className="font-bold font-sans text-lg">Latest Events</h1>
@@ -280,7 +280,7 @@ export default function HomeLayout({ products, blogs }: any) {
         {/* Blog section */}
         <div
           id="latest-blogs"
-          className=" container mx-auto px-4  mt-10 sm:px-6 lg:px-8 "
+          className=" container mx-auto px-4  mt-24 sm:px-6 lg:px-8 "
         >
           <div className="flex justify-between mb-3">
             <h1 className="font-bold font-sans text-lg">Latest Blogs</h1>
