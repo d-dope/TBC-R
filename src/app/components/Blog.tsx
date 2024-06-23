@@ -18,7 +18,7 @@ const Blog: React.FC<BlogProps> = ({ id, title, description, pictureUrl }) => {
           <Image
             src={pictureUrl}
             alt={title}
-            className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+            className="aspect-[16/9] h-52 w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
             width={200}
             height={200}
           />

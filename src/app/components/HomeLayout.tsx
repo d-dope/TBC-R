@@ -18,6 +18,8 @@ import Carousel from "../components/Carousel";
 import EventCarousel from "../components/EventCarousel";
 import CTA from "../components/CTAsection";
 import BlogCarousel from "./BlogCarousel";
+import LandingSideBar from "./LandingSideBar";
+import Link from "next/link";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -241,44 +243,62 @@ export default function HomeLayout({ products, blogs }: any) {
           />
         </div>
 
-        {/* <div className="container mx-auto px-4  sm:px-6 lg:px-8 font-bold text-3xl text-gray-600 flex justify-center mt-10">
-          <h1>"Experience the Extraordinary Where Moments Become Memories"</h1>
-        </div> */}
-        <div className="text-center py-8 bg-gray-100 border-t-2 border-b-2 border-gray-300">
+        {/* <div className="text-center py-8 bg-gray-100 border-t-2 border-b-2 border-gray-300">
           <h2 className="text-4xl font-bold uppercase tracking-wide text-gray-800 mb-2">
             Experience the Extraordinary
           </h2>
           <h3 className="text-2xl  text-gray-600">
             Where Moments Become Memories
           </h3>
-        </div>
+        </div> */}
+
         {/* Header section */}
-        <div className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row  mt-16 container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl pt-4 text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl font-sans">
-              We love creators
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300 font-sans">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
-            </p>
-          </div>
+        <div
+          id="dashboard"
+          className="flex flex-col sm:flex sm:flex-col md:flex md:flex-row  mt-16 container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <LandingSideBar />
           <Carousel />
         </div>
-        <div className="p-10 container mx-auto px-4   sm:px-6 lg:px-8 ">
-          <h1 className="font-bold font-sans text-lg">Latest Events</h1>
+
+        <div
+          id="latest-events"
+          className=" container mx-auto px-4 mt-10  sm:px-6 lg:px-8 "
+        >
+          <div className="flex justify-between">
+            <h1 className="font-bold font-sans text-lg">Latest Events</h1>
+            <Link href="/products">
+              {" "}
+              <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer hover:text-primaryColor">
+                View All...
+              </h1>
+            </Link>{" "}
+          </div>
           <EventCarousel products={products} />
         </div>
 
         {/* Blog section */}
-        <div className="p-10 container mx-auto px-4   sm:px-6 lg:px-8 ">
-          <h1 className="font-bold font-sans text-lg">Latest Blogs</h1>
+        <div
+          id="latest-blogs"
+          className=" container mx-auto px-4  mt-10 sm:px-6 lg:px-8 "
+        >
+          <div className="flex justify-between">
+            <h1 className="font-bold font-sans text-lg">Latest Blogs</h1>
+            <Link href="/blogs">
+              {" "}
+              <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer">
+                View All...
+              </h1>
+            </Link>{" "}
+          </div>{" "}
           <BlogCarousel blogs={blogs} />
         </div>
 
         {/* Values section */}
-        <div className="mt-6 sm:mt-6 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          id="our-values"
+          className="mt-6 sm:mt-6 container mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <div className="mx-auto  lg:mx-0">
             <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
               Our Values
@@ -303,7 +323,9 @@ export default function HomeLayout({ products, blogs }: any) {
           </dl>
         </div>
 
-        <PartnerCompanies />
+        <div id="partner-companies">
+          <PartnerCompanies />
+        </div>
       </main>
 
       <Footer />

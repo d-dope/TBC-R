@@ -1,7 +1,6 @@
 "use client";
 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-
+import { Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -10,13 +9,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Image from "next/image";
-import Blog from "./Blog";
 import Link from "next/link";
 
 export default function BlogCarousel({ blogs }: any) {
   return (
     <Swiper
-      className="max-w-[1470px] p-20 container mx-auto px-4 mt-16  sm:px-6 lg:px-8 overflow-hidden"
+      className="max-w-[1470px] p-20 container mx-auto px-4 sm:px-6 lg:px-8"
       modules={[Pagination, Scrollbar, A11y]}
       spaceBetween={50}
       slidesPerView={4}
@@ -39,20 +37,23 @@ export default function BlogCarousel({ blogs }: any) {
           spaceBetween: 40,
         },
       }}
-
     >
       {blogs.map((blog: any, index: Number) => (
-        <SwiperSlide key={`recent-prods-slide-${index}`}>
-          <Link href={`/products/${blog.id}`}>
-            <Image
-              className="object-cover h-52 w-full mt-5"
-              src={blog.picture_url}
-              alt="prodImg"
-              height={300}
-              width={300}
-            />
-            <h1>{blog.title}</h1>
-            <h1 className="mb-10">{blog.description}</h1>
+        <SwiperSlide key={`recent-blogs-slide-${index}`}>
+          <Link href={`/blogs/${blog.id}`} className="block group">
+            <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
+              <Image
+                className="object-cover h-44 w-full transition-transform duration-300 group-hover:scale-105"
+                src={blog.picture_url}
+                alt="blogImg"
+                height={300}
+                width={300}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
+            </div>
+            <div className="mt-2">
+              <h2 className="text-lg font-semibold">{blog.title}</h2>
+            </div>
           </Link>
         </SwiperSlide>
       ))}

@@ -42,9 +42,9 @@ export default function BlogList({ blogs }: BlogListProps) {
   }, 1);
 
   return (
-    <div className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+    <div className="py-24 sm:py-32 ">
+      <div className="container mx-auto  sm:px-6 lg:px-8 px-6">
+        <div className="mx-auto  text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             From the blog
           </h2>
@@ -61,7 +61,7 @@ export default function BlogList({ blogs }: BlogListProps) {
             className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
           />
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className=" mt-16 grid  grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-3 md:mx-0 md:max-w-none  md:grid-cols-4">
           {filteredBlogs.map((blog) => (
             <div key={`blog-generate-${blog.id}`}>
               <Blog
