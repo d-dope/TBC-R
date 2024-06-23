@@ -43,7 +43,7 @@ export default function BlogCarousel({ blogs }: any) {
           <Link href={`/blogs/${blog.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
               <Image
-                className="object-cover h-44 w-full transition-transform duration-300 group-hover:scale-105"
+                className="object-contain h-44 w-full transition-transform duration-300 group-hover:scale-105"
                 src={blog.picture_url}
                 alt="blogImg"
                 height={300}
@@ -52,7 +52,7 @@ export default function BlogCarousel({ blogs }: any) {
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
             </div>
             <div className="mt-2">
-              <h2 className="text-lg font-semibold">{blog.title}</h2>
+              <h2 className="text-lg font-semibold mb-10">{blog.title}</h2>
             </div>
           </Link>
         </SwiperSlide>

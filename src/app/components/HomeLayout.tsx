@@ -265,7 +265,7 @@ export default function HomeLayout({ products, blogs }: any) {
           id="latest-events"
           className=" container mx-auto px-4 mt-10  sm:px-6 lg:px-8 "
         >
-          <div className="flex justify-between">
+          <div className="flex justify-between mb-3">
             <h1 className="font-bold font-sans text-lg">Latest Events</h1>
             <Link href="/products">
               {" "}
@@ -282,11 +282,11 @@ export default function HomeLayout({ products, blogs }: any) {
           id="latest-blogs"
           className=" container mx-auto px-4  mt-10 sm:px-6 lg:px-8 "
         >
-          <div className="flex justify-between">
+          <div className="flex justify-between mb-3">
             <h1 className="font-bold font-sans text-lg">Latest Blogs</h1>
             <Link href="/blogs">
               {" "}
-              <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer">
+              <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer  hover:text-primaryColor">
                 View All...
               </h1>
             </Link>{" "}
@@ -299,12 +299,12 @@ export default function HomeLayout({ products, blogs }: any) {
           id="our-values"
           className="mt-6 sm:mt-6 container mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <div className="mx-auto  lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
-              Our Values
-            </h2>
+          <div className="border-b border-gray-200 pb-5">
+            <h3 className="text-base font-semibold leading-6 text-gray-900">
+              OUR VALUES
+            </h3>
           </div>
-          <dl className="mx-auto grid  grid-cols-1 gap-8 text-base leading-7 text-gray-600 sm:grid-cols-2  lg:gap-x-16">
+          <dl className="mx-auto grid mt-5 grid-cols-1 gap-8 text-base leading-7 text-gray-600 sm:grid-cols-2  lg:gap-x-16">
             {values.map((value) => (
               <div
                 key={`value-generate-${value.name}`}

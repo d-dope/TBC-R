@@ -60,7 +60,7 @@ export default function EventCarousel({ products }: any) {
             <div className="mt-2">
               <h2 className="text-lg font-semibold">{product.title}</h2>
               <p className="text-gray-600 ">{product.place}</p>
-              <p className="text-gray-600 mb-10">{product.date}</p>
+              <p className="text-gray-600 mb-5">{product.date}</p>
             </div>
           </Link>
         </SwiperSlide>
