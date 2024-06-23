@@ -295,32 +295,34 @@ export default function HomeLayout({ products, blogs }: any) {
         </div>
 
         {/* Values section */}
-        <div
-          id="our-values"
-          className="mt-6 sm:mt-6 container mx-auto px-4 sm:px-6 lg:px-8"
-        >
-          <div className="border-b border-gray-200 pb-5">
-            <h3 className="text-base font-semibold leading-6 text-gray-900">
-              OUR VALUES
-            </h3>
+        <div className="bg-white py-10 mt-16">
+          <div
+            id="our-values"
+            className="mt-6 sm:mt-6 container mx-auto px-4 sm:px-6 lg:px-8 "
+          >
+            <div className="border-b border-gray-200 pb-5">
+              <h3 className="text-base font-semibold leading-6 text-gray-900">
+                OUR VALUES
+              </h3>
+            </div>
+            <dl className="mx-auto grid mt-5 grid-cols-1 gap-8 text-base leading-7 text-gray-600 sm:grid-cols-2  lg:gap-x-16">
+              {values.map((value) => (
+                <div
+                  key={`value-generate-${value.name}`}
+                  className="relative pl-9"
+                >
+                  <dt className="inline font-semibold text-black">
+                    <value.icon
+                      className="absolute left-1 top-1 h-5 w-5 text-primaryColor"
+                      aria-hidden="true"
+                    />
+                    {value.name}
+                  </dt>{" "}
+                  <dd className="inline">{value.description}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <dl className="mx-auto grid mt-5 grid-cols-1 gap-8 text-base leading-7 text-gray-600 sm:grid-cols-2  lg:gap-x-16">
-            {values.map((value) => (
-              <div
-                key={`value-generate-${value.name}`}
-                className="relative pl-9"
-              >
-                <dt className="inline font-semibold text-black">
-                  <value.icon
-                    className="absolute left-1 top-1 h-5 w-5 text-primaryColor"
-                    aria-hidden="true"
-                  />
-                  {value.name}
-                </dt>{" "}
-                <dd className="inline">{value.description}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         <div id="partner-companies">
