@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function EventCarousel({ products }: any) {
+  const recentProds = products.slice(0, 8);
   return (
     <Swiper
       className="max-w-[1470px] p-20 container mx-auto px-4 sm:px-6 lg:px-8"
@@ -40,7 +41,7 @@ export default function EventCarousel({ products }: any) {
         },
       }}
     >
-      {products.map((product: any, index: Number) => (
+      {recentProds.map((product: any, index: Number) => (
         <SwiperSlide key={`recent-prods-slide-${index}`}>
           <Link href={`/products/${product.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">

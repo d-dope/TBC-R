@@ -1,3 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { deleteSingleProduct } from "../../../actions";
 
 interface DeleteCartBtnProps {
@@ -5,10 +7,12 @@ interface DeleteCartBtnProps {
 }
 
 export default function DeleteCartBtn({ id }: DeleteCartBtnProps) {
+  const route = useRouter();
   const handleDelete = async () => {
     await deleteSingleProduct(id);
+    route.push("/products");
   };
-  
+
   return (
     <div>
       <button

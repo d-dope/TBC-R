@@ -12,6 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function BlogCarousel({ blogs }: any) {
+  const recentBlogs = blogs.slice(0, 8);
+
   return (
     <Swiper
       className="max-w-[1470px] p-20 container mx-auto px-4 sm:px-6 lg:px-8"
@@ -38,7 +40,7 @@ export default function BlogCarousel({ blogs }: any) {
         },
       }}
     >
-      {blogs.map((blog: any, index: Number) => (
+      {recentBlogs.map((blog: any, index: Number) => (
         <SwiperSlide key={`recent-blogs-slide-${index}`}>
           <Link href={`/blogs/${blog.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
