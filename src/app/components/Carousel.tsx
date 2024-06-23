@@ -19,7 +19,7 @@ import Image from "next/image";
 import image1 from "../../../public/assets/car1.jpeg";
 import image2 from "../../../public/assets/car2.peg.jpeg";
 import image3 from "../../../public/assets/car3.jpeg";
-import image4 from "../../../public/assets/car4.jpeg";
+import image4 from "../../../public/assets/car4.jpeg";  
 
 export default function Carousel() {
   return (
@@ -30,9 +30,7 @@ export default function Carousel() {
       slidesPerView={1}
       // pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
-      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      autoplay={{ delay: 5000, disableOnInteraction: false }}
     >
       <SwiperSlide>
         <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] ">

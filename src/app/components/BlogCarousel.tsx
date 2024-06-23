@@ -13,10 +13,10 @@ import Image from "next/image";
 import Blog from "./Blog";
 import Link from "next/link";
 
-export default function EventCarousel({ products }: any) {
+export default function BlogCarousel({ blogs }: any) {
   return (
     <Swiper
-      className="max-w-[1470px] p-20 container mx-auto px-4 mt-16  sm:px-6 lg:px-8 "
+      className="max-w-[1470px] p-20 container mx-auto px-4 mt-16  sm:px-6 lg:px-8 overflow-hidden"
       modules={[Pagination, Scrollbar, A11y]}
       spaceBetween={50}
       slidesPerView={4}
@@ -39,20 +39,20 @@ export default function EventCarousel({ products }: any) {
           spaceBetween: 40,
         },
       }}
-   
+
     >
-      {products.map((product: any, index: Number) => (
+      {blogs.map((blog: any, index: Number) => (
         <SwiperSlide key={`recent-prods-slide-${index}`}>
-          <Link href={`/products/${product.id}`}>
+          <Link href={`/products/${blog.id}`}>
             <Image
               className="object-cover h-52 w-full mt-5"
-              src={product.picture_url}
+              src={blog.picture_url}
               alt="prodImg"
               height={300}
               width={300}
             />
-            <h1>{product.title}</h1>
-            <h1 className="mb-10">{product.price}</h1>
+            <h1>{blog.title}</h1>
+            <h1 className="mb-10">{blog.description}</h1>
           </Link>
         </SwiperSlide>
       ))}
