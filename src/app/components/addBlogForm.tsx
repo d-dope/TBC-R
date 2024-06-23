@@ -5,7 +5,6 @@ import Notification from "./Notification";
 import BlogImageUploadPage from "../[locale]/(dashboard)/upload-blog-avatar/page";
 import { BASE_URL } from "../../../api";
 
-
 interface FormData {
   title: string;
   description: string;

@@ -23,11 +23,10 @@ export default function Header() {
 
   const navigation = [
     { name: t("home"), href: "/" },
-    { name: t("Products"), href: "/products" },
+    { name: t("Events"), href: "/products" },
     { name: t("Blogs"), href: "/blogs" },
     { name: t("Contact"), href: "/contact" },
     ...(user ? [{ name: t("Profile"), href: "/profile" }] : []),
-    ...(isAdmin ? [{ name: t("Admin"), href: "/admin/add" }] : []),
   ];
 
   const [showHeader, setShowHeader] = useState(true);
@@ -68,7 +67,7 @@ export default function Header() {
     >
       {({ open }) => (
         <>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
@@ -81,13 +80,13 @@ export default function Header() {
                     />
                   </a>
                 </div>
-                <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <div className="hidden sm:ml-16 sm:flex sm:space-x-8">
                   {navigation.map((item) => (
                     <a
                       key={`item-generate-${item.name}`}
                       href={item.href}
                       className={classNames(
-                        "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
+                        "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium font-sans",
                         currentPath === item.href
                           ? "border-primaryColor text-gray-900"
                           : "border-transparent text-gray-900 hover:border-gray-300 hover:text-gray-700"
@@ -98,7 +97,7 @@ export default function Header() {
                   ))}
                 </div>
               </div>
-              <div className="hidden sm:ml-6 sm:flex sm:items-center">
+              <div className="hidden md:ml-6 md:flex md:items-center">
                 <LocalSwitcher />
                 <button
                   type="button"
@@ -194,6 +193,22 @@ export default function Header() {
                           )}
                         </Menu.Item>
                       )}
+
+                      {isAdmin && (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/admin/add-blog"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Add Blog
+                            </a>
+                          )}
+                        </Menu.Item>
+                      )}
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -233,13 +248,30 @@ export default function Header() {
             <div className="border-t border-gray-200 pb-3 pt-4">
               <div className="flex items-center px-4">
                 <div className="flex-shrink-0">
-                  <Image
-                    className="h-10 w-10 rounded-full"
-                    src={user?.picture || ""}
-                    alt="User profile picture"
-                    height={100}
-                    width={100}
-                  />
+                  {user ? (
+                    <Image
+                      className="h-8 w-8 rounded-full"
+                      src={user.picture || ""}
+                      alt="User profile picture"
+                      height={100}
+                      width={100}
+                    />
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="0.9"
+                      stroke="black"
+                      className="h-10 w-10 cursor-pointer opacity-40 rounded-full focus:outline-none hover:opacity-65"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                    </svg>
+                  )}
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">
@@ -264,6 +296,7 @@ export default function Header() {
                   <TicketIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
+
               <div className="mt-3 space-y-1">
                 <Disclosure.Button
                   as="a"

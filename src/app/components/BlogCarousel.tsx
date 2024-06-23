@@ -1,7 +1,6 @@
 "use client";
 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-
+import { Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -12,7 +11,7 @@ import "swiper/css/scrollbar";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function EventCarousel({ products }: any) {
+export default function BlogCarousel({ blogs }: any) {
   return (
     <Swiper
       className="max-w-[1470px] p-20 container mx-auto px-4 sm:px-6 lg:px-8"
@@ -39,28 +38,21 @@ export default function EventCarousel({ products }: any) {
         },
       }}
     >
-      {products.map((product: any, index: Number) => (
-        <SwiperSlide key={`recent-prods-slide-${index}`}>
-          <Link href={`/products/${product.id}`} className="block group">
+      {blogs.map((blog: any, index: Number) => (
+        <SwiperSlide key={`recent-blogs-slide-${index}`}>
+          <Link href={`/blogs/${blog.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
               <Image
-                className="object-contain h-44 w-full transition-transform duration-300 group-hover:scale-105"
-                src={product.picture_url}
-                alt="prodImg"
+                className="object-cover  h-44 w-full transition-transform duration-300 group-hover:scale-105"
+                src={blog.picture_url}
+                alt="blogImg"
                 height={300}
                 width={300}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
-              <div className="absolute bottom-0 right-0 p-4 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded">
-                  {product.price} ₾
-                </button>
-              </div>
             </div>
             <div className="mt-2">
-              <h2 className="text-lg font-semibold">{product.title}</h2>
-              <p className="text-gray-600 ">{product.place}</p>
-              <p className="text-gray-600 mb-5">{product.date}</p>
+              <h2 className="text-lg font-semibold mb-10">{blog.title}</h2>
             </div>
           </Link>
         </SwiperSlide>

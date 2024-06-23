@@ -1,6 +1,12 @@
 "use client";
 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,32 +16,76 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Image from "next/image";
+import image1 from "../../../public/assets/car1.jpeg";
+import image2 from "../../../public/assets/car2.peg.jpeg";
+import image3 from "../../../public/assets/car3.jpeg";
+import image4 from "../../../public/assets/car4.jpeg";
 
 export default function Carousel() {
   return (
     <Swiper
-      className="max-w-[1200px]"
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      className="max-w-full rounded-3xl"
+      modules={[Pagination, Scrollbar, A11y, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
+      // pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      autoplay={{ delay: 4000, disableOnInteraction: false }}
     >
       <SwiperSlide>
-        <Image
-          className="object-cover overflow-hidden h-96"
-          src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6557420216a456cfaef685c0_6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1-p-1600.jpg"
-          alt="iamge"
-          width={1200}
-          height={300}
-        />
+        <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] ">
+          <Image
+            className=" object-cover rounded-3xl"
+            src={image1}
+            alt="image"
+            layout="fill"
+          />
+        </div>
       </SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[400px] ">
+          <Image
+            className="object-cover rounded-3xl"
+            src={image2}
+            alt="image"
+            layout="fill"
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[400px]">
+          <Image
+            className="object-cover rounded-3xl"
+            src={image3}
+            alt="image"
+            layout="fill"
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[400px]">
+          <Image
+            className="object-cover rounded-3xl"
+            src={image4}
+            alt="image"
+            layout="fill"
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        {" "}
+        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[400px]">
+          <Image
+            className="object-cover rounded-3xl"
+            src={image4}
+            alt="image"
+            layout="fill"
+          />
+        </div>
+      </SwiperSlide>
       ...
     </Swiper>
   );
