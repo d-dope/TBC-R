@@ -225,7 +225,7 @@ const blogPosts = [
 export default function HomeLayout({ products, blogs }: any) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <div className="">
+    <div className="bg-MainBgColor">
       <Header />
       <CTA />
       <main className="">
@@ -301,7 +301,7 @@ export default function HomeLayout({ products, blogs }: any) {
             className="mt-6 sm:mt-6 container mx-auto px-4 sm:px-6 lg:px-8 "
           >
             <div className="border-b border-gray-200 pb-5">
-              <h3 className="text-base font-semibold leading-6 text-gray-900">
+              <h3 className="text-base font-sans font-semibold leading-6 text-gray-900">
                 OUR VALUES
               </h3>
             </div>

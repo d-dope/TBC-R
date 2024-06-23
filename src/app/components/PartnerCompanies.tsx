@@ -7,7 +7,7 @@ import svg5 from "../../../public/assets/bb.svg";
 
 export default function PartnerCompanies() {
   return (
-    <div className="bg-white py-24 sm:py-32 container mx-auto px-4  sm:px-6 lg:px-8">
+    <div className=" py-24 sm:py-32 container mx-auto px-4  sm:px-6 lg:px-8">
       <div className="  ">
         <div className="mx-auto max-w-2xl lg:max-w-none">
           <h2 className="text-lg font-semibold leading-8 text-gray-900">

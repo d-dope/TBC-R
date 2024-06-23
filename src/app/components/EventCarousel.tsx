@@ -44,16 +44,16 @@ export default function EventCarousel({ products }: any) {
           <Link href={`/products/${product.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
               <Image
-                className="object-cover h-44 w-full transition-transform duration-300 group-hover:scale-105"
+                className="object-contain h-44 w-full transition-transform duration-300 group-hover:scale-105"
                 src={product.picture_url}
                 alt="prodImg"
                 height={300}
                 width={300}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
-              <div className="absolute bottom-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-blue-500 text-white font-semibold py-1 px-3 rounded">
-                  From {product.price} ₾
+              <div className="absolute bottom-0 right-0 p-4 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded">
+                  {product.price} ₾
                 </button>
               </div>
             </div>
