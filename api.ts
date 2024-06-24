@@ -95,3 +95,11 @@ export async function getBlogById(id: string) {
   }
   return response.json();
 }
+
+export const getOrders = async () => {
+  const res = await fetch(`${BASE_URL}/api/orders`, {
+    cache: "no-store",
+  });
+  const orders = await res.json();
+  return orders;
+};

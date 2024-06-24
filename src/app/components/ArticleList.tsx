@@ -93,7 +93,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
   ];
 
   return (
-    <div className="bg-MainBgColor w-full min-h-screen">
+    <div className="bg-MainBgColor w-full min-h-screen ">
       <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
         <Sidebar
           categories={categories}
@@ -101,9 +101,9 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
           onSelectCategory={handleCategoryChange}
           onClearCategory={handleClearCategory}
           // @ts-ignore
-          className="md:w-1/4 bg-white shadow-md rounded-md p-4"
+          className="md:w-1/4 bg-white  shadow-md rounded-md p-4"
         />
-        <div className="flex-1">
+        <div className="flex-1 ">
           <div className="flex flex-col md:flex-row justify-between mb-4 space-y-4 md:space-y-0 gap-x-5">
             <input
               type="text"

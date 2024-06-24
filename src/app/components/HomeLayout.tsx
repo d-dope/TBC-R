@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState } from "react";
 import {
@@ -21,18 +20,7 @@ import BlogCarousel from "./BlogCarousel";
 import LandingSideBar from "./LandingSideBar";
 import Link from "next/link";
 
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
-const stats = [
-  { label: "Site was founded", value: "2012" },
-  { label: "People on the team", value: "120+" },
-  { label: "Users on the platform", value: "250k" },
-  { label: "Paid out to creators", value: "$2M" },
-];
+
 const values = [
   {
     name: "Flexible Find",
@@ -72,14 +60,6 @@ const values = [
   },
 ];
 
-const benefits = [
-  "Competitive salaries",
-  "Flexible work hours",
-  "30 days of paid vacation",
-  "Annual team retreats",
-  "Benefits for you and your family",
-  "A great work environment",
-];
 const footerNavigation = {
   solutions: [
     { name: "Marketing", href: "#" },
@@ -169,58 +149,6 @@ const footerNavigation = {
     },
   ],
 };
-const blogPosts = [
-  {
-    id: 1,
-    title: "Vel expedita assumenda placeat aut nisi optio voluptates quas",
-    href: "#",
-    description:
-      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    author: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-  {
-    id: 1,
-    title: "Vel expedita assumenda placeat aut nisi optio voluptates quas",
-    href: "#",
-    description:
-      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    author: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-
-  {
-    id: 1,
-    title: "Vel expedita assumenda placeat aut nisi optio voluptates quas",
-    href: "#",
-    description:
-      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    author: {
-      name: "Michael Foster",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-  // More posts...
-];
 
 export default function HomeLayout({ products, blogs }: any) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -242,15 +170,6 @@ export default function HomeLayout({ products, blogs }: any) {
             }}
           />
         </div>
-
-        {/* <div className="text-center py-8 bg-gray-100 border-t-2 border-b-2 border-gray-300">
-          <h2 className="text-4xl font-bold uppercase tracking-wide text-gray-800 mb-2">
-            Experience the Extraordinary
-          </h2>
-          <h3 className="text-2xl  text-gray-600">
-            Where Moments Become Memories
-          </h3>
-        </div> */}
 
         {/* Header section */}
         <div

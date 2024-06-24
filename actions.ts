@@ -185,4 +185,13 @@ export async function deleteSingleBlog(id: number) {
 
 
 
-
+export async function createRefund(charge: string) {
+  revalidatePath("/orders");
+  await fetch(BASE_URL + "/api/create-refund", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ charge }),
+  });
+}

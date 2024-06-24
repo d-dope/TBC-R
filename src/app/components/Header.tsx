@@ -97,7 +97,7 @@ export default function Header() {
                   ))}
                 </div>
               </div>
-              <div className="hidden md:ml-6 md:flex md:items-center">
+              <div className="hidden md:ml-6 md:hidden md:items-center  lg:flex">
                 <LocalSwitcher />
                 <button
                   type="button"
