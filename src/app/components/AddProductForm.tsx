@@ -92,7 +92,7 @@ const AddProductForm = () => {
   };
 
   return (
-    <div className="mx-auto max-w-lg  py-20">
+    <div className="mx-auto max-w-lg px-5 py-20">
       <h2 className="text-2xl font-bold mb-4">Add New Event</h2>
       {error && <p className="text-red-500">{error}</p>}
       {success && <Notification />} {/* Show success notification */}
