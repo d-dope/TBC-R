@@ -40,6 +40,12 @@ export default function EventCarousel({ products }: any) {
           spaceBetween: 40,
         },
       }}
+      style={{
+        // @ts-ignore
+        "--swiper-pagination-color": "#00f", // Change the color of active dot
+        "--swiper-pagination-bullet-inactive-color": "#999", // Change the color of inactive dots
+        "--swiper-pagination-bullet-size": "9px", // Change the size of dots
+      }}
     >
       {recentProds.map((product: any, index: Number) => (
         <SwiperSlide key={`recent-prods-slide-${index}`}>
@@ -52,19 +58,22 @@ export default function EventCarousel({ products }: any) {
                 height={300}
                 width={300}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75 dark:from-slate-900 dark:to-transparent"></div>
               <div className="absolute bottom-0 right-0 p-4 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-primaryColor opacity-85 text-white font-sm py-2 px-4 rounded">
+                <button className="bg-primaryColor text-white font-sm py-2 px-4 rounded opacity-85">
                   {Number(product.price).toFixed(2).replace(/\.00$/, "")} ₾
                 </button>
               </div>
             </div>
             <div className="mt-4">
-              <h2 className="text-md font-semibold mb-2">{product.title}</h2>
+              <h2 className="text-md font-semibold mb-2 dark:text-white">
+                {product.title}
+              </h2>
               <div className="flex gap-x-2">
-                {" "}
-                <MapPinIcon className="w-4 h-4 fill-gray-500" />
-                <p className="text-gray-500 text-sm mb-10">{product.place}</p>
+                <MapPinIcon className="w-4 h-4 fill-gray-500 dark:fill-gray-400" />
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-10">
+                  {product.place}
+                </p>
               </div>
             </div>
           </Link>
