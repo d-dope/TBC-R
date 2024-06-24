@@ -92,7 +92,9 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
   return (
     <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-50 p-4 md:p-8 text-gray-800">
       <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-4 md:p-6">
-        <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">Shopping Cart</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">
+          Shopping Cart
+        </h1>
         <p className="text-sm text-gray-600 mb-4 text-center">
           {totalQuantity} Items
         </p>
@@ -155,7 +157,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
           </h2>
           <div className="flex space-x-4">
             <button
-              className="px-4 py-2 bg-red-800 text-white rounded-lg hover:bg-red-900"
+              className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900"
               onClick={() => resetCart(products[0]?.auth_id)}
             >
               RESET
