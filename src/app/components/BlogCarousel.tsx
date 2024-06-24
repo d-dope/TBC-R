@@ -12,6 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function BlogCarousel({ blogs }: any) {
+  const recentBlogs = blogs.slice(0, 8);
+
   return (
     <Swiper
       className="max-w-[1470px] p-20 container mx-auto px-4 sm:px-6 lg:px-8"
@@ -38,7 +40,7 @@ export default function BlogCarousel({ blogs }: any) {
         },
       }}
     >
-      {blogs.map((blog: any, index: Number) => (
+      {recentBlogs.map((blog: any, index: Number) => (
         <SwiperSlide key={`recent-blogs-slide-${index}`}>
           <Link href={`/blogs/${blog.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
@@ -51,8 +53,8 @@ export default function BlogCarousel({ blogs }: any) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
             </div>
-            <div className="mt-2">
-              <h2 className="text-lg font-semibold mb-10">{blog.title}</h2>
+            <div className="mt-4 ">
+              <h2 className="text-lg font-semibold mb-12 ">{blog.title}</h2>
             </div>
           </Link>
         </SwiperSlide>

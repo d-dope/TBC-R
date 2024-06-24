@@ -75,17 +75,6 @@ export default function Carousel() {
           />
         </div>
       </SwiperSlide>
-      <SwiperSlide>
-        {" "}
-        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[400px]">
-          <Image
-            className="object-cover rounded-3xl"
-            src={image4}
-            alt="image"
-            layout="fill"
-          />
-        </div>
-      </SwiperSlide>
       ...
     </Swiper>
   );

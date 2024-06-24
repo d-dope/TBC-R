@@ -1,6 +1,7 @@
 "use client";
 
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { MapPinIcon } from "@heroicons/react/20/solid";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function EventCarousel({ products }: any) {
+  const recentProds = products.slice(0, 8);
   return (
     <Swiper
       className="max-w-[1470px] p-20 container mx-auto px-4 sm:px-6 lg:px-8"
@@ -39,7 +41,7 @@ export default function EventCarousel({ products }: any) {
         },
       }}
     >
-      {products.map((product: any, index: Number) => (
+      {recentProds.map((product: any, index: Number) => (
         <SwiperSlide key={`recent-prods-slide-${index}`}>
           <Link href={`/products/${product.id}`} className="block group">
             <div className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300">
@@ -57,10 +59,13 @@ export default function EventCarousel({ products }: any) {
                 </button>
               </div>
             </div>
-            <div className="mt-2">
-              <h2 className="text-lg font-semibold">{product.title}</h2>
-              <p className="text-gray-600 ">{product.place}</p>
-              <p className="text-gray-600 mb-5">{product.date}</p>
+            <div className="mt-4">
+              <h2 className="text-md font-semibold mb-2">{product.title}</h2>
+              <div className="flex gap-x-2">
+                {" "}
+                <MapPinIcon className="w-4 h-4 fill-gray-500" />
+                <p className="text-gray-500 text-sm mb-10">{product.place}</p>
+              </div>
             </div>
           </Link>
         </SwiperSlide>

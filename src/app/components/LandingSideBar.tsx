@@ -8,7 +8,6 @@ import {
 } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "Dashboard", href: "#dashboard", icon: HomeIcon, current: true },
   {
     name: "Latest Events",
     href: "#latest-events",
@@ -28,7 +27,7 @@ const navigation = [
     current: false,
   },
   {
-    name: "Partner Companies",
+    name: "Partners",
     href: "#partner-companies",
     icon: UsersIcon,
     current: false,
@@ -50,17 +49,21 @@ export default function LandingSideBar() {
   };
 
   return (
-    <nav className="flex flex-1 flex-col mr-10 gap-y-4" aria-label="Sidebar">
-      <ul role="list" className="-mx-2 space-y-5">
+    <nav
+      className="sm:flex sm:flex-1 sm:flex-col sm:mr-10 sm:gap-y-4  gap-y-4 mb-10"
+      aria-label="Sidebar"
+    >
+      <ul
+        role="list"
+        className="flex  flex-wrap gap-5 sm:gap-y-1  sm:-mx-2 sm:space-y-5"
+      >
         {navigation.map((item) => (
           <li key={item.name}>
             <a
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
               className={classNames(
-                item.current
-                  ? "bg-gray-50 text-primaryColor"
-                  : "text-gray-700 hover:bg-gray-50 hover:text-primaryColor",
+                item.current ? "" : "",
                 "group flex gap-x-3 rounded-md p-2 pl-3 w-40 text-sm font-semibold leading-6"
               )}
             >

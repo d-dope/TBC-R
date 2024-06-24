@@ -15,10 +15,10 @@ export default function HeroSection({ products }: { products: Product[] }) {
 
   return (
     <>
-      <section id="home" className="flex justify-center font-c">
+      <section id="home" className="flex justify-center ">
         <h2 className="text-4xl font-bold">{t("title")}</h2>
       </section>
-      <main className="container mx-auto mt-8 px-4">
+      <main className="bg-MainBgColor mx-auto px-4 mt-20">
         {/* @ts-ignore */}
         <ArticlesList products={products} />
       </main>

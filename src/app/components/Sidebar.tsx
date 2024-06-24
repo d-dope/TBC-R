@@ -1,12 +1,31 @@
 "use client";
 import React, { useState } from "react";
+import {
+  MusicalNoteIcon,
+  FilmIcon,
+  TicketIcon,
+  PaintBrushIcon,
+  DevicePhoneMobileIcon,
+  BoltIcon,
+  GlobeAltIcon,
+} from "@heroicons/react/24/outline";
 
 interface SidebarProps {
   categories: string[];
-  selectedCategory: string; // Add selectedCategory prop
+  selectedCategory: string;
   onSelectCategory: (category: string) => void;
-  onClearCategory: () => void; // Add onClearCategory prop
+  onClearCategory: () => void;
 }
+
+const categoryIcons = {
+  Concert: <MusicalNoteIcon className="h-5 w-5 inline-block mr-2" />,
+  Festival: <FilmIcon className="h-5 w-5 inline-block mr-2" />,
+  Theatre: <TicketIcon className="h-5 w-5 inline-block mr-2" />,
+  Art: <PaintBrushIcon className="h-5 w-5 inline-block mr-2" />,
+  Technology: <DevicePhoneMobileIcon className="h-5 w-5 inline-block mr-2" />,
+  Sports: <BoltIcon className="h-5 w-5 inline-block mr-2" />,
+  Other: <GlobeAltIcon className="h-5 w-5 inline-block mr-2" />,
+};
 
 const Sidebar: React.FC<SidebarProps> = ({
   categories,
@@ -17,8 +36,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <div className="w-full md:w-64 bg-white shadow-lg p-4 mb-4 md:mb-0 rounded">
-      <h2 className="text-xl font-bold mb-4">Categories</h2>
+    <div className="w-full md:w-64 md:h-[450px]  h-28 bg-white shadow-lg p-4  md:mb-0 rounded-md">
+      <h2 className="text-xl font-bold mb-4">CATEGORIES</h2>
 
       {/* Dropdown for mobile */}
       <div className="md:hidden">
@@ -54,6 +73,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                       : "hover:bg-gray-100"
                   }`}
                 >
+                  {/* @ts-ignore */}
+                  {categoryIcons[category]}
                   {category}
                 </button>
               </li>
@@ -83,6 +104,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                     : "hover:bg-gray-100"
                 }`}
               >
+                {/* @ts-ignore */}
+
+                {categoryIcons[category]}
                 {category}
               </button>
             </li>
