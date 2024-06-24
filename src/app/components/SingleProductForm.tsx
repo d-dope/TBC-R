@@ -83,12 +83,12 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
               {product.description}
             </p>
             <div className="flex mb-4">
-              <div className="mr-4">
+              <div className="mr-4 flex gap-x-1">
                 <span className="font-bold text-gray-700 dark:text-gray-300">
                   Price:
                 </span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  {product.price}₾
+                <span className="text-primaryColor font-sm dark:text-gray-300">
+                  {product.price} ₾
                 </span>
               </div>
             </div>

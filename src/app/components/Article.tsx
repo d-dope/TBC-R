@@ -71,7 +71,7 @@ const Article: React.FC<ArticleProps> = ({
             </p>
           </div>
           <div className="absolute top-2 right-2 bg-white bg-opacity-75 text-center px-2 py-1 rounded">
-            <p className="text-sm font-semibold py-0.5 px-2 text-green-600">
+            <p className="text-sm font-sm py-0.5 px-2 text-green-600">
               {Number(price).toFixed(2).replace(/\.00$/, "")} ₾
             </p>
           </div>
