@@ -15,7 +15,7 @@ export default function HeroSection({ products }: { products: Product[] }) {
 
   return (
     <>
-      <main className=" mx-auto px-4 ">
+      <main className=" mx-auto ">
         {/* @ts-ignore */}
         <ArticlesList products={products} />
       </main>

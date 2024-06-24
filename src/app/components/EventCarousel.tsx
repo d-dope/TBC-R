@@ -54,7 +54,7 @@ export default function EventCarousel({ products }: any) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
               <div className="absolute bottom-0 right-0 p-4 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-primaryColor opacity-85 text-white font-semibold py-2 px-4 rounded">
+                <button className="bg-primaryColor opacity-85 text-white font-sm py-2 px-4 rounded">
                   {Number(product.price).toFixed(2).replace(/\.00$/, "")} ₾
                 </button>
               </div>

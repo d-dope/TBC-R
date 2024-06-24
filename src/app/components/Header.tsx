@@ -10,7 +10,11 @@ import imageLogo from "../../../public/assets/Untitlemebbbbbbbbbbbd-removebg-pre
 import Image from "next/image";
 import { TicketIcon } from "@heroicons/react/20/solid";
 import { useUser } from "@auth0/nextjs-auth0/client";
-
+import {
+  ArrowRightEndOnRectangleIcon,
+  ChatBubbleBottomCenterTextIcon,
+  CalendarDaysIcon,
+} from "@heroicons/react/20/solid";
 // @ts-ignore
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -61,7 +65,7 @@ export default function Header() {
     <Disclosure
       as="nav"
       className={classNames(
-        "bg-white fixed w-full z-10 transition-transform duration-300",
+        "bg-white dark:bg-slate-950 fixed w-full z-10 transition-transform duration-300",
         showHeader ? "translate-y-0" : "-translate-y-full"
       )}
     >
@@ -86,7 +90,7 @@ export default function Header() {
                       key={`item-generate-${item.name}`}
                       href={item.href}
                       className={classNames(
-                        "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium font-sans",
+                        "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
                         currentPath === item.href
                           ? "border-primaryColor text-gray-900"
                           : "border-transparent text-gray-900 hover:border-gray-300 hover:text-gray-700"
@@ -101,7 +105,7 @@ export default function Header() {
                 <LocalSwitcher />
                 <button
                   type="button"
-                  className="relative ml-3 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+                  className="relative ml-1 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
                   onClick={() => {
                     if (!user) {
                       window.location.href = "/api/auth/login";
@@ -153,19 +157,7 @@ export default function Header() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-9 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            <Auth />
-                          </a>
-                        )}
-                      </Menu.Item>
+                    <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-44 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -188,7 +180,10 @@ export default function Header() {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Add Product
+                              <div className="flex gap-x-2 items-center justify-between  ">
+                                <CalendarDaysIcon className="h-6 w-6" />
+                                <p>Add Product</p>
+                              </div>
                             </a>
                           )}
                         </Menu.Item>
@@ -204,11 +199,29 @@ export default function Header() {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Add Blog
+                              <div className="flex gap-x-7 items-center">
+                                <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
+                                Add Blog
+                              </div>
                             </a>
                           )}
                         </Menu.Item>
                       )}
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-9 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <div className="flex gap-x-6 cursor-pointer items-center">
+                              <ArrowRightEndOnRectangleIcon className="h-6 w-6" />
+                              <Auth />
+                            </div>
+                          </a>
+                        )}
+                      </Menu.Item>
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -300,13 +313,6 @@ export default function Header() {
               <div className="mt-3 space-y-1">
                 <Disclosure.Button
                   as="a"
-                  href="#"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                >
-                  <Auth />
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
                   className="block px-4 py-2 cursor-pointer text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                 >
                   <ThemeSwitch />
@@ -314,12 +320,38 @@ export default function Header() {
                 {isAdmin && (
                   <Disclosure.Button
                     as="a"
+                    href="/admin/add-blog"
+                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                  >
+                    <div className="flex gap-x-2 items-center">
+                      <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
+                      Add Blog
+                    </div>
+                  </Disclosure.Button>
+                )}
+
+                {isAdmin && (
+                  <Disclosure.Button
+                    as="a"
                     href="/admin/add"
                     className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                   >
-                    Add Product
+                    <div className="flex gap-x-2 items-center">
+                      <CalendarDaysIcon className="h-6 w-6" />
+                      Add Product
+                    </div>
                   </Disclosure.Button>
                 )}
+                <Disclosure.Button
+                  as="a"
+                  href="#"
+                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                >
+                  <div className="flex gap-x-2 items-center">
+                    <ArrowRightEndOnRectangleIcon className="h-6 w-6" />
+                    <Auth />
+                  </div>
+                </Disclosure.Button>
               </div>
             </div>
           </Disclosure.Panel>

@@ -10,12 +10,12 @@ module.exports = {
     "./pages/**/*.{ts,tsx}",
     "./public/**/*.html",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         primaryColor: "#3B74FF",
         DEFAULT: "#1a237e",
-        dark: "#0d47a1",
         MainBgColor: "#F5F6FF",
       },
       fontFamily: {
@@ -30,5 +30,4 @@ module.exports = {
     },
   },
   plugins: [require("flowbite/plugin")],
-  darkMode: "class",
 };
