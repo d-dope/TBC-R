@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <div className="w-full md:w-64 md:h-[450px] h-28 bg-white shadow-lg p-4 md:mb-0 rounded-md">
+    <div className="w-full md:w-64 md:h-[450px] h-28 bg-white shadow-lg p-4 md:mb-0 rounded-md mt-14">
       <h2 className="text-xl font-bold mb-4">CATEGORIES</h2>
 
       {/* Dropdown for mobile */}
