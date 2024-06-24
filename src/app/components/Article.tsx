@@ -72,7 +72,7 @@ const Article: React.FC<ArticleProps> = ({
           </div>
           <div className="absolute top-2 right-2 bg-white bg-opacity-75 text-center px-2 py-1 rounded">
             <p className="text-sm font-semibold py-0.5 px-2 text-green-600">
-              {Number(price).toFixed(2).replace(/\.00$/, "")}   ₾
+              {Number(price).toFixed(2).replace(/\.00$/, "")} ₾
             </p>
           </div>
         </div>
@@ -89,15 +89,7 @@ const Article: React.FC<ArticleProps> = ({
           <MapPinIcon className="w-4 h-4" />
           <p className="text-gray-500 text-sm mb-4">{place}</p>
         </div>
-        <div className="flex items-center justify-between">
-          {isAdmin && (
-            <DeleteCartBtn
-              id={id}
-              // @ts-ignore
-              className="text-red-500 hover:text-red-700 transition-colors duration-200"
-            />
-          )}
-        </div>
+        <div className="flex items-center justify-between"></div>
       </div>
     </div>
   );
