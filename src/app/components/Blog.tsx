@@ -7,9 +7,34 @@ interface BlogProps {
   title: string;
   description: string;
   pictureUrl: string;
+  date: string;
 }
 
-const Blog: React.FC<BlogProps> = ({ id, title, description, pictureUrl }) => {
+// Helper function to truncate the description to 40 words
+const truncateDescription = (text: string, wordLimit: number) => {
+  const words = text.split(" ");
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(" ") + "...";
+  }
+  return text;
+};
+
+const Blog: React.FC<BlogProps> = ({
+  id,
+  title,
+  description,
+  pictureUrl,
+  date,
+}) => {
+  // Parse the date and format it to show only month and day
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+
+  // Truncate the description to 40 words
+  const truncatedDescription = truncateDescription(description, 30);
+
   return (
     <article className="transform hover:scale-105 transition-transform duration-300 shadow-lg rounded-lg overflow-hidden">
       <Link href={`/blogs/${id}`}>
@@ -29,9 +54,10 @@ const Blog: React.FC<BlogProps> = ({ id, title, description, pictureUrl }) => {
             {title}
           </h3>
         </Link>
-        <p className="mt-2 text-gray-600 h-32 overflow-hidden ">
-          {description}
+        <p className="mt-2 text-gray-600 h-32 overflow-hidden">
+          {truncatedDescription}
         </p>
+        <p className="mt-2 text-gray-600">{formattedDate}</p>
       </div>
     </article>
   );

@@ -10,7 +10,7 @@ import ContactForm from "../../../components/ContactForm";
 export default function ContactPage() {
   const t = useTranslations("Contact");
   return (
-    <div className="relative isolate bg-primaryColor">
+    <div className="relative isolate bg-MainBgColor">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
         <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
@@ -58,24 +58,24 @@ export default function ContactPage() {
                 />
               </div>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-700-700">
               {t("Contact Us")}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-100">
+            <p className="mt-6 text-lg leading-8 text-gray-700-100">
               {t("Our Contact Information:")}
             </p>
 
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-700-300">
               Proin volutpat consequat porttitor cras nullam gravida at. Orci
               molestie a eu arcu. Sed ut tincidunt integer elementum id sem.
               Arcu sed malesuada et magna.
             </p>
-            <dl className="mt-10 space-y-4 text-base leading-7 text-gray-300">
+            <dl className="mt-10 space-y-4 text-base leading-7 text-gray-700-300">
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Address</span>
                   <BuildingOffice2Icon
-                    className="h-7 w-6 text-gray-400"
+                    className="h-7 w-6 text-gray-700-400"
                     aria-hidden="true"
                   />
                 </dt>
@@ -85,12 +85,12 @@ export default function ContactPage() {
                 <dt className="flex-none">
                   <span className="sr-only">Telephone</span>
                   <PhoneIcon
-                    className="h-7 w-6 text-gray-400"
+                    className="h-7 w-6 text-gray-700-400"
                     aria-hidden="true"
                   />
                 </dt>
                 <dd>
-                  <a className="hover:text-white" href="tel:+1 (555) 234-5678">
+                  <a className="hover:text-gray-700-700" href="tel:+1 (555) 234-5678">
                     +1 (555) 234-5678
                   </a>
                 </dd>
@@ -99,13 +99,13 @@ export default function ContactPage() {
                 <dt className="flex-none">
                   <span className="sr-only">{t("Email:")}</span>
                   <EnvelopeIcon
-                    className="h-7 w-6 text-gray-400"
+                    className="h-7 w-6 text-gray-700-400"
                     aria-hidden="true"
                   />
                 </dt>
                 <dd>
                   <a
-                    className="hover:text-white"
+                    className="hover:text-gray-700-700"
                     href="mailto:hello@example.com"
                   >
                     hello@example.com

@@ -93,9 +93,6 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
               </div>
             </div>
             <div className="mb-4">
-              <span className="font-bold text-gray-700 dark:text-gray-300">
-                Share:
-              </span>
               <div className="flex items-center mt-2 gap-x-3">
                 <FacebookShareButton
                   title={title}

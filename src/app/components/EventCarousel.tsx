@@ -59,12 +59,12 @@ export default function EventCarousel({ products }: any) {
                 </button>
               </div>
             </div>
-            <div className="mt-2">
-              <h2 className="text-md font-semibold">{product.title}</h2>
+            <div className="mt-4">
+              <h2 className="text-md font-semibold mb-2">{product.title}</h2>
               <div className="flex gap-x-2">
                 {" "}
                 <MapPinIcon className="w-4 h-4 fill-gray-500" />
-                <p className="text-gray-500 text-sm mb-4">{product.place}</p>
+                <p className="text-gray-500 text-sm mb-10">{product.place}</p>
               </div>
             </div>
           </Link>

@@ -11,6 +11,7 @@ interface addToCartBtnProps {
 const AddToCartBtn = ({ id }: addToCartBtnProps) => {
   const { user } = useUser();
   const [authId, setAuthId] = useState("");
+  const [added, setAdded] = useState(false); // New state to handle button status
 
   useEffect(() => {
     if (user && user.sub) {
@@ -18,12 +19,18 @@ const AddToCartBtn = ({ id }: addToCartBtnProps) => {
     }
   }, [user]);
 
+  const handleAddToCart = () => {
+    addToCartAction(Number(id), authId);
+    setAdded(true); // Change button state to "added"
+  };
+
   return (
     <button
-      onClick={() => addToCartAction(Number(id), authId)}
-      className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md font-semibold shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+      onClick={handleAddToCart}
+      disabled={added} // Disable button if "added" is true
+      className={`w-full ${added ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} text-white py-2 px-4 rounded-md font-semibold shadow-md transition duration-300 ease-in-out transform ${!added && 'hover:scale-105'}`}
     >
-      Add To Cart
+      {added ? "Added" : "Add To Cart"} 
     </button>
   );
 };

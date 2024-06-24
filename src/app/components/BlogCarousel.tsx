@@ -53,8 +53,8 @@ export default function BlogCarousel({ blogs }: any) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-75"></div>
             </div>
-            <div className="mt-2">
-              <h2 className="text-lg font-semibold mb-10">{blog.title}</h2>
+            <div className="mt-4 ">
+              <h2 className="text-lg font-semibold mb-12 ">{blog.title}</h2>
             </div>
           </Link>
         </SwiperSlide>

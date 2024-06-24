@@ -24,7 +24,7 @@ export default function SuccessPage() {
             <p> Have a great day! </p>
             <div className="py-10 text-center">
               <Link href="/products">
-                <p className="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
+                <p className="px-12 bg-primaryColor  hover:opacity-85 text-white font-semibold py-3 rounded-lg">
                   {" "}
                   GO BACK
                 </p>

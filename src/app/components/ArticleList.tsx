@@ -68,7 +68,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
       article.title.toLowerCase().includes(query.toLowerCase())
     );
     setSortedArticles(filteredArticles);
-  }, 300);
+  }, 1);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(event.target.value);

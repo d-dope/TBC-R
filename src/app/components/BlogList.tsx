@@ -9,6 +9,7 @@ interface BlogType {
   title: string;
   description: string;
   picture_url: string;
+  added_on: string;
 }
 
 interface BlogListProps {
@@ -38,29 +39,25 @@ export default function BlogList({ blogs }: BlogListProps) {
     );
     setSearchQuery(query);
     setFilteredBlogs(filteredArticles);
-  }, 300);
+  }, 1);
 
   return (
     <div className="py-24 sm:py-32 bg-MainBgColor ">
       <div className="container mx-auto sm:px-6 lg:px-8 px-6">
-        <div className="mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            From the Blog
-          </h2>
-          <p className="mt-2 text-lg leading-8 text-gray-600">
-            Learn how to grow your business with our expert advice.
-          </p>
-        </div>
-        <div className="my-4 mx-auto max-w-2xl">
+        <div className="border-b border-gray-200 pb-5 flex justify-between">
+          <h3 className="text-base font-semibold leading-6 text-gray-900">
+            Journey Into Event: Stories, Tips, and More...{" "}
+          </h3>
           <input
             type="text"
-            placeholder="Search articles..."
+            placeholder="Search Blogs..."
             onChange={(e) => handleSearch(e.target.value)}
             value={searchQuery}
             className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
           />
         </div>
-        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="my-4 mx-auto max-w-2xl"></div>
+        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
           {filteredBlogs.map((blog) => (
             <div key={`blog-generate-${blog.id}`}>
               <Blog
@@ -68,6 +65,7 @@ export default function BlogList({ blogs }: BlogListProps) {
                 title={blog.title}
                 description={blog.description}
                 pictureUrl={blog.picture_url}
+                date={blog.added_on}
               />
             </div>
           ))}

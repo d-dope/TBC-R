@@ -51,7 +51,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-semibold leading-6 text-white"
+              className="block text-sm font-semibold leading-6 text-gray-700"
             >
               {t("Name:")}
             </label>
@@ -64,14 +64,14 @@ export default function ContactForm() {
                 autoComplete="given-name"
                 value={formData.name}
                 onChange={handleChange}
-                className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border bg-white/5 px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
             <label
               htmlFor="lastname"
-              className="block text-sm font-semibold leading-6 text-white"
+              className="block text-sm font-semibold leading-6 text-gray-700"
             >
               {t("LastName:")}
             </label>
@@ -84,14 +84,14 @@ export default function ContactForm() {
                 autoComplete="family-name"
                 value={formData.lastname}
                 onChange={handleChange}
-                className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border bg-white/5 px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div className="sm:col-span-2">
             <label
               htmlFor="email"
-              className="block text-sm font-semibold leading-6 text-white"
+              className="block text-sm font-semibold leading-6 text-gray-700"
             >
               {t("Email:")}
             </label>
@@ -104,14 +104,14 @@ export default function ContactForm() {
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border bg-white/5 px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div className="sm:col-span-2">
             <label
               htmlFor="phone"
-              className="block text-sm font-semibold leading-6 text-white"
+              className="block text-sm font-semibold leading-6 text-gray-700"
             >
               {t("Phone:")}
             </label>
@@ -124,14 +124,14 @@ export default function ContactForm() {
                 autoComplete="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border bg-white/5 px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div className="sm:col-span-2">
             <label
               htmlFor="message"
-              className="block text-sm font-semibold leading-6 text-white"
+              className="block text-sm font-semibold leading-6 text-gray-700"
             >
               {t("Message:")}
             </label>
@@ -143,7 +143,7 @@ export default function ContactForm() {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border bg-white/5 px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primaryColor sm:text-sm sm:leading-6"
               />
             </div>
           </div>
