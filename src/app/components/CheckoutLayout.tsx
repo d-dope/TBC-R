@@ -1,5 +1,3 @@
-// checkoutLayout.tsx
-
 "use client";
 
 import { FC, useEffect, useState } from "react";
@@ -36,14 +34,12 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
 }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  console.log(products);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const fetchedProducts = await Promise.all(
           initialProducts.map(async (product) => {
-            // Fetch product details including auth_id and product_id
             const productDetail = await getProductDetail(
               Number(product.product_id)
             );
@@ -51,7 +47,6 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
               ...productDetail,
               auth_id: product.auth_id,
               quantity: product.quantity,
-              // Ensure price is a number
               price: Number(productDetail.price),
             };
           })
@@ -95,20 +90,22 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
   };
 
   return (
-    <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-100 p-8 text-gray-800">
-      <div className="w-full max-w-4xl">
-        <h1 className="text-3xl font-bold mb-4">Shopping cart</h1>
-        <p className="text-sm text-pink-600">{totalQuantity} items</p>
+    <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-50 p-8 text-gray-800">
+      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6">
+        <h1 className="text-3xl font-bold mb-6 text-center">Shopping Cart</h1>
+        <p className="text-sm text-pink-600 mb-4 text-center">
+          {totalQuantity} items
+        </p>
         <div className="mt-4">
           {products.map((product, index) => (
             <div
               key={`indexxxxxxxx-generate-${index}`}
-              className="flex items-center justify-between bg-white rounded-lg shadow-md p-4 mb-4"
+              className="flex items-center justify-between bg-gray-100 rounded-lg shadow-md p-4 mb-4"
             >
               <Image
                 src={product.picture_url}
-                width={64}
-                height={64}
+                width={400}
+                height={400}
                 alt={product.title}
                 className="rounded-lg"
               />
@@ -116,10 +113,10 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
                 <h2 className="text-lg font-semibold">{product.title}</h2>
                 <div className="flex items-center mt-2">
                   <span className="text-gray-600 mr-2">
-                    Qty: {product.quantity}
+                    Quantity: {product.quantity}
                   </span>
                   <button
-                    className="p-2 mx-2 bg-red-600 text-white rounded hover:bg-red-700"
+                    className="px-3 py-1 mx-2 bg-gray-400 text-white rounded hover:bg-gray-700"
                     onClick={() =>
                       handleQuantityChange(
                         product.id,
@@ -131,7 +128,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
                     -
                   </button>
                   <button
-                    className="p-2 mx-2 bg-green-600 text-white rounded hover:bg-green-700"
+                    className="px-3 py-1 mx-2 bg-gray-400 text-white rounded hover:bg-gray-700"
                     onClick={() =>
                       handleQuantityChange(
                         product.id,
@@ -145,28 +142,30 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
                 </div>
               </div>
               <p className="text-lg font-semibold">
-                {Number(product.price).toFixed(2)}
+                ${Number(product.price).toFixed(2)}
               </p>
             </div>
           ))}
         </div>
-        <div className="mt-4">
+        <div className="mt-4 flex justify-between items-center">
           <h2 className="text-xl font-semibold">
             Total Price: ${totalPrice.toFixed(2)}
           </h2>
+          <div className="flex space-x-4">
+            <button
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+              onClick={() => resetCart(products[0]?.auth_id)}
+            >
+              RESET
+            </button>
+            <button
+              onClick={checkout}
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              Buy Now
+            </button>
+          </div>
         </div>
-        <button
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-          onClick={() => resetCart(products[0]?.auth_id)}
-        >
-          RESET
-        </button>
-        <button
-          onClick={checkout}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-        >
-          Buy Now
-        </button>
       </div>
     </section>
   );

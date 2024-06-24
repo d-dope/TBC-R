@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Blog from "./Blog";
-import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface BlogType {
@@ -39,14 +38,14 @@ export default function BlogList({ blogs }: BlogListProps) {
     );
     setSearchQuery(query);
     setFilteredBlogs(filteredArticles);
-  }, 1);
+  }, 300);
 
   return (
-    <div className="py-24 sm:py-32 ">
-      <div className="container mx-auto  sm:px-6 lg:px-8 px-6">
-        <div className="mx-auto  text-center">
+    <div className="py-24 sm:py-32 bg-MainBgColor ">
+      <div className="container mx-auto sm:px-6 lg:px-8 px-6">
+        <div className="mx-auto text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            From the blog
+            From the Blog
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Learn how to grow your business with our expert advice.
@@ -61,7 +60,7 @@ export default function BlogList({ blogs }: BlogListProps) {
             className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
           />
         </div>
-        <div className=" mt-16 grid  grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-3 md:mx-0 md:max-w-none  md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
           {filteredBlogs.map((blog) => (
             <div key={`blog-generate-${blog.id}`}>
               <Blog
@@ -69,7 +68,7 @@ export default function BlogList({ blogs }: BlogListProps) {
                 title={blog.title}
                 description={blog.description}
                 pictureUrl={blog.picture_url}
-              />{" "}
+              />
             </div>
           ))}
         </div>

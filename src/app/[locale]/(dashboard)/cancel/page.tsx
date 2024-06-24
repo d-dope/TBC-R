@@ -6,24 +6,30 @@ export default function CancelPage() {
       <div className="bg-gray-100 py-52 h-screen">
         <div className="bg-white p-6  md:mx-auto">
           <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
             viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
             className="text-red-600 w-16 h-16 mx-auto my-6"
           >
             <path
-              fill="currentColor"
-              d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"
-            ></path>
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
           </svg>
+
           <div className="text-center">
             <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
               Payment Cancelled!
             </h3>
             <p className="text-gray-600 my-2">Failed online payment.</p>
-            <div className="py-10 text-center">
+            <div className="py-10 flex justify-center text-center">
               <Link href="/products">
-                <p className="px-12 bg-primaryColor hover:opacity-85 text-white font-semibold py-3">
+                <p className="px-12 bg-primaryColor  hover:opacity-85 text-white font-semibold py-3 rounded-lg">
                   {" "}
-                  GO BACK
+                  BACK TO PRODUCTS
                 </p>
               </Link>
             </div>

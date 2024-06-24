@@ -76,7 +76,7 @@ const Article: React.FC<ArticleProps> = ({
           </div>
         </div>
       </Link>
-      <div className="p-4">
+      <div className="p-4 ">
         <Link href={`/products/${id}`}>
           <h3 className="text-lg font-semibold mb-1 hover:text-blue-500 transition-colors duration-200">
             {title}
@@ -96,12 +96,6 @@ const Article: React.FC<ArticleProps> = ({
               className="text-red-500 hover:text-red-700 transition-colors duration-200"
             />
           )}
-          <button
-            onClick={handleAddToCart}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow-md transition-colors duration-200"
-          >
-            Add to Cart
-          </button>
         </div>
       </div>
     </div>

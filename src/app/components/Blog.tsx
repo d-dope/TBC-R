@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import DeleteBlogBtn from "./DeleteBlogBtn";
 import Link from "next/link";
 
 interface BlogProps {
@@ -12,31 +11,27 @@ interface BlogProps {
 
 const Blog: React.FC<BlogProps> = ({ id, title, description, pictureUrl }) => {
   return (
-    <article className="flex flex-col items-start justify-between">
+    <article className="transform hover:scale-105 transition-transform duration-300 shadow-lg rounded-lg overflow-hidden">
       <Link href={`/blogs/${id}`}>
         <div className="relative w-full">
           <Image
             src={pictureUrl}
             alt={title}
-            className="aspect-[16/9] h-52 w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+            className="w-full h-52 object-cover"
             width={200}
             height={200}
           />
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
         </div>
       </Link>
-      <div className="max-w-xl">
-        <div className="group relative">
-          <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-            <a href="#">
-              <span className="absolute inset-0" />
-              {title}
-            </a>
+      <div className="p-4 bg-white">
+        <Link href={`/blogs/${id}`}>
+          <h3 className="text-xl font-bold text-gray-900 hover:text-blue-500 transition-colors duration-300">
+            {title}
           </h3>
-          <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-            {description}
-          </p>
-        </div>
+        </Link>
+        <p className="mt-2 text-gray-600 h-32 overflow-hidden ">
+          {description}
+        </p>
       </div>
     </article>
   );

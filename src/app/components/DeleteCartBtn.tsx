@@ -17,7 +17,7 @@ export default function DeleteCartBtn({ id }: DeleteCartBtnProps) {
     <div>
       <button
         onClick={handleDelete}
-        className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+        className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
       >
         Remove
       </button>
