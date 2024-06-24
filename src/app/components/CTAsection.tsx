@@ -11,11 +11,11 @@ export default function CTA() {
       <Video />{" "}
       <div className=" flex items-center justify-center">
         <div className="px-6  sm:px-6  lg:px-8 text-center">
-          <div className="absolute top-36  left-1/2 transform -translate-x-1/2 w-full ">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <div className="absolute top-44  left-1/2 transform -translate-x-1/2 w-full ">
+            <h2 className="text-3xl font-bold tracking-tight [text-shadow:_0_2px_0_rgb(0_0_0_/_90%)] text-white sm:text-4xl">
               Discover Unforgettable Events Near You! <br />
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-indigo-200">
+            <p className="mx-auto [text-shadow:_0_2px_0_rgb(0_0_0_/_80%)] mt-6 max-w-xl text-lg leading-8 text-indigo-200">
               Welcome to EVENT, your go-to platform for finding and attending
               exciting events. Whether you're into music, arts, sports, or
               networking, we've got something for everyone!
