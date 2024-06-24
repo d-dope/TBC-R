@@ -40,9 +40,9 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
   const title = product.title;
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 py-32">
+    <div className="bg-gray-100 dark:bg-black py-32 ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row -mx-4">
+        <div className="flex flex-col md:flex-row -mx-4 mt-14">
           <div className="md:flex-1 px-4 flex flex-col justify-between">
             <div className="sm:h-[300px] h-[200px] rounded-lg dark:bg-gray-700 mb-4">
               <Zoom>
@@ -82,17 +82,17 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
               {product.description}
             </p>
-            <div className="flex mb-4">
+            <div className="flex  ">
               <div className="mr-4 flex gap-x-1">
                 <span className="font-bold text-gray-700 dark:text-gray-300">
                   Price:
                 </span>
-                <span className="text-primaryColor font-sm dark:text-gray-300">
+                <span className="text-primaryColor font-sm dark:text-primaryColor">
                   {product.price} ₾
                 </span>
               </div>
             </div>
-            <div className="mb-4">
+            <div className="mb-4 flex">
               <div className="flex items-center mt-2 gap-x-3">
                 <FacebookShareButton
                   title={title}

@@ -42,10 +42,10 @@ export default function BlogList({ blogs }: BlogListProps) {
   }, 1);
 
   return (
-    <div className="py-24 sm:py-32 bg-MainBgColor ">
+    <div className="py-24 sm:py-32 bg-MainBgColor dark:bg-black">
       <div className="container mx-auto sm:px-6 lg:px-8 px-6">
-        <div className="border-b border-gray-200 pb-5 flex justify-between">
-          <h3 className="text-base font-semibold leading-6 text-gray-900">
+        <div className="border-b border-gray-200 pb-16 flex justify-between">
+          <h3 className="text-base font-semibold leading-6 text-gray-900 mt-2 dark:text-white">
             Journey Into Event: Stories, Tips, and More...{" "}
           </h3>
           <input
@@ -53,13 +53,20 @@ export default function BlogList({ blogs }: BlogListProps) {
             placeholder="Search Blogs..."
             onChange={(e) => handleSearch(e.target.value)}
             value={searchQuery}
-            className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black"
+            className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black dark:text-white dark:bg-primaryGray"
           />
         </div>
         <div className="my-4 mx-auto max-w-2xl"></div>
-        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
-          {filteredBlogs.map((blog) => (
-            <div key={`blog-generate-${blog.id}`}>
+        <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
+          {filteredBlogs.map((blog, index) => (
+            <div
+              key={`blog-generate-${blog.id}`}
+              className={`${
+                index < 2
+                  ? "col-span-1 sm:col-span-1 lg:col-span-2"
+                  : "col-span-1"
+              }`}
+            >
               <Blog
                 id={blog.id}
                 title={blog.title}

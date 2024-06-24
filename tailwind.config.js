@@ -17,7 +17,7 @@ module.exports = {
         primaryColor: "#3B74FF",
         DEFAULT: "#1a237e",
         MainBgColor: "#F5F6FF",
-        primaryGray: "#0A0A0A",
+        primaryGray: "#0f0e0e",
       },
       fontFamily: {
         sans: ["Noto Sans Georgian", "sans-serif"],

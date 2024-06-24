@@ -36,28 +36,28 @@ const Blog: React.FC<BlogProps> = ({
   const truncatedDescription = truncateDescription(description, 30);
 
   return (
-    <article className="transform hover:scale-105 transition-transform duration-300 shadow-lg rounded-lg overflow-hidden">
+    <article className="transform hover:scale-105 transition-transform duration-300 shadow-lg rounded-lg overflow-hidden bg-white dark:bg-primaryGray">
       <Link href={`/blogs/${id}`}>
         <div className="relative w-full">
           <Image
             src={pictureUrl}
             alt={title}
-            className="w-full h-52 object-cover"
+            className="w-full h-72 object-cover"
             width={200}
             height={200}
           />
         </div>
       </Link>
-      <div className="p-4 bg-white">
+      <div className="p-4 bg-white dark:bg-primaryGray">
         <Link href={`/blogs/${id}`}>
-          <h3 className="text-xl font-bold text-gray-900 hover:text-blue-500 transition-colors duration-300">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300">
             {title}
           </h3>
         </Link>
-        <p className="mt-2 text-gray-600 h-32 overflow-hidden">
+        <p className="mt-2 text-gray-600 dark:text-gray-400 h-32 overflow-hidden">
           {truncatedDescription}
         </p>
-        <p className="mt-2 text-gray-600">{formattedDate}</p>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">{formattedDate}</p>
       </div>
     </article>
   );

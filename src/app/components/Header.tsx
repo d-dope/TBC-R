@@ -62,7 +62,7 @@ export default function Header() {
   }, [lastScrollY]);
 
   return (
-<Disclosure
+    <Disclosure
       as="nav"
       className={classNames(
         "bg-white dark:bg-primaryGray fixed w-full z-10 transition-transform duration-300",
@@ -76,7 +76,12 @@ export default function Header() {
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
                   <a href="/">
-                    <Image src={imageLogo} alt="logo" width={100} height={100} />
+                    <Image
+                      src={imageLogo}
+                      alt="logo"
+                      width={100}
+                      height={100}
+                    />
                   </a>
                 </div>
                 <div className="hidden sm:ml-16 sm:flex sm:space-x-8">
@@ -97,6 +102,7 @@ export default function Header() {
                 </div>
               </div>
               <div className="hidden md:ml-6 md:hidden md:items-center lg:flex">
+                <ThemeSwitch />
                 <LocalSwitcher />
                 <button
                   type="button"
@@ -153,18 +159,6 @@ export default function Header() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-44 origin-top-right rounded-md bg-white dark:bg-slate-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            className={classNames(
-                              active ? "bg-gray-100 dark:bg-slate-600" : "",
-                              "block px-14 cursor-pointer py-2 text-sm text-gray-700 dark:text-gray-300"
-                            )}
-                          >
-                            <ThemeSwitch />
-                          </a>
-                        )}
-                      </Menu.Item>
                       {isAdmin && (
                         <Menu.Item>
                           {({ active }) => (
@@ -211,7 +205,7 @@ export default function Header() {
                             )}
                           >
                             <div className="flex gap-x-6 cursor-pointer items-center">
-                              <ArrowRightEndOnRectangleIcon className="h-6 w-6" />
+                              <ArrowRightEndOnRectangleIcon className="h-6 w-6 -ml-4" />
                               <Auth />
                             </div>
                           </a>
@@ -308,8 +302,9 @@ export default function Header() {
               <div className="mt-3 space-y-1">
                 <Disclosure.Button
                   as="a"
-                  className="block px-4 py-2 cursor-pointer text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-600 hover:text-gray-800 dark:hover:text-white"
+                  className="flex items-center -ml-2 gap-x-5 px-4 py-2 cursor-pointer text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-600 hover:text-gray-800 dark:hover:text-white"
                 >
+                  <LocalSwitcher />
                   <ThemeSwitch />
                 </Disclosure.Button>
                 {isAdmin && (
