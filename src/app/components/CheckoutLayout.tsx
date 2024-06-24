@@ -90,19 +90,19 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
   };
 
   return (
-    <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-50 p-4 md:p-8 text-gray-800">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-4 md:p-6">
+    <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-50 dark:bg-black p-4 md:p-8 text-gray-800 dark:text-gray-300">
+      <div className="w-full max-w-4xl bg-white dark:bg-primaryGray shadow-lg rounded-lg p-4 md:p-6">
         <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">
           Shopping Cart
         </h1>
-        <p className="text-sm text-gray-600 mb-4 text-center">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 text-center">
           {totalQuantity} Items
         </p>
         <div className="mt-4">
           {products.map((product, index) => (
             <div
               key={`indexxxxxxxx-generate-${index}`}
-              className="flex flex-col sm:flex-row items-center justify-between bg-gray-100 rounded-lg shadow-md p-4 mb-4"
+              className="flex flex-col sm:flex-row items-center justify-between bg-gray-100 dark:bg-black rounded-lg shadow-md p-4 mb-4"
             >
               <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
                 <Image
@@ -116,11 +116,11 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
               <div className="flex-1 sm:ml-4">
                 <h2 className="text-lg font-semibold">{product.title}</h2>
                 <div className="flex items-center mt-2">
-                  <span className="text-gray-600 mr-2">
+                  <span className="text-gray-600 dark:text-gray-400 mr-2">
                     Quantity: {product.quantity}
                   </span>
                   <button
-                    className="px-3 py-1 mx-2 bg-gray-400 text-white rounded hover:bg-gray-700"
+                    className="px-3 py-1 mx-2 bg-gray-400 dark:bg-gray-600 text-white rounded hover:bg-gray-700 dark:hover:bg-gray-800"
                     onClick={() =>
                       handleQuantityChange(
                         product.id,
@@ -132,7 +132,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
                     -
                   </button>
                   <button
-                    className="px-3 py-1 mx-2 bg-gray-400 text-white rounded hover:bg-gray-700"
+                    className="px-3 py-1 mx-2 bg-gray-400 dark:bg-gray-600 text-white rounded hover:bg-gray-700 dark:hover:bg-gray-800"
                     onClick={() =>
                       handleQuantityChange(
                         product.id,
@@ -157,7 +157,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
           </h2>
           <div className="flex space-x-4">
             <button
-              className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900"
+              className="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-900 dark:hover:bg-gray-800"
               onClick={() => resetCart(products[0]?.auth_id)}
             >
               RESET

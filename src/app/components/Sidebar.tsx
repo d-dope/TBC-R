@@ -36,26 +36,28 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <div className="w-full md:w-64 md:h-[450px] h-28 bg-white shadow-lg p-4 md:mb-0 rounded-md mt-14">
-      <h2 className="text-xl font-bold mb-4">CATEGORIES</h2>
+    <div className="w-full md:w-64 md:h-[450px] h-28 bg-white dark:bg-primaryGray shadow-lg p-4 md:mb-0 rounded-md mt-28">
+      <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+        CATEGORIES
+      </h2>
 
       {/* Dropdown for mobile */}
       <div className="md:hidden relative">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="w-full text-left px-4 py-2 rounded-md focus:outline-none bg-gray-100 hover:bg-gray-200"
+          className="w-full text-left px-4 py-2 rounded-md focus:outline-none bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100"
         >
           {selectedCategory ? selectedCategory : "Select a category"}
         </button>
         {isDropdownOpen && (
-          <ul className="absolute w-full space-y-2 mt-2 bg-white shadow-md rounded-md z-50">
+          <ul className="absolute w-full space-y-2 mt-2 bg-white dark:bg-gray-800 shadow-md rounded-md z-50">
             <li>
               <button
                 onClick={() => {
                   onClearCategory();
                   setIsDropdownOpen(false);
                 }}
-                className="w-full text-left px-4 py-2 rounded-md focus:outline-none hover:bg-gray-100"
+                className="w-full text-left px-4 py-2 rounded-md focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 All Categories
               </button>
@@ -70,7 +72,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   className={`w-full text-left px-4 py-2 rounded-md focus:outline-none ${
                     selectedCategory === category
                       ? "bg-blue-500 text-white"
-                      : "hover:bg-gray-100"
+                      : "hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
                   }`}
                 >
                   {/* @ts-ignore */}
@@ -89,7 +91,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <li>
             <button
               onClick={onClearCategory}
-              className="w-full text-left px-4 py-2 rounded-md focus:outline-none hover:bg-gray-100"
+              className="w-full text-left px-4 py-2 rounded-md focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               All Categories
             </button>
@@ -101,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 className={`w-full text-left px-4 py-2 rounded-md focus:outline-none ${
                   selectedCategory === category
                     ? "bg-blue-500 text-white"
-                    : "hover:bg-gray-100"
+                    : "hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
                 }`}
               >
                 {/* @ts-ignore */}

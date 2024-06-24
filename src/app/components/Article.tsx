@@ -53,41 +53,44 @@ const Article: React.FC<ArticleProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
+    <div className="bg-white dark:bg-primaryGray  rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
       <Link href={`/products/${id}`}>
-        <div className="relative h-64 overflow-hidden">
+        <div className="relative h-40 overflow-hidden">
           {image && (
             <Image
               src={image}
-              width={400}
-              height={400}
+              width={300}
+              height={300}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-200 hover:scale-105"
+              className="w-full h-full  object-cover transition-transform duration-200 hover:scale-105"
             />
           )}
-          <div className="absolute top-2 left-2 bg-white bg-opacity-75 text-center px-2 py-1 rounded">
-            <p className="text-xs font-semibold text-gray-800">
+          <div className="absolute top-2 left-2 bg-white dark:bg-gray-700 bg-opacity-75 text-center px-2 py-1 rounded">
+            <p className="text-xs font-semibold text-gray-800 dark:text-gray-100">
               {formattedDate}
             </p>
           </div>
-          <div className="absolute top-2 right-2 bg-white bg-opacity-75 text-center px-2 py-1 rounded">
-            <p className="text-sm font-sm py-0.5 px-2 text-green-600">
+          <div className="absolute top-2 right-2 bg-white dark:bg-gray-700 bg-opacity-75 text-center px-2 py-1 rounded">
+            <p className="text-sm font-sm py-0.5 px-2 text-green-600 dark:text-green-400">
               {Number(price).toFixed(2).replace(/\.00$/, "")} ₾
             </p>
           </div>
         </div>
       </Link>
-      <div className="p-4 ">
+      <div className="p-4">
         <Link href={`/products/${id}`}>
-          <h3 className="text-lg font-semibold mb-1 hover:text-blue-500 transition-colors duration-200">
+          <h3 className="text-lg font-semibold mb-1 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200">
             {title}
           </h3>
         </Link>
-        <p className="text-gray-500 text-sm mb-1">{formattedDay}</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">
+          {formattedDay}
+        </p>
         <div className="flex gap-x-2">
-          {" "}
-          <MapPinIcon className="w-4 h-4" />
-          <p className="text-gray-500 text-sm mb-4">{place}</p>
+          <MapPinIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
+            {place}
+          </p>
         </div>
         <div className="flex items-center justify-between"></div>
       </div>
