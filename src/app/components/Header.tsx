@@ -105,7 +105,7 @@ export default function Header() {
                 <LocalSwitcher />
                 <button
                   type="button"
-                  className="relative ml-3 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+                  className="relative ml-1 rounded-full bg-gray-200 p-1 text-gray-400 border border-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primaryColor"
                   onClick={() => {
                     if (!user) {
                       window.location.href = "/api/auth/login";
