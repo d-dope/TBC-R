@@ -20,7 +20,6 @@ import BlogCarousel from "./BlogCarousel";
 import LandingSideBar from "./LandingSideBar";
 import Link from "next/link";
 
-
 const values = [
   {
     name: "Flexible Find",
@@ -153,7 +152,7 @@ const footerNavigation = {
 export default function HomeLayout({ products, blogs }: any) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <div className="bg-MainBgColor">
+    <div className="bg-MainBgColor dark:bg-black">
       <Header />
       <CTA />
       <main className="">
@@ -185,10 +184,10 @@ export default function HomeLayout({ products, blogs }: any) {
           className=" container mx-auto px-4 mt-16 sm:px-6 lg:px-8 "
         >
           <div className="flex justify-between mb-3">
-            <h1 className="font-bold font-sans text-lg">LATEST EVENTS</h1>
+            <h1 className="font-bold  text-lg">LATEST EVENTS</h1>
             <Link href="/products">
               {" "}
-              <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer hover:text-primaryColor">
+              <h1 className="font-semibold  text-lg mr-2 cursor-pointer hover:text-primaryColor">
                 View All...
               </h1>
             </Link>{" "}
@@ -202,10 +201,10 @@ export default function HomeLayout({ products, blogs }: any) {
           className=" container mx-auto px-4  mt-24 sm:px-6 lg:px-8 "
         >
           <div className="flex justify-between mb-3">
-            <h1 className="font-bold font-sans text-lg">LATEST BLOGS</h1>
+            <h1 className="font-bold text-lg">LATEST BLOGS</h1>
             <Link href="/blogs">
               {" "}
-              <h1 className="font-semibold font-sans text-lg mr-2 cursor-pointer  hover:text-primaryColor">
+              <h1 className="font-semibold text-lg mr-2 cursor-pointer  hover:text-primaryColor">
                 View All...
               </h1>
             </Link>{" "}
@@ -220,7 +219,7 @@ export default function HomeLayout({ products, blogs }: any) {
             className="mt-6 sm:mt-6 container mx-auto px-4 sm:px-6 lg:px-8 "
           >
             <div className="border-b border-gray-200 pb-5">
-              <h3 className="text-base font-sans font-semibold leading-6 text-gray-900">
+              <h3 className="text-base font-semibold leading-6 text-gray-900">
                 OUR VALUES
               </h3>
             </div>

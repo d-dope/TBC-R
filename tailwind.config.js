@@ -16,7 +16,6 @@ module.exports = {
       colors: {
         primaryColor: "#3B74FF",
         DEFAULT: "#1a237e",
-        dark: "#0d47a1",
         MainBgColor: "#F5F6FF",
       },
       fontFamily: {

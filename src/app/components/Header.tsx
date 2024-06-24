@@ -65,7 +65,7 @@ export default function Header() {
     <Disclosure
       as="nav"
       className={classNames(
-        "bg-white dark:bg-gray-800 fixed w-full z-10 transition-transform duration-300",
+        "bg-white dark:bg-slate-950 fixed w-full z-10 transition-transform duration-300",
         showHeader ? "translate-y-0" : "-translate-y-full"
       )}
     >
