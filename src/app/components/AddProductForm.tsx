@@ -99,63 +99,63 @@ const AddProductForm = () => {
       <AvatarUploadPage onImageUpload={handleImageUpload} />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-gray-700">Title</label>
+          <label className="block text-gray-300 ">Title</label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border dark:bg-primaryGray border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Description</label>
+          <label className="block text-gray-300">Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border dark:bg-primaryGray border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Price</label>
+          <label className="block text-gray-300 ">Price</label>
           <input
             type="text"
             name="price"
             value={formData.price}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border dark:bg-primaryGray border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Date</label>{" "}
+          <label className="block text-gray-300">Date</label>{" "}
           {/* Changed from Sale to Date */}
           <input
             type="date"
             name="date" // Changed from sale to date
             value={formData.date} // Changed from formData.sale to formData.date
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border dark:bg-primaryGray border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Place</label>{" "}
+          <label className="block text-gray-300 ">Place</label>{" "}
           {/* Changed from Sale to Date */}
           <input
             type="text"
             name="place" // Changed from sale to date
             value={formData.place} // Changed from formData.sale to formData.date
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border dark:bg-primaryGray border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Category</label>
+          <label className="block text-gray-300">Category</label>
           <select
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 mb-5 border dark:bg-primaryGray border-gray-300 rounded-md"
           >
             <option value="">Select a category</option>
             <option value="Concert">CONCERT</option>
@@ -171,7 +171,7 @@ const AddProductForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white px-3 py-2 rounded"
+          className="w-full  bg-blue-500 text-white px-3 py-3 rounded-md"
         >
           Add Product
         </button>

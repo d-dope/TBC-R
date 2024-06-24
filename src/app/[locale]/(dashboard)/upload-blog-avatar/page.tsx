@@ -42,19 +42,42 @@ export default function BlogImageUploadPage({ onImageUpload }: any) {
   };
 
   return (
-    <>
-      <h1>Upload Blog Picture</h1>
-
-      <form onSubmit={handleUpload}>
-        <input name="file" ref={inputFileRef} type="file" required />
-        <button type="submit">Upload</button>
+    <div className="max-w-lg mx-auto py-8">
+      <form
+        onSubmit={handleUpload}
+        className="flex items-center justify-between space-x-4"
+      >
+        <label className="bg-primaryColor hover:bg-blue-600 text-white py-2 px-4 rounded-md cursor-pointer">
+          Choose File
+          <input
+            name="file"
+            ref={inputFileRef}
+            type="file"
+            required
+            className="hidden"
+          />
+        </label>
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md"
+        >
+          Upload
+        </button>
       </form>
-      {uploadError && <p className="text-red-500">{uploadError}</p>}
+      {uploadError && <p className="text-red-500 mt-2">{uploadError}</p>}
       {blob && (
-        <Zoom>
-          <Image src={blob.url} width={200} height={200} alt="Blog Picture" />
-        </Zoom>
+        <div className="mt-4">
+          <Zoom>
+            <Image
+              src={blob.url}
+              width={550}
+              height={550}
+              alt="Blog Picture"
+              className="rounded-md"
+            />
+          </Zoom>
+        </div>
       )}
-    </>
+    </div>
   );
 }

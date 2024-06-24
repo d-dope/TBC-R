@@ -32,9 +32,9 @@ export default function SingleBlogView({ blog }: SingleBlogViewProps) {
   const shareUrl = `https://tbc-r.vercel.app/blogs/${blog.id}`;
   const title = blog.title;
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 py-8">
+    <div className="bg-gray-100 dark:bg-black py-32 ">
       <div className="max-w-6xl mx-auto mt-32 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row -mx-4">
+        <div className="flex flex-col md:flex-row -mx-4 ">
           <div className="md:flex-1 px-4 flex flex-col justify-between">
             <div className="sm:h-[300px] h-[200px] rounded-lg dark:bg-gray-700 mb-4">
               <Zoom>

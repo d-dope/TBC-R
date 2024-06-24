@@ -75,34 +75,34 @@ const AddBlogForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4">
+    <div className="max-w-md mx-auto p-4 py-52">
       <h2 className="text-2xl font-bold mb-4">Add New Blog</h2>
       {error && <p className="text-red-500">{error}</p>}
       {success && <Notification />}
       <BlogImageUploadPage onImageUpload={handleImageUpload} />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-gray-700">Title</label>
+          <label className="block text-gray-300">Title</label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 dark:bg-primaryGray border border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Description</label>
+          <label className="block text-gray-300">Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full px-3 py-2 border dark:bg-primaryGray border-gray-300 rounded-md"
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white px-3 py-2 rounded"
+          className="w-full bg-primaryColor  text-white px-3 py-2 rounded-md"
         >
           Add Blog
         </button>

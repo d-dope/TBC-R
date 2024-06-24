@@ -104,7 +104,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
           className="md:w-1/4 bg-white  shadow-md rounded-md p-4"
         />
         <div className="flex-1 ">
-          <div className="flex flex-col mt-0 sm:mt-28 md:flex-row justify-between mb-4 space-y-4 md:space-y-0 gap-x-5">
+          <div className="flex flex-col mt-0 sm:mt-28 md:flex-row justify-between mb-4 space-y-4 md:space-y-0 gap-x-16">
             <input
               type="text"
               placeholder="Search articles..."

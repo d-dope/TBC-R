@@ -29,14 +29,39 @@ export default function AvatarUploadPage({ onImageUpload }: any) {
   };
 
   return (
-    <>
-      <h1>Upload Your Avatar</h1>
-
-      <form onSubmit={handleUpload}>
-        <input name="file" ref={inputFileRef} type="file" required />
-        <button type="submit">Upload</button>
+    <div className="max-w-lg mx-auto py-8">
+      <form
+        onSubmit={handleUpload}
+        className="flex justify-between items-center space-x-4"
+      >
+        <label className="bg-primaryColor hover:bg-blue-600 text-white py-2 px-4 rounded-md cursor-pointer">
+          Choose File
+          <input
+            name="file"
+            ref={inputFileRef}
+            type="file"
+            required
+            className="hidden"
+          />
+        </label>
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md"
+        >
+          Upload
+        </button>
       </form>
-      {blob && <Image src={blob.url} width={200} height={200} alt="Avatar" />}
-    </>
+      {blob && (
+        <div className="mt-4">
+          <Image
+            src={blob.url}
+            width={550}
+            height={550}
+            alt="Avatar"
+            className="rounded-lg"
+          />
+        </div>
+      )}
+    </div>
   );
 }
