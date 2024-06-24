@@ -66,7 +66,7 @@ export const POST = async (request: any) => {
         // address: formData.address || userForm?.address,
       },
     },
-    success_url: `${BASE_URL}/success`,
+    success_url: `${BASE_URL}/success?from=stripe`,
     cancel_url: `${BASE_URL}/cancel`,
   });
 

@@ -20,12 +20,6 @@ import BlogCarousel from "./BlogCarousel";
 import LandingSideBar from "./LandingSideBar";
 import Link from "next/link";
 
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
 
 const values = [
   {

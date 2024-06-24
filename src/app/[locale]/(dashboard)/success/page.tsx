@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EmptyCardOnSuccess from "../../../components/EmptyCardOnSuccess";
 
 export default function SuccessPage() {
   return (
@@ -18,11 +19,12 @@ export default function SuccessPage() {
             <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
               Payment Done!
             </h3>
+            <EmptyCardOnSuccess />
             <p className="text-gray-600 my-2">
               Thank you for completing your secure online payment.
             </p>
             <p> Have a great day! </p>
-            <div className="py-10 text-center">
+            <div className=" flex justify-center text-center">
               <Link href="/products">
                 <p className="px-12 bg-primaryColor  hover:opacity-85 text-white font-semibold py-3 rounded-lg">
                   {" "}

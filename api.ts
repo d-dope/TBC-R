@@ -6,8 +6,8 @@ export interface User {
   email: string;
 }
 
-export const BASE_URL = "https://tbc-r.vercel.app";
-// export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://tbc-r.vercel.app";
+export const BASE_URL = "http://localhost:3000";
 // export const BASE_URL =
 //   process.env.NODE_ENV === "development"
 //     ? "http://localhost:3000"
@@ -95,3 +95,11 @@ export async function getBlogById(id: string) {
   }
   return response.json();
 }
+
+export const getOrders = async () => {
+  const res = await fetch(`${BASE_URL}/api/orders`, {
+    cache: "no-store",
+  });
+  const orders = await res.json();
+  return orders;
+};
