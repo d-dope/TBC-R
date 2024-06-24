@@ -1,9 +1,11 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Providers from "../providers";
+import Providers from "./providers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Noto_Sans_Georgian } from "next/font/google";
+import ThemeProviders from "./providers";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -33,7 +35,7 @@ export default function RootLayout({
       <UserProvider>
         <body className={sans.className}>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Providers>{children}</Providers>
+            <ThemeProviders>{children}</ThemeProviders>
           </NextIntlClientProvider>
         </body>
       </UserProvider>

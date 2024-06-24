@@ -10,6 +10,7 @@ module.exports = {
     "./pages/**/*.{ts,tsx}",
     "./public/**/*.html",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -30,5 +31,4 @@ module.exports = {
     },
   },
   plugins: [require("flowbite/plugin")],
-  darkMode: "class",
 };
