@@ -36,11 +36,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <div className="w-full md:w-64 md:h-[450px]  h-28 bg-white shadow-lg p-4  md:mb-0 rounded-md">
+    <div className="w-full md:w-64 md:h-[450px] h-28 bg-white shadow-lg p-4 md:mb-0 rounded-md">
       <h2 className="text-xl font-bold mb-4">CATEGORIES</h2>
 
       {/* Dropdown for mobile */}
-      <div className="md:hidden">
+      <div className="md:hidden relative">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="w-full text-left px-4 py-2 rounded-md focus:outline-none bg-gray-100 hover:bg-gray-200"
@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           {selectedCategory ? selectedCategory : "Select a category"}
         </button>
         {isDropdownOpen && (
-          <ul className="space-y-2 mt-2 bg-white shadow-md rounded-md">
+          <ul className="absolute w-full space-y-2 mt-2 bg-white shadow-md rounded-md z-50">
             <li>
               <button
                 onClick={() => {
@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               </button>
             </li>
             {categories.map((category) => (
-              <li key={`cate-generate-${category}`}>
+              <li key={`mobile-${category}`}>
                 <button
                   onClick={() => {
                     onSelectCategory(category);
@@ -95,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             </button>
           </li>
           {categories.map((category) => (
-            <li key={`category-generate-${category}`}>
+            <li key={`desktop-${category}`}>
               <button
                 onClick={() => onSelectCategory(category)}
                 className={`w-full text-left px-4 py-2 rounded-md focus:outline-none ${
@@ -105,7 +105,6 @@ const Sidebar: React.FC<SidebarProps> = ({
                 }`}
               >
                 {/* @ts-ignore */}
-
                 {categoryIcons[category]}
                 {category}
               </button>
