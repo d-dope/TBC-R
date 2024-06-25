@@ -4,11 +4,11 @@ import EmptyCardOnSuccess from "../../../components/EmptyCardOnSuccess";
 export default function SuccessPage() {
   return (
     <>
-      <div className="bg-gray-100 py-52 h-screen">
-        <div className="bg-white p-6  md:mx-auto">
+      <div className="bg-gray-100 dark:bg-black py-52 h-screen">
+        <div className="bg-white dark:bg-primaryGray p-6 md:mx-auto">
           <svg
             viewBox="0 0 24 24"
-            className="text-green-600 w-16 h-16 mx-auto my-6"
+            className="text-green-600 dark:text-green-500 w-16 h-16 mx-auto my-6"
           >
             <path
               fill="currentColor"
@@ -16,19 +16,17 @@ export default function SuccessPage() {
             ></path>
           </svg>
           <div className="text-center">
-            <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
+            <h3 className="md:text-2xl text-base text-gray-900 dark:text-gray-100 font-semibold text-center">
               Payment Done!
             </h3>
             <EmptyCardOnSuccess />
-            <p className="text-gray-600 my-2">
+            <p className="text-gray-600 dark:text-gray-400 my-2">
               Thank you for completing your secure online payment.
             </p>
-            <p> Have a great day! </p>
-            <div className=" flex justify-center text-center">
+            <div className="flex justify-center mt-5 text-center">
               <Link href="/products">
-                <p className="px-12 bg-primaryColor  hover:opacity-85 text-white font-semibold py-3 rounded-lg">
-                  {" "}
-                  GO BACK
+                <p className="px-12 bg-primaryColor dark:bg-primaryDarkColor hover:opacity-85 dark:hover:opacity-75 text-white font-semibold py-3 rounded-lg">
+                  BACK TO PRODUCTS
                 </p>
               </Link>
             </div>
