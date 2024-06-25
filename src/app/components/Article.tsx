@@ -70,8 +70,8 @@ const Article: React.FC<ArticleProps> = ({
               {formattedDate}
             </p>
           </div>
-          <div className="absolute top-2 right-2 bg-white dark:bg-gray-700 bg-opacity-75 text-center px-2 py-1 rounded">
-            <p className="text-sm font-sm py-0.5 px-2 text-green-600 dark:text-green-400">
+          <div className="absolute top-2 right-2 bg-white dark:bg-gray-700 bg-opacity-75 text-center px-1 py-1 rounded">
+            <p className="text-xs font-semibold py-0.5 px-2 text-green-600 dark:text-green-400">
               {Number(price).toFixed(2).replace(/\.00$/, "")} ₾
             </p>
           </div>
