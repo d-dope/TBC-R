@@ -3,6 +3,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import AvatarUploadPage from "../[locale]/(dashboard)/upload/page";
 import Notification from "./Notification"; // Import the Notification component
+import { useTranslations } from "next-intl";
 
 interface FormData {
   title: string;
@@ -26,6 +27,7 @@ const AddProductForm = () => {
   });
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false); // State to handle success notification
+  const t = useTranslations("AddProductForm");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -99,7 +101,7 @@ const AddProductForm = () => {
       <AvatarUploadPage onImageUpload={handleImageUpload} />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-gray-300 ">Title</label>
+          <label className="block text-gray-300 ">{t("title")}</label>
           <input
             type="text"
             name="title"
@@ -109,7 +111,7 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-300">Description</label>
+          <label className="block text-gray-300">{t("desc")}</label>
           <textarea
             name="description"
             value={formData.description}
@@ -118,7 +120,7 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-300 ">Price</label>
+          <label className="block text-gray-300 ">{t("price")}</label>
           <input
             type="text"
             name="price"
@@ -128,7 +130,7 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-300">Date</label>{" "}
+          <label className="block text-gray-300">{t("date")}</label>{" "}
           {/* Changed from Sale to Date */}
           <input
             type="date"
@@ -139,7 +141,7 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-300 ">Place</label>{" "}
+          <label className="block text-gray-300 ">{t("place")}</label>{" "}
           {/* Changed from Sale to Date */}
           <input
             type="text"
@@ -150,7 +152,7 @@ const AddProductForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-300">Category</label>
+          <label className="block text-gray-300">{t("cat")}</label>
           <select
             name="category"
             value={formData.category}
@@ -158,13 +160,13 @@ const AddProductForm = () => {
             className="w-full px-3 py-2 mb-5 border dark:bg-primaryGray border-gray-300 rounded-md"
           >
             <option value="">Select a category</option>
-            <option value="Concert">CONCERT</option>
-            <option value="Festival">FESTIVAL</option>
-            <option value="Theatre">THEATRE</option>
-            <option value="Art">ART</option>
-            <option value="Technology">TECHNOLOGY</option>
-            <option value="Sports">SPORT</option>
-            <option value="Other">OTHER</option>
+            <option value="Concert">{t("Concert")}</option>
+            <option value="Festival">{t("Festival")}</option>
+            <option value="Theatre">{t("Theatre")}</option>
+            <option value="Art">{t("Art")}</option>
+            <option value="Technology">{t("Technology")}</option>
+            <option value="Sports">{t("Sports")}</option>
+            <option value="Other">{t("Other")}</option>
 
             {/* Add more categories as needed */}
           </select>

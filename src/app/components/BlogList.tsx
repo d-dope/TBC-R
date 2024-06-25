@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Blog from "./Blog";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useTranslations } from "next-intl";
 
 interface BlogType {
   id: number;
@@ -17,6 +18,8 @@ interface BlogListProps {
 }
 
 export default function BlogList({ blogs }: BlogListProps) {
+  const t = useTranslations("BlogList");
+
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredBlogs, setFilteredBlogs] = useState<BlogType[]>(blogs);
   const { user } = useUser();
@@ -46,11 +49,11 @@ export default function BlogList({ blogs }: BlogListProps) {
       <div className="container mx-auto sm:px-6 lg:px-8 px-6">
         <div className="border-b border-gray-200 pb-16 flex justify-between">
           <h3 className="text-base font-semibold leading-6 text-gray-900 mt-2 dark:text-white">
-            Journey Into Event: Stories, Tips, and More...{" "}
+            {t("title")}{" "}
           </h3>
           <input
             type="text"
-            placeholder="Search Blogs..."
+            placeholder={t("Search")}
             onChange={(e) => handleSearch(e.target.value)}
             value={searchQuery}
             className="w-full md:w-96 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 text-black dark:text-white dark:bg-primaryGray"

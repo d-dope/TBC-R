@@ -158,7 +158,7 @@ export default function Header() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-44 origin-top-right rounded-md bg-white dark:bg-slate-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-64 origin-top-right rounded-md bg-white dark:bg-slate-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {isAdmin && (
                         <Menu.Item>
                           {({ active }) => (
@@ -171,7 +171,7 @@ export default function Header() {
                             >
                               <div className="flex gap-x-2 items-center justify-between">
                                 <CalendarDaysIcon className="h-6 w-6" />
-                                <p>Add Product</p>
+                                <p>{t("addProduct")}</p>
                               </div>
                             </a>
                           )}
@@ -190,7 +190,7 @@ export default function Header() {
                             >
                               <div className="flex gap-x-7 items-center">
                                 <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
-                                Add Blog
+                                {t("addBlog")}
                               </div>
                             </a>
                           )}
@@ -315,8 +315,8 @@ export default function Header() {
                   >
                     <div className="flex gap-x-2 items-center">
                       <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
-                      Add Blog
-                    </div>
+                      {t("addBlog")}
+                      </div>
                   </Disclosure.Button>
                 )}
 
@@ -328,7 +328,7 @@ export default function Header() {
                   >
                     <div className="flex gap-x-2 items-center">
                       <CalendarDaysIcon className="h-6 w-6" />
-                      Add Product
+                      {t("addProduct")}{" "}
                     </div>
                   </Disclosure.Button>
                 )}

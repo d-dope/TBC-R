@@ -5,7 +5,9 @@
     "Blogs": "Blogs",
     "Contact": "Contact",
     "Profile": "Profile",
-    "Admin": "Admin"
+    "Admin": "Admin",
+    "addProduct": "Add Product",
+    "addBlog": "Add Blog"
   },
 
   "Title": {
@@ -31,6 +33,118 @@
     "Send:": "Send Message",
     "Email:": "Email:",
     "Message:": "Message:",
-    "Submit": "Submit"
+    "Submit": "Submit",
+    "cnt": "Fill the blank and send any kind of questions or feedback. "
+  },
+  "CTA": {
+    "Discover Unforgettable Events Near You!": "Discover Unforgettable Events Near You!",
+    "CtaDesc": "Welcome to EVENT, your go-to platform for finding and attending exciting events. Whether you're into music, arts, sports, or networking, we've got something for everyone!",
+    "view": "View Events"
+  },
+  "LandingSideBar": {
+    "LatestEvents": "Latest Events",
+    "LatestBlogs": "Latest Blogs",
+    "OurValues": "Our Values",
+    "Partners": "Partners"
+  },
+  "HomeLayout": {
+    "ViewAll": "View All...",
+    "LatestEvents": "LATEST EVENTS",
+    "LatestBlogs": "LATEST BLOGS",
+    "OurValues": "OUR VALUES",
+    "FlexibleFind": "Flexible Find",
+    "desc1": "Search events by date, category, or location to find exactly what interests you.",
+    "title2": "RSVP securely",
+    "desc2": "Securely RSVP to events with just a few clicks, or purchase tickets hassle-free.",
+    "title3": "Details",
+    "desc3": "Get comprehensive event information at a glance, including ticket prices, venue details, and more.",
+    "title4": "New Connections",
+    "desc4": "Connect with other attendees, share experiences, and build a community around your favorite events.",
+    "title5": "Mobile-friendly Features.",
+    "desc5": "Access our platform on the go with our mobile app for iOS and Android.",
+    "title6": "Stay Informed",
+    "desc6": "Receive personalized event recommendations and updates so you're always in the know."
+  },
+  "Partners": {
+    "title": "Trusted by the world’s most innovative teams"
+  },
+  "Footer": {
+    "Product": "Events",
+    "Blogs": "Blogs",
+    "Contact": "Contact",
+    "Profile": "Profile",
+    "Pricing": "Pricing",
+    "Documentation": "Documentation",
+    "Guides": "Guides",
+    "API": "API Status",
+    "Conditions": "Conditions",
+    "Privacy": "Privacy",
+    "Terms": "Terms",
+    "pages": "Pages",
+    "support": "Support",
+    "company": "Company",
+    "legal": "Legal",
+    "sub": "Subscribe to our newsletter",
+    "descF": "The latest news, articles, and resources, sent to your inbox weekly.",
+    "email": "Email address",
+    "sss": "Subscribe",
+    "rights": " 2024 EVENT Company, Inc. All rights reserved. "
+  },
+  "SideBar": {
+    "cat": "CATEGORIES",
+    "allcat": "All Categories",
+    "Concert": "Concert",
+    "Festival": "Festival",
+    "Theatre": "Theatre",
+    "Art": "Art",
+    "Technology": "Technology",
+    "Sports": "Sports",
+    "Other": "Other"
+  },
+  "BlogList": {
+    "title": " Journey Into Event: Stories, Tips, and More...",
+    "Search": "Search Blogs..."
+  },
+  "Auth": {
+    "Login": "Login",
+    "Logout": "Log Out"
+  },
+  "profile": {
+    "Personal": "Personal Information",
+    "Use": "Use a permanent address where you can receive mail.",
+    "name": "First name",
+    "Last": "Last name",
+    "Email": " Email address",
+    "Cancel": "Cancel",
+    "Save": "Save"
+  },
+  "AddBlogForm": {
+    "AddNewBlog": "Add New Blog",
+    "title": "Title",
+    "desc": "Description",
+    "add": "Add Blog"
+  },
+  "AddProductForm": {
+    "title": "Title",
+    "desc": "Description",
+    "price": "Price",
+    "date": "Date",
+    "place": "Place",
+    "cat": "Category",
+    "Concert": "Concert",
+    "Festival": "Festival",
+    "Theatre": "Theatre",
+    "Art": "Art",
+    "Technology": "Technology",
+    "Sports": "Sports",
+    "Other": "Other"
+  },
+  "Cart": {
+    "shop": "Shopping Cart",
+    "qty": "Quantity",
+    "tp": "Total Price:",
+    "reset": "RESET",
+    "BN": "Buy Now",
+    "Items": "Items"
   }
 }

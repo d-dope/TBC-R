@@ -9,6 +9,7 @@ import {
   BoltIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/outline";
+import { useTranslations } from "next-intl";
 
 interface SidebarProps {
   categories: string[];
@@ -17,16 +18,6 @@ interface SidebarProps {
   onClearCategory: () => void;
 }
 
-const categoryIcons = {
-  Concert: <MusicalNoteIcon className="h-5 w-5 inline-block mr-2" />,
-  Festival: <FilmIcon className="h-5 w-5 inline-block mr-2" />,
-  Theatre: <TicketIcon className="h-5 w-5 inline-block mr-2" />,
-  Art: <PaintBrushIcon className="h-5 w-5 inline-block mr-2" />,
-  Technology: <DevicePhoneMobileIcon className="h-5 w-5 inline-block mr-2" />,
-  Sports: <BoltIcon className="h-5 w-5 inline-block mr-2" />,
-  Other: <GlobeAltIcon className="h-5 w-5 inline-block mr-2" />,
-};
-
 const Sidebar: React.FC<SidebarProps> = ({
   categories,
   selectedCategory,
@@ -34,11 +25,22 @@ const Sidebar: React.FC<SidebarProps> = ({
   onClearCategory,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const t = useTranslations("SideBar");
+
+  const categoryIcons = {
+    Concert: <MusicalNoteIcon className="h-5 w-5 inline-block mr-2" />,
+    Festival: <FilmIcon className="h-5 w-5 inline-block mr-2" />,
+    Theatre: <TicketIcon className="h-5 w-5 inline-block mr-2" />,
+    Art: <PaintBrushIcon className="h-5 w-5 inline-block mr-2" />,
+    Technology: <DevicePhoneMobileIcon className="h-5 w-5 inline-block mr-2" />,
+    Sports: <BoltIcon className="h-5 w-5 inline-block mr-2" />,
+    Other: <GlobeAltIcon className="h-5 w-5 inline-block mr-2" />,
+  };
 
   return (
     <div className="w-full md:w-64 md:h-[450px] h-28 bg-white dark:bg-primaryGray shadow-lg p-4 md:mb-0 rounded-md mt-28">
       <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-        CATEGORIES
+        {t("cat")}
       </h2>
 
       {/* Dropdown for mobile */}
@@ -47,10 +49,10 @@ const Sidebar: React.FC<SidebarProps> = ({
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="w-full text-left px-4 py-2 rounded-md focus:outline-none bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100"
         >
-          {selectedCategory ? selectedCategory : "Select a category"}
+          {selectedCategory ? t(selectedCategory) : t("allcat")}
         </button>
         {isDropdownOpen && (
-          <ul className="absolute w-full space-y-2 mt-2 bg-white dark:bg-gray-800 shadow-md rounded-md z-50">
+          <ul className="absolute w-full space-y-2 mt-2 bg-white dark:bg-gray-700 shadow-md rounded-md z-50">
             <li>
               <button
                 onClick={() => {
@@ -59,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 }}
                 className="w-full text-left px-4 py-2 rounded-md focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
-                All Categories
+                {t("allcat")}
               </button>
             </li>
             {categories.map((category) => (
@@ -77,7 +79,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 >
                   {/* @ts-ignore */}
                   {categoryIcons[category]}
-                  {category}
+                  {t(category)}
                 </button>
               </li>
             ))}
@@ -93,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               onClick={onClearCategory}
               className="w-full text-left px-4 py-2 rounded-md focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
-              All Categories
+              {t("allcat")}
             </button>
           </li>
           {categories.map((category) => (
@@ -107,8 +109,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                 }`}
               >
                 {/* @ts-ignore */}
+
                 {categoryIcons[category]}
-                {category}
+                {t(category)}
               </button>
             </li>
           ))}

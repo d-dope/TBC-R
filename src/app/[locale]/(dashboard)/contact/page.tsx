@@ -13,7 +13,7 @@ export default function ContactPage() {
     <div className="relative isolate bg-MainBgColor dark:bg-black">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
         <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
-          <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+          <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg mt-6">
             <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden ring-1 ring-white/5 lg:w-1/2">
               <div
                 className="absolute -left-56 top-[calc(100%-13rem)] transform-gpu blur-3xl lg:left-[max(-14rem,calc(100%-59rem))] lg:top-[calc(50%-7rem)]"
@@ -36,9 +36,7 @@ export default function ContactPage() {
             </p>
 
             <p className="mt-6 text-lg leading-8 text-gray-700-300">
-              Proin volutpat consequat porttitor cras nullam gravida at. Orci
-              molestie a eu arcu. Sed ut tincidunt integer elementum id sem.
-              Arcu sed malesuada et magna.
+              {t("cnt")}
             </p>
             <dl className="mt-10 space-y-4 text-base leading-7 text-gray-700-300">
               <div className="flex gap-x-4">
