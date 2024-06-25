@@ -146,5 +146,13 @@
     "reset": "RESET",
     "BN": "Buy Now",
     "Items": "Items"
+  },
+  "ArticleList": {
+    "search": "Search Events...",
+    "sort": "Sort by",
+    "sortLowToHigh": "Price: Low to High",
+    "sortHighToLow": "Price: High to Low",
+    "data1": "Date: Sooner First",
+    "data2": " Date: Furthest First"
   }
 }
