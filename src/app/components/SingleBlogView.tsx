@@ -22,7 +22,7 @@ interface Blog {
   title: string;
   description: string;
   picture_url: string;
-  price: number;
+  price?: number;
   // Add other fields if necessary
 }
 
