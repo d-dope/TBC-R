@@ -170,7 +170,7 @@ export default function Header() {
                                 "block px-4 py-2 text-sm text-gray-700 dark:text-gray-300"
                               )}
                             >
-                              <div className="flex gap-x-2 items-center justify-between">
+                              <div className="flex gap-x-6 items-center justify-between">
                                 <CalendarDaysIcon className="h-6 w-6" />
                                 <p>{t("addProduct")}</p>
                               </div>
