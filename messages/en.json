@@ -6,8 +6,9 @@
     "Contact": "Contact",
     "Profile": "Profile",
     "Admin": "Admin",
-    "addProduct": "Add Product",
-    "addBlog": "Add Blog"
+    "addProduct": "Add Event",
+    "addBlog": "Add Blog",
+    "orders": "Orders"
   },
 
   "Title": {
@@ -146,5 +147,13 @@
     "reset": "RESET",
     "BN": "Buy Now",
     "Items": "Items"
+  },
+  "ArticleList": {
+    "search": "Search Events...",
+    "sort": "Sort by",
+    "sortLowToHigh": "Price: Low to High",
+    "sortHighToLow": "Price: High to Low",
+    "data1": "Date: Sooner First",
+    "data2": " Date: Furthest First"
   }
 }

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
 import Sidebar from "./Sidebar";
+import { useTranslations } from "next-intl";
 
 interface ArticleType {
   id: number;
@@ -24,6 +25,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortOption, setSortOption] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const t = useTranslations("ArticleList");
 
   useEffect(() => {
     let filtered = [...products];
@@ -107,7 +109,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
           <div className="flex flex-col mt-0 sm:mt-28 md:flex-row justify-between mb-4 space-y-4 md:space-y-0 gap-x-16">
             <input
               type="text"
-              placeholder="Search articles..."
+              placeholder={t("search")}
               onChange={(e) => handleSearch(e.target.value)}
               value={searchQuery}
               className="w-full md:w-2/3 px-4 py-2 rounded-md border border-gray-100 focus:outline-none focus:border-blue-500 text-black dark:text-gray-100 dark:bg-primaryGray"
@@ -117,11 +119,11 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
               value={sortOption}
               className="w-full md:w-1/3 px-4 py-2 rounded-md border border-gray-100 focus:outline-none focus:border-blue-500 text-black dark:text-gray-100 dark:bg-primaryGray"
             >
-              <option value="">Sort by</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="date-asc">Date: Sooner First</option>
-              <option value="date-desc">Date: Furthest First</option>
+              <option value="">{t("sort")}</option>
+              <option value="price-asc">{t("sortLowToHigh")}</option>
+              <option value="price-desc">{t("sortHighToLow")}</option>
+              <option value="date-asc">{t("data1")}</option>
+              <option value="date-desc">{t("data2")}</option>
             </select>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-12 mt-8">
