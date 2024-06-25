@@ -34,7 +34,10 @@ export default function Auth() {
   }
 
   return (
-    <Link href="/api/auth/login" className="text-sm leading-7 text-white">
+    <Link
+      href="/api/auth/login"
+      className="text-sm leading-7 text-black  dark:text-white"
+    >
       {t("Login")}
     </Link>
   );
