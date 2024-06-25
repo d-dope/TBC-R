@@ -44,10 +44,10 @@ export default function SingleProductForm({ product }: SingleProductFormProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row -mx-4 mt-14">
           <div className="md:flex-1 px-4 flex flex-col justify-between">
-            <div className="sm:h-[300px] h-[200px] rounded-lg dark:bg-gray-700 mb-4">
+            <div className="sm:h-[300px] h-[200px] rounded-lg  mb-4">
               <Zoom>
                 <Image
-                  className="w-full h-full object-cover"
+                  className="w-full h-72 object-cover rounded"
                   height={460}
                   width={460}
                   src={product.picture_url}
