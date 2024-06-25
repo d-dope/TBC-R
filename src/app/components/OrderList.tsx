@@ -10,10 +10,10 @@ const OrdersList = ({ orders }: any) => {
   };
 
   return (
-    <div className="p-8 min-h-screen  dark:bg-gray-900">
-      <div className=" mt-32  flex justify-center dark:bg-gray-800 rounded-lg  ">
+    <div className="p-8 min-h-screen bg-MainBgColor dark:bg-black">
+      <div className=" mt-24  flex justify-center  rounded-lg  ">
         <table className="">
-          <thead className="bg-primaryColor ">
+          <thead className="border border-primaryColor">
             <tr>
               <th className="px-6 py-3 text-left text-sm font-semibold text-white uppercase">
                 Amount
@@ -61,7 +61,7 @@ const OrdersList = ({ orders }: any) => {
                       <button
                         onClick={() => refundHandler(order.latest_charge.id)}
                         type="button"
-                        className="p-2 px-4 bg-gray-800 text-white rounded-md hover:bg-red-900 transition-colors"
+                        className="p-2 px-4 bg-gray-800 text-white rounded-md hover:bg-gray-900 transition-colors"
                       >
                         Refund
                       </button>

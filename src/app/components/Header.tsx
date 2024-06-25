@@ -14,6 +14,7 @@ import {
   ArrowRightEndOnRectangleIcon,
   ChatBubbleBottomCenterTextIcon,
   CalendarDaysIcon,
+  ClipboardDocumentListIcon,
 } from "@heroicons/react/20/solid";
 // @ts-ignore
 function classNames(...classes) {
@@ -196,6 +197,24 @@ export default function Header() {
                           )}
                         </Menu.Item>
                       )}
+                      {isAdmin && (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/admin/orders"
+                              className={classNames(
+                                active ? "bg-gray-100  dark:bg-slate-600" : "",
+                                "block px-4 py-2 text-sm text-gray-700 dark:text-gray-300"
+                              )}
+                            >
+                              <div className="flex gap-x-5 items-center justify-between -ml-8">
+                                <ClipboardDocumentListIcon className="h-6 w-6 " />
+                                <p className="-mr-2">{t("orders")}</p>
+                              </div>
+                            </a>
+                          )}
+                        </Menu.Item>
+                      )}
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -316,7 +335,7 @@ export default function Header() {
                     <div className="flex gap-x-2 items-center">
                       <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
                       {t("addBlog")}
-                      </div>
+                    </div>
                   </Disclosure.Button>
                 )}
 
@@ -329,6 +348,19 @@ export default function Header() {
                     <div className="flex gap-x-2 items-center">
                       <CalendarDaysIcon className="h-6 w-6" />
                       {t("addProduct")}{" "}
+                    </div>
+                  </Disclosure.Button>
+                )}
+
+                {isAdmin && (
+                  <Disclosure.Button
+                    as="a"
+                    href="/admin/orders"
+                    className="block px-4 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-600 hover:text-gray-800 dark:hover:text-white"
+                  >
+                    <div className="flex gap-x-2 items-center">
+                      <ClipboardDocumentListIcon className="h-6 w-6" />
+                      {t("orders")}{" "}
                     </div>
                   </Disclosure.Button>
                 )}
