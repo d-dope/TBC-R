@@ -4,6 +4,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import Notification from "./Notification";
 import BlogImageUploadPage from "../[locale]/(dashboard)/upload-blog-avatar/page";
 import { BASE_URL } from "../../../api";
+import { useTranslations } from "next-intl";
 
 interface FormData {
   title: string;
@@ -12,6 +13,8 @@ interface FormData {
 }
 
 const AddBlogForm = () => {
+  const t = useTranslations("AddBlogForm");
+
   const [formData, setFormData] = useState<FormData>({
     title: "",
     description: "",
@@ -76,13 +79,15 @@ const AddBlogForm = () => {
 
   return (
     <div className="max-w-md mx-auto p-4 py-16 sm:py-52">
-      <h2 className="text-2xl font-bold mb-4">Add New Blog</h2>
+      <h2 className="text-2xl font-bold mb-4">{t("AddNewBlog")}</h2>
       {error && <p className="text-red-500">{error}</p>}
       {success && <Notification />}
       <BlogImageUploadPage onImageUpload={handleImageUpload} />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-gray-300">Title</label>
+          <label className="block text-gray-800 dark:text-gray-300">
+            {t("title")}
+          </label>
           <input
             type="text"
             name="title"
@@ -92,7 +97,7 @@ const AddBlogForm = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-300">Description</label>
+          <label className="block text-gray-800 dark:text-gray-300">{t("desc")}</label>
           <textarea
             name="description"
             value={formData.description}
@@ -104,7 +109,7 @@ const AddBlogForm = () => {
           type="submit"
           className="w-full bg-primaryColor  text-white px-3 py-2 rounded-md"
         >
-          Add Blog
+          {t("add")}
         </button>
       </form>
     </div>

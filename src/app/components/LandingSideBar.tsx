@@ -6,39 +6,42 @@ import {
   HomeIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
+import { useTranslations } from "next-intl";
 
-const navigation = [
-  {
-    name: "Latest Events",
-    href: "#latest-events",
-    icon: CalendarIcon,
-    current: false,
-  },
-  {
-    name: "Latest Blogs",
-    href: "#latest-blogs",
-    icon: DocumentDuplicateIcon,
-    current: false,
-  },
-  {
-    name: "Our Values",
-    href: "#our-values",
-    icon: ChartPieIcon,
-    current: false,
-  },
-  {
-    name: "Partners",
-    href: "#partner-companies",
-    icon: UsersIcon,
-    current: false,
-  },
-];
 //   @ts-ignore
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function LandingSideBar() {
+  const t = useTranslations("LandingSideBar");
+
+  const navigation = [
+    {
+      name: t("LatestEvents"),
+      href: "#latest-events",
+      icon: CalendarIcon,
+      current: false,
+    },
+    {
+      name: t("LatestBlogs"),
+      href: "#latest-blogs",
+      icon: DocumentDuplicateIcon,
+      current: false,
+    },
+    {
+      name: t("OurValues"),
+      href: "#our-values",
+      icon: ChartPieIcon,
+      current: false,
+    },
+    {
+      name: t("Partners"),
+      href: "#partner-companies",
+      icon: UsersIcon,
+      current: false,
+    },
+  ];
   //   @ts-ignore
 
   const handleClick = (e, href) => {

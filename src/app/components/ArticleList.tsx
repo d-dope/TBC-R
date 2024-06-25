@@ -124,7 +124,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ products }) => {
               <option value="date-desc">Date: Furthest First</option>
             </select>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-12 mt-20">
+          <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-12 mt-8">
             {sortedArticles.map((article, index) => (
               <Article
                 key={`article-${article.id}`}

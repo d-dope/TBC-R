@@ -8,6 +8,7 @@ import {
 } from "../../../actions";
 import Image from "next/image";
 import { BASE_URL } from "../../../api";
+import { useTranslations } from "next-intl";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +35,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
 }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const t = useTranslations("Cart");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -93,10 +95,10 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
     <section className="w-full min-h-screen flex justify-center items-center flex-col bg-gray-50 dark:bg-black p-4 md:p-8 text-gray-800 dark:text-gray-300">
       <div className="w-full max-w-4xl bg-white dark:bg-primaryGray shadow-lg rounded-lg p-4 md:p-6">
         <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">
-          Shopping Cart
+          {t("shop")}
         </h1>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 text-center">
-          {totalQuantity} Items
+          {totalQuantity} {t("Items")}
         </p>
         <div className="mt-4">
           {products.map((product, index) => (
@@ -117,7 +119,7 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
                 <h2 className="text-lg font-semibold">{product.title}</h2>
                 <div className="flex items-center mt-2">
                   <span className="text-gray-600 dark:text-gray-400 mr-2">
-                    Quantity: {product.quantity}
+                    {t("qty")} {product.quantity}
                   </span>
                   <button
                     className="px-3 py-1 mx-2 bg-gray-400 dark:bg-gray-600 text-white rounded hover:bg-gray-700 dark:hover:bg-gray-800"
@@ -146,27 +148,27 @@ const CheckoutLayout: FC<CheckoutLayoutProps> = ({
                 </div>
               </div>
               <p className="text-lg font-semibold">
-                ${Number(product.price).toFixed(2)}
+                {Number(product.price).toFixed(2)} <span>₾</span>
               </p>
             </div>
           ))}
         </div>
         <div className="mt-4 flex flex-col md:flex-row justify-between items-center">
           <h2 className="text-xl font-semibold mb-4 md:mb-0">
-            Total Price: ${totalPrice.toFixed(2)}
+            {t("tp")} {totalPrice.toFixed(2)} <span>₾</span>
           </h2>
           <div className="flex space-x-4">
             <button
               className="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-900 dark:hover:bg-gray-800"
               onClick={() => resetCart(products[0]?.auth_id)}
             >
-              RESET
+              {t("reset")}
             </button>
             <button
               onClick={checkout}
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
             >
-              Buy Now
+              {t("BN")}
             </button>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { getSession } from "@auth0/nextjs-auth0";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default async function ProfilePage() {

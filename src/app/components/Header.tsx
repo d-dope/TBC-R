@@ -106,7 +106,7 @@ export default function Header() {
                 <LocalSwitcher />
                 <button
                   type="button"
-                  className="relative ml-1 rounded-full bg-gray-200 dark:bg-slate-700 p-1 text-gray-400 border border-gray-300 dark:border-slate-600 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primaryColor"
+                  className="relative ml-1 rounded-full bg-gray-200 dark:bg-gray-500 p-1 text-gray-400 border border-gray-300 dark:border-slate-600 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primaryColor"
                   onClick={() => {
                     if (!user) {
                       window.location.href = "/api/auth/login";
@@ -120,7 +120,7 @@ export default function Header() {
                 </button>
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex rounded-full bg-white dark:bg-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-slate-600">
+                    <Menu.Button className="relative flex rounded-full bg-white dark:bg-slate-700 text-sm focus:outline-none">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       {user ? (
@@ -138,7 +138,7 @@ export default function Header() {
                           viewBox="0 0 24 24"
                           strokeWidth="0.9"
                           stroke="black"
-                          className="h-10 w-10 opacity-40 dark:opacity-60 rounded-full focus:outline-none hover:opacity-65"
+                          className="h-10 w-10 dark:h-8 dark:w-8 -ml-1 opacity-40 dark:bg-white rounded-full outline-none focus:outline-none hover:opacity-65"
                         >
                           <path
                             strokeLinecap="round"
@@ -158,7 +158,7 @@ export default function Header() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-44 origin-top-right rounded-md bg-white dark:bg-slate-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 flex flex-col items-center z-10 mt-2 w-64 origin-top-right rounded-md bg-white dark:bg-slate-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {isAdmin && (
                         <Menu.Item>
                           {({ active }) => (
@@ -171,7 +171,7 @@ export default function Header() {
                             >
                               <div className="flex gap-x-2 items-center justify-between">
                                 <CalendarDaysIcon className="h-6 w-6" />
-                                <p>Add Product</p>
+                                <p>{t("addProduct")}</p>
                               </div>
                             </a>
                           )}
@@ -190,7 +190,7 @@ export default function Header() {
                             >
                               <div className="flex gap-x-7 items-center">
                                 <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
-                                Add Blog
+                                {t("addBlog")}
                               </div>
                             </a>
                           )}
@@ -265,7 +265,7 @@ export default function Header() {
                       viewBox="0 0 24 24"
                       strokeWidth="0.9"
                       stroke="black"
-                      className="h-10 w-10 cursor-pointer opacity-40 dark:opacity-60 rounded-full focus:outline-none hover:opacity-65"
+                      className="h-8 w-8 cursor-pointer opacity-40 dark:bg-white rounded-full focus:outline-none hover:opacity-65"
                     >
                       <path
                         strokeLinecap="round"
@@ -315,8 +315,8 @@ export default function Header() {
                   >
                     <div className="flex gap-x-2 items-center">
                       <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
-                      Add Blog
-                    </div>
+                      {t("addBlog")}
+                      </div>
                   </Disclosure.Button>
                 )}
 
@@ -328,7 +328,7 @@ export default function Header() {
                   >
                     <div className="flex gap-x-2 items-center">
                       <CalendarDaysIcon className="h-6 w-6" />
-                      Add Product
+                      {t("addProduct")}{" "}
                     </div>
                   </Disclosure.Button>
                 )}

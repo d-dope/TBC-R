@@ -1,8 +1,11 @@
 "use client";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function Auth() {
+  const t = useTranslations("Auth");
+
   const { user, error } = useUser();
   if (error) return <div>{error.message}</div>;
 
@@ -24,18 +27,15 @@ export default function Auth() {
           onClick={handleLogout}
           className=" leading-7 text-sm  text-gray-700 dark:text-gray-300"
         >
-          Log Out
+          {t("Logout")}
         </button>
       </div>
     );
   }
 
   return (
-    <Link
-      href="/api/auth/login"
-      className="text-sm leading-7 text-gray-700 hover:bg-gray-50"
-    >
-      Login
+    <Link href="/api/auth/login" className="text-sm leading-7 text-white">
+      {t("Login")}
     </Link>
   );
 }
